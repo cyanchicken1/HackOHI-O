@@ -1,0 +1,2951 @@
+{
+  "buildings": [
+
+  {
+    "name": "Parking Garage - Neil Ave",
+    "number": "0287",
+    "latitude": 39.99762339,
+    "longitude": -83.01742797
+  },
+  {
+    "name": "Orton Hall",
+    "number": "0060",
+    "latitude": 39.99832824,
+    "longitude": -83.01193358
+  },
+  {
+    "name": "Hayes Hall",
+    "number": "0039",
+    "latitude": 40.00053815,
+    "longitude": -83.01116118
+  },
+  {
+    "name": "Converse Hall",
+    "number": "0056",
+    "latitude": 40.00509444,
+    "longitude": -83.01748953
+  },
+  {
+    "name": "Hale Hall",
+    "number": "0085",
+    "latitude": 39.99701838,
+    "longitude": -83.01176493
+  },
+  {
+    "name": "Drinko Hall",
+    "number": "0049",
+    "latitude": 39.99610527,
+    "longitude": -83.00827268
+  },
+  {
+    "name": "Parking Garage - Ninth Ave W",
+    "number": "0359",
+    "latitude": 39.99273798,
+    "longitude": -83.01666659
+  },
+  {
+    "name": "Telecommunications Network Center",
+    "number": "0379",
+    "latitude": 39.99247931,
+    "longitude": -83.01522755
+  },
+  {
+    "name": "Mershon Center",
+    "number": "0047",
+    "latitude": 39.99182518,
+    "longitude": -83.014346
+  },
+  {
+    "name": "Pennsylvania Place",
+    "number": "0048",
+    "latitude": 39.99146045,
+    "longitude": -83.01481562
+  },
+  {
+    "name": "Jesse Owens Recreation Center South",
+    "number": "0348",
+    "latitude": 39.99501105,
+    "longitude": -83.01186051
+  },
+  {
+    "name": "Parking Garage - Eleventh Ave",
+    "number": "0352",
+    "latitude": 39.9951312,
+    "longitude": -83.01301546
+  },
+  {
+    "name": "William Hall Complex - Neil Building",
+    "number": "0846",
+    "latitude": 39.99383921,
+    "longitude": -83.01398829
+  },
+  {
+    "name": "William Hall Complex - Scholars House West",
+    "number": "0847",
+    "latitude": 39.99409928,
+    "longitude": -83.01351541
+  },
+  {
+    "name": "Pomerene Alumnae Scholarship House",
+    "number": "0869",
+    "latitude": 39.99407885,
+    "longitude": -83.01327442
+  },
+  {
+    "name": "Hanley Alumnae Scholarship House",
+    "number": "0864",
+    "latitude": 39.99409215,
+    "longitude": -83.01312409
+  },
+  {
+    "name": "William Hall Complex - Scholars House East",
+    "number": "0848",
+    "latitude": 39.99407695,
+    "longitude": -83.012897
+  },
+  {
+    "name": "William Hall Complex - Worthington Building",
+    "number": "0849",
+    "latitude": 39.9939961,
+    "longitude": -83.01251588
+  },
+  {
+    "name": "Siebert Hall",
+    "number": "0099",
+    "latitude": 39.99596568,
+    "longitude": -83.01228292
+  },
+  {
+    "name": "Paterson Hall",
+    "number": "0103",
+    "latitude": 39.99639008,
+    "longitude": -83.01253395
+  },
+  {
+    "name": "Fechko Alumnae Scholarship House",
+    "number": "0040",
+    "latitude": 39.99582458,
+    "longitude": -83.01325237
+  },
+  {
+    "name": "Canfield Hall",
+    "number": "0098",
+    "latitude": 39.99600422,
+    "longitude": -83.01349155
+  },
+  {
+    "name": "Eleventh Ave, 53 W",
+    "number": "0902",
+    "latitude": 39.99511373,
+    "longitude": -83.00872633
+  },
+  {
+    "name": "Eleventh Ave, 45 W",
+    "number": "0964",
+    "latitude": 39.99512087,
+    "longitude": -83.00858569
+  },
+  {
+    "name": "Galbreath Equine Center",
+    "number": "0282",
+    "latitude": 40.00119862,
+    "longitude": -83.02869861
+  },
+  {
+    "name": "Plumb Hall",
+    "number": "0066",
+    "latitude": 40.00355924,
+    "longitude": -83.02666443
+  },
+  {
+    "name": "Animal Science Building",
+    "number": "0156",
+    "latitude": 40.00363109,
+    "longitude": -83.02864867
+  },
+  {
+    "name": "Agricultural Administration",
+    "number": "0003",
+    "latitude": 40.00542636,
+    "longitude": -83.02722587
+  },
+  {
+    "name": "Agricultural Engineering Building",
+    "number": "0298",
+    "latitude": 40.00551784,
+    "longitude": -83.02498459
+  },
+  {
+    "name": "Fawcett Center for Tomorrow",
+    "number": "0284",
+    "latitude": 40.01071684,
+    "longitude": -83.02088082
+  },
+  {
+    "name": "Library Book Depository",
+    "number": "0350",
+    "latitude": 40.01532159,
+    "longitude": -83.03620333
+  },
+  {
+    "name": "Stores and Receiving",
+    "number": "0381",
+    "latitude": 40.01431382,
+    "longitude": -83.03555851
+  },
+  {
+    "name": "Printing Facility",
+    "number": "0290",
+    "latitude": 40.01138284,
+    "longitude": -83.03433746
+  },
+  {
+    "name": "Waterman - Rothenbuhler Honey Bee Lab",
+    "number": "0384",
+    "latitude": 40.01119055,
+    "longitude": -83.0406593
+  },
+  {
+    "name": "Turfgrass Foundation",
+    "number": "0983",
+    "latitude": 40.01360208,
+    "longitude": -83.04663208
+  },
+  {
+    "name": "Research Administration Building",
+    "number": "0200",
+    "latitude": 39.99944983,
+    "longitude": -83.0337253
+  },
+  {
+    "name": "Kinnear Rd, 1275-1305",
+    "number": "0395",
+    "latitude": 39.99731478,
+    "longitude": -83.04246221
+  },
+  {
+    "name": "Taylor Tower",
+    "number": "0268",
+    "latitude": 40.00568221,
+    "longitude": -83.01068714
+  },
+  {
+    "name": "Barrett House",
+    "number": "0184",
+    "latitude": 40.00471762,
+    "longitude": -83.01101708
+  },
+  {
+    "name": "Haverfield House",
+    "number": "0182",
+    "latitude": 40.00410134,
+    "longitude": -83.01163725
+  },
+  {
+    "name": "Norton House",
+    "number": "0186",
+    "latitude": 40.00482563,
+    "longitude": -83.013875
+  },
+  {
+    "name": "Archer House",
+    "number": "0261",
+    "latitude": 40.00527853,
+    "longitude": -83.0140993
+  },
+  {
+    "name": "Gateway C",
+    "number": "0863",
+    "latitude": 39.99438927,
+    "longitude": -83.0062499
+  },
+  {
+    "name": "State of Ohio Computer Center",
+    "number": "0949",
+    "latitude": 40.00512874,
+    "longitude": -83.04659921
+  },
+  {
+    "name": "Sea Grant Boat Storage",
+    "number": "1250",
+    "latitude": 39.99980848,
+    "longitude": -83.0419671
+  },
+  {
+    "name": "Waterman - Turf Shed 1",
+    "number": "0992",
+    "latitude": 40.01417674,
+    "longitude": -83.04544415
+  },
+  {
+    "name": "Gateway A",
+    "number": "0860",
+    "latitude": 39.99466684,
+    "longitude": -83.00735996
+  },
+  {
+    "name": "Gateway B",
+    "number": "0862",
+    "latitude": 39.99524398,
+    "longitude": -83.00666945
+  },
+  {
+    "name": "Parking Garage - Lane Ave",
+    "number": "0159",
+    "latitude": 40.00561224,
+    "longitude": -83.01617021
+  },
+  {
+    "name": "Athletic Maintenance",
+    "number": "0304",
+    "latitude": 40.01107157,
+    "longitude": -83.02623545
+  },
+  {
+    "name": "Waterman - Laboratory Headquarters",
+    "number": "0179",
+    "latitude": 40.010336,
+    "longitude": -83.04005196
+  },
+  {
+    "name": "Quonset Hut 8",
+    "number": "0166",
+    "latitude": 40.00854445,
+    "longitude": -83.03393543
+  },
+  {
+    "name": "Quonset Hut 9",
+    "number": "0167",
+    "latitude": 40.00840763,
+    "longitude": -83.0338668
+  },
+  {
+    "name": "Grounds Maintenance Equipment Storage",
+    "number": "0168",
+    "latitude": 40.00827519,
+    "longitude": -83.03380757
+  },
+  {
+    "name": "Quonset Hut 11",
+    "number": "0169",
+    "latitude": 40.0079679,
+    "longitude": -83.03355194
+  },
+  {
+    "name": "Waterman - North Pole Barn",
+    "number": "0937",
+    "latitude": 40.01489463,
+    "longitude": -83.04030533
+  },
+  {
+    "name": "Refuse Vehicle Storage",
+    "number": "0034",
+    "latitude": 40.01260105,
+    "longitude": -83.03331935
+  },
+  {
+    "name": "Zoology Research Laboratory",
+    "number": "0231",
+    "latitude": 40.00045286,
+    "longitude": -83.04350089
+  },
+  {
+    "name": "Lacquer Paint House",
+    "number": "0138",
+    "latitude": 39.99979074,
+    "longitude": -83.04429814
+  },
+  {
+    "name": "Parking Garage - Gateway E",
+    "number": "0866",
+    "latitude": 39.99405868,
+    "longitude": -83.00520016
+  },
+  {
+    "name": "Wetland Bike Shelter",
+    "number": "0210",
+    "latitude": 40.02071982,
+    "longitude": -83.01725697
+  },
+  {
+    "name": "AAAS Community Extension Center",
+    "number": "0380",
+    "latitude": 39.97090844,
+    "longitude": -82.97783576
+  },
+  {
+    "name": "Chiller Plant, South Campus Central",
+    "number": "0388",
+    "latitude": 39.99662417,
+    "longitude": -83.02140535
+  },
+  {
+    "name": "Airport Storage",
+    "number": "0195",
+    "latitude": 40.07494007,
+    "longitude": -83.0725959
+  },
+  {
+    "name": "T-Hangar A-West",
+    "number": "0196",
+    "latitude": 40.07495231,
+    "longitude": -83.07212156
+  },
+  {
+    "name": "T-Hangar A-East",
+    "number": "0197",
+    "latitude": 40.07493936,
+    "longitude": -83.07172035
+  },
+  {
+    "name": "Cow Barn",
+    "number": "0325",
+    "latitude": 40.08179604,
+    "longitude": -83.08795802
+  },
+  {
+    "name": "Range Shelter 1",
+    "number": "0333",
+    "latitude": 40.08152943,
+    "longitude": -83.08887651
+  },
+  {
+    "name": "Range Shelter 2",
+    "number": "0334",
+    "latitude": 40.08182885,
+    "longitude": -83.08886208
+  },
+  {
+    "name": "Range Shelter 3",
+    "number": "0335",
+    "latitude": 40.08212567,
+    "longitude": -83.08884638
+  },
+  {
+    "name": "Research Barn",
+    "number": "0361",
+    "latitude": 40.08176787,
+    "longitude": -83.08730595
+  },
+  {
+    "name": "T-Hangar C",
+    "number": "0901",
+    "latitude": 40.07381895,
+    "longitude": -83.06958799
+  },
+  {
+    "name": "Airport Control Tower - FAA",
+    "number": "0973",
+    "latitude": 40.07511503,
+    "longitude": -83.07106781
+  },
+  {
+    "name": "USDA Machine Storage",
+    "number": "0957",
+    "latitude": 40.07480053,
+    "longitude": -83.08213952
+  },
+  {
+    "name": "Sheep Barn Annex",
+    "number": "0982",
+    "latitude": 40.07408423,
+    "longitude": -83.08220171
+  },
+  {
+    "name": "MedFlight Hangar",
+    "number": "0978",
+    "latitude": 40.08574411,
+    "longitude": -83.06859669
+  },
+  {
+    "name": "Airport - N Storage Shed",
+    "number": "1001",
+    "latitude": 40.0862311,
+    "longitude": -83.06934332
+  },
+  {
+    "name": "Airport - N Storage Hangar",
+    "number": "1000",
+    "latitude": 40.08629675,
+    "longitude": -83.07238766
+  },
+  {
+    "name": "Swine Isolation",
+    "number": "0328",
+    "latitude": 40.07943291,
+    "longitude": -83.08824136
+  },
+  {
+    "name": "Snow Removal Equipment Storage",
+    "number": "0164",
+    "latitude": 40.07403484,
+    "longitude": -83.06845748
+  },
+  {
+    "name": "OSU Golf Club - Pesticide",
+    "number": "0212",
+    "latitude": 40.03787995,
+    "longitude": -83.05717789
+  },
+  {
+    "name": "OSU Golf Club - Restroom 7",
+    "number": "1214",
+    "latitude": 40.03107092,
+    "longitude": -83.06114033
+  },
+  {
+    "name": "OSU Golf Club - Well Pump",
+    "number": "1213",
+    "latitude": 40.03493438,
+    "longitude": -83.05688636
+  },
+  {
+    "name": "OSU Golf Club - Pump House",
+    "number": "1212",
+    "latitude": 40.03507494,
+    "longitude": -83.05690664
+  },
+  {
+    "name": "Urban Arts Space",
+    "number": "0991",
+    "latitude": 39.95929282,
+    "longitude": -83.0010575
+  },
+  {
+    "name": "Recreation Service",
+    "number": "0218",
+    "latitude": 40.00566219,
+    "longitude": -83.03932984
+  },
+  {
+    "name": "Parking Garage - SafeAuto Hospitals",
+    "number": "0170",
+    "latitude": 39.99345837,
+    "longitude": -83.01824208
+  },
+  {
+    "name": "Smith-Steeb Hall",
+    "number": "0852",
+    "latitude": 39.99578145,
+    "longitude": -83.00948664
+  },
+  {
+    "name": "Park-Stradley Hall",
+    "number": "0851",
+    "latitude": 39.99583142,
+    "longitude": -83.01070492
+  },
+  {
+    "name": "Mack Hall",
+    "number": "0100",
+    "latitude": 39.99598476,
+    "longitude": -83.0141905
+  },
+  {
+    "name": "Bradley Hall",
+    "number": "0097",
+    "latitude": 39.99656235,
+    "longitude": -83.01329387
+  },
+  {
+    "name": "Baker Hall",
+    "number": "0095",
+    "latitude": 39.99640032,
+    "longitude": -83.01033479
+  },
+  {
+    "name": "Oxley Hall",
+    "number": "0102",
+    "latitude": 39.99654916,
+    "longitude": -83.01439966
+  },
+  {
+    "name": "Kennedy Commons",
+    "number": "0105",
+    "latitude": 39.99659471,
+    "longitude": -83.01398858
+  },
+  {
+    "name": "Herrick Dr, 393",
+    "number": "0132",
+    "latitude": 39.99705209,
+    "longitude": -83.01769688
+  },
+  {
+    "name": "Kuhn Honors and Scholars House",
+    "number": "0959",
+    "latitude": 39.99733634,
+    "longitude": -83.01337357
+  },
+  {
+    "name": "Kinnear Rd, 1165",
+    "number": "0932",
+    "latitude": 39.99741933,
+    "longitude": -83.03946659
+  },
+  {
+    "name": "Women's Field House",
+    "number": "0029",
+    "latitude": 39.99810491,
+    "longitude": -83.02107561
+  },
+  {
+    "name": "Faculty Club",
+    "number": "0028",
+    "latitude": 39.99825997,
+    "longitude": -83.01269447
+  },
+  {
+    "name": "Ohio Union",
+    "number": "0161",
+    "latitude": 39.99765973,
+    "longitude": -83.00864174
+  },
+  {
+    "name": "Lincoln Tower",
+    "number": "0271",
+    "latitude": 39.99846301,
+    "longitude": -83.02196661
+  },
+  {
+    "name": "Kenny Rd, 1900",
+    "number": "0232",
+    "latitude": 39.99840704,
+    "longitude": -83.03434362
+  },
+  {
+    "name": "Psychology Building",
+    "number": "0144",
+    "latitude": 39.99852017,
+    "longitude": -83.01626613
+  },
+  {
+    "name": "Cunz Hall",
+    "number": "0293",
+    "latitude": 39.99865913,
+    "longitude": -83.01703571
+  },
+  {
+    "name": "Lazenby Hall",
+    "number": "0041",
+    "latitude": 39.99857556,
+    "longitude": -83.01571289
+  },
+  {
+    "name": "Parking Garage - Ohio Union North",
+    "number": "0288",
+    "latitude": 39.99888119,
+    "longitude": -83.00893335
+  },
+  {
+    "name": "Kinnear Rd, 930 - Storage",
+    "number": "0226",
+    "latitude": 39.99883468,
+    "longitude": -83.03240322
+  },
+  {
+    "name": "Kinnear Rd, 1100",
+    "number": "0373",
+    "latitude": 39.99874651,
+    "longitude": -83.03782313
+  },
+  {
+    "name": "Kinnear Rd, 960",
+    "number": "0931",
+    "latitude": 39.99856903,
+    "longitude": -83.03367737
+  },
+  {
+    "name": "Kenny Rd, 1929",
+    "number": "0943",
+    "latitude": 39.99877781,
+    "longitude": -83.03557316
+  },
+  {
+    "name": "Page Hall",
+    "number": "0061",
+    "latitude": 39.99915767,
+    "longitude": -83.00963725
+  },
+  {
+    "name": "ElectroScience Laboratory",
+    "number": "0009",
+    "latitude": 39.99928514,
+    "longitude": -83.04512715
+  },
+  {
+    "name": "Kinnear Rd, 1212-1218",
+    "number": "0378",
+    "latitude": 39.99923032,
+    "longitude": -83.04029375
+  },
+  {
+    "name": "Thompson Library",
+    "number": "0050",
+    "latitude": 39.99925188,
+    "longitude": -83.01488152
+  },
+  {
+    "name": "Research Center",
+    "number": "0073",
+    "latitude": 39.9990979,
+    "longitude": -83.0434438
+  },
+  {
+    "name": "Animal House Kinnear Research Center",
+    "number": "0174",
+    "latitude": 39.99952129,
+    "longitude": -83.04308026
+  },
+  {
+    "name": "Sullivant Hall",
+    "number": "0106",
+    "latitude": 39.99945284,
+    "longitude": -83.00874701
+  },
+  {
+    "name": "Wilce Student Health Center",
+    "number": "0294",
+    "latitude": 39.99958173,
+    "longitude": -83.01642728
+  },
+  {
+    "name": "Veterinary Medicine Academic",
+    "number": "0136",
+    "latitude": 39.99952908,
+    "longitude": -83.02660826
+  },
+  {
+    "name": "Townshend Hall",
+    "number": "0087",
+    "latitude": 39.99977583,
+    "longitude": -83.01579784
+  },
+  {
+    "name": "Recreation and Physical Activity Center",
+    "number": "0246",
+    "latitude": 39.9995101,
+    "longitude": -83.0183801
+  },
+  {
+    "name": "Power House",
+    "number": "0130",
+    "latitude": 40.00001783,
+    "longitude": -83.04397711
+  },
+  {
+    "name": "Kinnear Rd, 1224",
+    "number": "0374",
+    "latitude": 39.99990471,
+    "longitude": -83.0400604
+  },
+  {
+    "name": "Morrill Tower",
+    "number": "0272",
+    "latitude": 40.00003865,
+    "longitude": -83.02187836
+  },
+  {
+    "name": "Sisson Hall",
+    "number": "0080",
+    "latitude": 40.00001366,
+    "longitude": -83.02565221
+  },
+  {
+    "name": "Goss Laboratory",
+    "number": "0180",
+    "latitude": 39.99999697,
+    "longitude": -83.02755092
+  },
+  {
+    "name": "Physical Activity and Education Services - PAES",
+    "number": "0245",
+    "latitude": 39.99983294,
+    "longitude": -83.01723863
+  },
+  {
+    "name": "Gas House 1",
+    "number": "1901",
+    "latitude": 40.0002555,
+    "longitude": -83.04043283
+  },
+  {
+    "name": "Independence Hall",
+    "number": "0338",
+    "latitude": 40.00035766,
+    "longitude": -83.01575914
+  },
+  {
+    "name": "University Hall",
+    "number": "0339",
+    "latitude": 40.00052277,
+    "longitude": -83.01443196
+  },
+  {
+    "name": "Bricker Hall",
+    "number": "0001",
+    "latitude": 40.00062997,
+    "longitude": -83.01338995
+  },
+  {
+    "name": "Derby Hall",
+    "number": "0025",
+    "latitude": 40.00075608,
+    "longitude": -83.01242693
+  },
+  {
+    "name": "Hopkins Hall",
+    "number": "0149",
+    "latitude": 40.00087349,
+    "longitude": -83.01154836
+  },
+  {
+    "name": "Reactor",
+    "number": "0158",
+    "latitude": 40.00112436,
+    "longitude": -83.04379943
+  },
+  {
+    "name": "Reactor Annex",
+    "number": "0155",
+    "latitude": 40.0013168,
+    "longitude": -83.04376079
+  },
+  {
+    "name": "Ornamental Plant Germplasm Center",
+    "number": "0012",
+    "latitude": 40.00191214,
+    "longitude": -83.02776636
+  },
+  {
+    "name": "Howlett Hall",
+    "number": "0295",
+    "latitude": 40.00272238,
+    "longitude": -83.02809523
+  },
+  {
+    "name": "Parking Garage - Arps",
+    "number": "0278",
+    "latitude": 40.00276967,
+    "longitude": -83.00996725
+  },
+  {
+    "name": "Bevis Hall",
+    "number": "0307",
+    "latitude": 40.00287251,
+    "longitude": -83.03811302
+  },
+  {
+    "name": "Kottman Hall",
+    "number": "0340",
+    "latitude": 40.00265631,
+    "longitude": -83.02684494
+  },
+  {
+    "name": "Biotechnology Support Facility",
+    "number": "0394",
+    "latitude": 40.00285581,
+    "longitude": -83.03874222
+  },
+  {
+    "name": "Adventure Recreation Center",
+    "number": "0211",
+    "latitude": 40.00268456,
+    "longitude": -83.03176181
+  },
+  {
+    "name": "Rightmire Hall",
+    "number": "0308",
+    "latitude": 40.00316116,
+    "longitude": -83.03744128
+  },
+  {
+    "name": "Scott Hall",
+    "number": "0310",
+    "latitude": 40.00341844,
+    "longitude": -83.0387053
+  },
+  {
+    "name": "Pressey Hall",
+    "number": "0309",
+    "latitude": 40.00394173,
+    "longitude": -83.03794182
+  },
+  {
+    "name": "Mount Hall",
+    "number": "0311",
+    "latitude": 40.00405648,
+    "longitude": -83.0367706
+  },
+  {
+    "name": "Pfahl Hall",
+    "number": "0253",
+    "latitude": 40.00432615,
+    "longitude": -83.01647741
+  },
+  {
+    "name": "Mendoza House",
+    "number": "0260",
+    "latitude": 40.00429995,
+    "longitude": -83.01418056
+  },
+  {
+    "name": "Halloran House",
+    "number": "0185",
+    "latitude": 40.00457447,
+    "longitude": -83.0103805
+  },
+  {
+    "name": "Recreation Field Support and Utility",
+    "number": "0217",
+    "latitude": 40.0045374,
+    "longitude": -83.03679375
+  },
+  {
+    "name": "Gerlach Hall",
+    "number": "0250",
+    "latitude": 40.00492136,
+    "longitude": -83.01489497
+  },
+  {
+    "name": "Houck House",
+    "number": "0194",
+    "latitude": 40.00521286,
+    "longitude": -83.01110256
+  },
+  {
+    "name": "Ice Rink",
+    "number": "0229",
+    "latitude": 40.0052673,
+    "longitude": -83.01826165
+  },
+  {
+    "name": "French Field House",
+    "number": "0086",
+    "latitude": 40.00538261,
+    "longitude": -83.02040663
+  },
+  {
+    "name": "St John Arena",
+    "number": "0076",
+    "latitude": 40.00533238,
+    "longitude": -83.0191574
+  },
+  {
+    "name": "Drackett Tower",
+    "number": "0189",
+    "latitude": 40.00553097,
+    "longitude": -83.01355031
+  },
+  {
+    "name": "Jesse Owens Recreation Center North",
+    "number": "0347",
+    "latitude": 40.00592877,
+    "longitude": -83.01503422
+  },
+  {
+    "name": "Poultry Brooding House 2",
+    "number": "0154",
+    "latitude": 40.0072305,
+    "longitude": -83.02960829
+  },
+  {
+    "name": "Poultry Breeding House 3",
+    "number": "0153",
+    "latitude": 40.00738136,
+    "longitude": -83.02928301
+  },
+  {
+    "name": "North Star Rd, 2470",
+    "number": "0094",
+    "latitude": 40.00846312,
+    "longitude": -83.04693935
+  },
+  {
+    "name": "Waterman - South Storage 2",
+    "number": "0178",
+    "latitude": 40.01103499,
+    "longitude": -83.03836588
+  },
+  {
+    "name": "Athletics Outdoor Facility Support Building",
+    "number": "0833",
+    "latitude": 40.01582278,
+    "longitude": -83.02746635
+  },
+  {
+    "name": "Maintenance Storage Shed",
+    "number": "0257",
+    "latitude": 40.01598211,
+    "longitude": -83.02774151
+  },
+  {
+    "name": "Heffner Wetland Research and Education",
+    "number": "0222",
+    "latitude": 40.01899584,
+    "longitude": -83.01961321
+  },
+  {
+    "name": "Parking Garage - Ohio Union South",
+    "number": "0162",
+    "latitude": 39.99835062,
+    "longitude": -83.0088335
+  },
+  {
+    "name": "McCorkle Aquatic Pavilion",
+    "number": "0247",
+    "latitude": 39.99837771,
+    "longitude": -83.01793427
+  },
+  {
+    "name": "Jennings Hall",
+    "number": "0014",
+    "latitude": 39.99673985,
+    "longitude": -83.0156515
+  },
+  {
+    "name": "Longaberger Alumni House",
+    "number": "0022",
+    "latitude": 40.00880122,
+    "longitude": -83.02129443
+  },
+  {
+    "name": "Lawrence Tower",
+    "number": "0891",
+    "latitude": 40.00724257,
+    "longitude": -83.01858715
+  },
+  {
+    "name": "Parking Garage - W Lane Ave",
+    "number": "0892",
+    "latitude": 40.00720963,
+    "longitude": -83.01796821
+  },
+  {
+    "name": "Lane Ave, 300 W",
+    "number": "0918",
+    "latitude": 40.00665531,
+    "longitude": -83.01771224
+  },
+  {
+    "name": "Kinnear Rd, 760",
+    "number": "0963",
+    "latitude": 39.99802775,
+    "longitude": -83.02913414
+  },
+  {
+    "name": "OSU Electric Substation",
+    "number": "0079",
+    "latitude": 39.99671651,
+    "longitude": -83.02253584
+  },
+  {
+    "name": "Parking Garage - Ninth Ave E",
+    "number": "0875",
+    "latitude": 39.99297309,
+    "longitude": -83.01557041
+  },
+  {
+    "name": "Nicklaus Museum",
+    "number": "0091",
+    "latitude": 40.00985166,
+    "longitude": -83.02361309
+  },
+  {
+    "name": "4-H Center",
+    "number": "0191",
+    "latitude": 40.00789332,
+    "longitude": -83.02851216
+  },
+  {
+    "name": "Eleventh Ave, 33 W",
+    "number": "0193",
+    "latitude": 39.99501532,
+    "longitude": -83.00806834
+  },
+  {
+    "name": "Salt Storage Shed",
+    "number": "0258",
+    "latitude": 40.01224613,
+    "longitude": -83.03459517
+  },
+  {
+    "name": "Service Building Annex",
+    "number": "0263",
+    "latitude": 40.01234885,
+    "longitude": -83.0358935
+  },
+  {
+    "name": "Bloch Cancer Survivors Plaza",
+    "number": "0315",
+    "latitude": 40.00718474,
+    "longitude": -83.02268278
+  },
+  {
+    "name": "Buckeye Village Community Center",
+    "number": "0800",
+    "latitude": 40.0151828,
+    "longitude": -83.02576169
+  },
+  {
+    "name": "Paint House",
+    "number": "0143",
+    "latitude": 40.07491064,
+    "longitude": -83.06844659
+  },
+  {
+    "name": "Hangar 4",
+    "number": "0198",
+    "latitude": 40.07501026,
+    "longitude": -83.07336576
+  },
+  {
+    "name": "Aerospace Research Center",
+    "number": "0199",
+    "latitude": 40.07415025,
+    "longitude": -83.07916909
+  },
+  {
+    "name": "Laboratory Animal Center 6",
+    "number": "0206",
+    "latitude": 40.08661095,
+    "longitude": -83.05354344
+  },
+  {
+    "name": "City of Columbus Fire Station 11",
+    "number": "0935",
+    "latitude": 40.07341304,
+    "longitude": -83.07626508
+  },
+  {
+    "name": "Hangar 8",
+    "number": "0256",
+    "latitude": 40.07358427,
+    "longitude": -83.07724253
+  },
+  {
+    "name": "Hangar 9",
+    "number": "0900",
+    "latitude": 40.07376718,
+    "longitude": -83.07329502
+  },
+  {
+    "name": "Hangar 6",
+    "number": "0238",
+    "latitude": 40.07394828,
+    "longitude": -83.076452
+  },
+  {
+    "name": "Airport Maintenance",
+    "number": "0237",
+    "latitude": 40.07424041,
+    "longitude": -83.07642572
+  },
+  {
+    "name": "Hangar 7",
+    "number": "0239",
+    "latitude": 40.07459848,
+    "longitude": -83.07632405
+  },
+  {
+    "name": "Hangar 5",
+    "number": "0235",
+    "latitude": 40.075157,
+    "longitude": -83.07405994
+  },
+  {
+    "name": "Swine Barn",
+    "number": "0326",
+    "latitude": 40.07976221,
+    "longitude": -83.08910658
+  },
+  {
+    "name": "Hangar 1-3",
+    "number": "0236",
+    "latitude": 40.07492015,
+    "longitude": -83.07587103
+  },
+  {
+    "name": "OSU Golf Club - Kepler Club House",
+    "number": "0033",
+    "latitude": 40.0318604,
+    "longitude": -83.0530493
+  },
+  {
+    "name": "OSU Golf Club - Service Building",
+    "number": "0035",
+    "latitude": 40.02907987,
+    "longitude": -83.05490728
+  },
+  {
+    "name": "OSU Golf Club - Maintenance 2",
+    "number": "0233",
+    "latitude": 40.03808278,
+    "longitude": -83.05656382
+  },
+  {
+    "name": "OSU Golf Club - Maintenance 1",
+    "number": "0175",
+    "latitude": 40.03814096,
+    "longitude": -83.05708489
+  },
+  {
+    "name": "OSU Golf Club - Sales",
+    "number": "0292",
+    "latitude": 40.03171003,
+    "longitude": -83.05335856
+  },
+  {
+    "name": "Bill Davis Baseball Stadium",
+    "number": "0228",
+    "latitude": 40.00938241,
+    "longitude": -83.02649134
+  },
+  {
+    "name": "Gateway D",
+    "number": "0865",
+    "latitude": 39.99378009,
+    "longitude": -83.00620601
+  },
+  {
+    "name": "Gateway F - North",
+    "number": "0867",
+    "latitude": 39.99455295,
+    "longitude": -83.00525888
+  },
+  {
+    "name": "Gateway F - South",
+    "number": "0868",
+    "latitude": 39.9935652,
+    "longitude": -83.00516118
+  },
+  {
+    "name": "Younkin Success Center",
+    "number": "0052",
+    "latitude": 39.99483229,
+    "longitude": -83.01412854
+  },
+  {
+    "name": "Seventeenth Ave, 237 E",
+    "number": "0889",
+    "latitude": 40.00155208,
+    "longitude": -83.0018376
+  },
+  {
+    "name": "Highland St, 1615",
+    "number": "0927",
+    "latitude": 39.99478552,
+    "longitude": -83.01111431
+  },
+  {
+    "name": "Schoenbaum Family Center",
+    "number": "0933",
+    "latitude": 39.98950809,
+    "longitude": -83.00142636
+  },
+  {
+    "name": "Steelwood Athletic Training Facility",
+    "number": "0944",
+    "latitude": 39.99600783,
+    "longitude": -83.03836571
+  },
+  {
+    "name": "Kinnear Rd, 1315",
+    "number": "0951",
+    "latitude": 39.9971129,
+    "longitude": -83.04400189
+  },
+  {
+    "name": "Knight House",
+    "number": "0961",
+    "latitude": 40.00023807,
+    "longitude": -83.00511826
+  },
+  {
+    "name": "German House",
+    "number": "0965",
+    "latitude": 39.99522027,
+    "longitude": -83.01112952
+  },
+  {
+    "name": "Transmitter - WOSU-FM",
+    "number": "0984",
+    "latitude": 40.01736144,
+    "longitude": -83.01991447
+  },
+  {
+    "name": "Dodridge St, 250 W",
+    "number": "0985",
+    "latitude": 40.01672107,
+    "longitude": -83.01893882
+  },
+  {
+    "name": "Parker Food Science and Technology",
+    "number": "0064",
+    "latitude": 40.0029238,
+    "longitude": -83.02870006
+  },
+  {
+    "name": "Mendenhall Laboratory",
+    "number": "0054",
+    "latitude": 39.99839396,
+    "longitude": -83.01114826
+  },
+  {
+    "name": "Wexner Center for the Arts",
+    "number": "0386",
+    "latitude": 40.00082115,
+    "longitude": -83.00948504
+  },
+  {
+    "name": "Edison Joining Technology Center",
+    "number": "0057",
+    "latitude": 40.00625156,
+    "longitude": -83.04297216
+  },
+  {
+    "name": "Kinnear Rd, 1260",
+    "number": "0128",
+    "latitude": 40.00004432,
+    "longitude": -83.04208351
+  },
+  {
+    "name": "Corrosive Storage",
+    "number": "0129",
+    "latitude": 40.00076305,
+    "longitude": -83.04205226
+  },
+  {
+    "name": "Waterman - South Storage 1",
+    "number": "0133",
+    "latitude": 40.01084721,
+    "longitude": -83.03948922
+  },
+  {
+    "name": "OSU Golf Club - Driving Range",
+    "number": "0142",
+    "latitude": 40.03025606,
+    "longitude": -83.05346334
+  },
+  {
+    "name": "Gas House 12",
+    "number": "1912",
+    "latitude": 40.01145999,
+    "longitude": -83.02083438
+  },
+  {
+    "name": "Gas Meter House",
+    "number": "0291",
+    "latitude": 39.99954256,
+    "longitude": -83.02770963
+  },
+  {
+    "name": "Griggs Boathouse",
+    "number": "2506",
+    "latitude": 40.02240196,
+    "longitude": -83.0958679
+  },
+  {
+    "name": "Kinnear Rd, 1245-1255",
+    "number": "1260",
+    "latitude": 39.99714962,
+    "longitude": -83.04122407
+  },
+  {
+    "name": "Satellite Communications Facility",
+    "number": "0264",
+    "latitude": 40.0026381,
+    "longitude": -83.04463609
+  },
+  {
+    "name": "Campus Shop",
+    "number": "0987",
+    "latitude": 40.01006119,
+    "longitude": -83.03457019
+  },
+  {
+    "name": "OSU Golf Club - Picnic Shelter on Lake",
+    "number": "1205",
+    "latitude": 40.03549787,
+    "longitude": -83.05802146
+  },
+  {
+    "name": "OSU Golf Club - Restroom 15",
+    "number": "1206",
+    "latitude": 40.03970793,
+    "longitude": -83.05580619
+  },
+  {
+    "name": "OSU Golf Club - Restroom 12",
+    "number": "1207",
+    "latitude": 40.0371833,
+    "longitude": -83.05913705
+  },
+  {
+    "name": "OSU Golf Club - Restroom 8",
+    "number": "1208",
+    "latitude": 40.03348209,
+    "longitude": -83.05790156
+  },
+  {
+    "name": "OSU Golf Club - Starter Shack Scarlet",
+    "number": "1210",
+    "latitude": 40.03078468,
+    "longitude": -83.05395272
+  },
+  {
+    "name": "OSU Golf Club - Starter Shack Gray",
+    "number": "1211",
+    "latitude": 40.02980219,
+    "longitude": -83.05384513
+  },
+  {
+    "name": "Vehicle Storage",
+    "number": "0329",
+    "latitude": 40.07936251,
+    "longitude": -83.08968112
+  },
+  {
+    "name": "ElectroScience Laboratory Complex",
+    "number": "0977",
+    "latitude": 39.99890708,
+    "longitude": -83.04512908
+  },
+  {
+    "name": "OSU Golf Club - Indoor Golf Facility",
+    "number": "1215",
+    "latitude": 40.0328317,
+    "longitude": -83.05296616
+  },
+  {
+    "name": "OSU Golf Club - Shelter 17",
+    "number": "1201",
+    "latitude": 40.03693982,
+    "longitude": -83.05289097
+  },
+  {
+    "name": "OSU Golf Club - Shelter 12",
+    "number": "1202",
+    "latitude": 40.0397279,
+    "longitude": -83.06122435
+  },
+  {
+    "name": "OSU Golf Club - Shelter 16",
+    "number": "1203",
+    "latitude": 40.03927238,
+    "longitude": -83.05174643
+  },
+  {
+    "name": "OSU Golf Club - Shelter 18",
+    "number": "1204",
+    "latitude": 40.03496665,
+    "longitude": -83.05245714
+  },
+  {
+    "name": "One Columbus",
+    "number": "2535",
+    "latitude": 39.96238519,
+    "longitude": -83.00143464
+  },
+  {
+    "name": "Aquatic Ecology Laboratory Storage",
+    "number": "0234",
+    "latitude": 40.00044233,
+    "longitude": -83.04357352
+  },
+  {
+    "name": "Zoology Storage",
+    "number": "0135",
+    "latitude": 40.00015499,
+    "longitude": -83.04270122
+  },
+  {
+    "name": "Substation West Campus",
+    "number": "0134",
+    "latitude": 39.99970161,
+    "longitude": -83.03649937
+  },
+  {
+    "name": "Center for Automotive Research",
+    "number": "0227",
+    "latitude": 39.99827884,
+    "longitude": -83.03277791
+  },
+  {
+    "name": "Woody Hayes Athletic Center",
+    "number": "0270",
+    "latitude": 40.01239261,
+    "longitude": -83.02438206
+  },
+  {
+    "name": "Veterinary Medical Center",
+    "number": "0299",
+    "latitude": 40.00086499,
+    "longitude": -83.02768459
+  },
+  {
+    "name": "Learning Gardens Storage Shed",
+    "number": "0321",
+    "latitude": 40.00217422,
+    "longitude": -83.02844739
+  },
+  {
+    "name": "Hay Storage",
+    "number": "0327",
+    "latitude": 40.07978829,
+    "longitude": -83.08809547
+  },
+  {
+    "name": "Beef Barn Shop",
+    "number": "0330",
+    "latitude": 40.07449017,
+    "longitude": -83.08227107
+  },
+  {
+    "name": "Sherman Studio Art Center",
+    "number": "0358",
+    "latitude": 39.99973803,
+    "longitude": -83.03770611
+  },
+  {
+    "name": "Bulk Chemical Warehouse",
+    "number": "0362",
+    "latitude": 40.01351979,
+    "longitude": -83.03507633
+  },
+  {
+    "name": "Child Care Center",
+    "number": "0385",
+    "latitude": 40.01656862,
+    "longitude": -83.02832247
+  },
+  {
+    "name": "Swine Nursery D",
+    "number": "1310",
+    "latitude": 40.0792198855855,
+    "longitude": -83.088204267472
+  },
+  {
+    "name": "Swine Nursery C",
+    "number": "1311",
+    "latitude": 40.0795904047231,
+    "longitude": -83.0887973456508
+  },
+  {
+    "name": "OSU Golf Club - Shelter 3",
+    "number": "1216",
+    "latitude": 40.0293213969801,
+    "longitude": -83.0591530047014
+  },
+  {
+    "name": "Working Chute 1",
+    "number": "1312",
+    "latitude": 40.0812024621758,
+    "longitude": -83.088038395845
+  },
+  {
+    "name": "Waterman - Hort Shed 1",
+    "number": "1304",
+    "latitude": 40.0113487959529,
+    "longitude": -83.0387625834979
+  },
+  {
+    "name": "Waterman - North Storage Shed 1",
+    "number": "0958",
+    "latitude": 40.01499935,
+    "longitude": -83.0398659
+  },
+  {
+    "name": "Chilled Water Plant, East Regional",
+    "number": "0376",
+    "latitude": 40.00264794,
+    "longitude": -83.0092664
+  },
+  {
+    "name": "Schottenstein Center",
+    "number": "0081",
+    "latitude": 40.00758091,
+    "longitude": -83.02513483
+  },
+  {
+    "name": "Postle Hall",
+    "number": "0024",
+    "latitude": 39.99605682,
+    "longitude": -83.01614904
+  },
+  {
+    "name": "Biological Sciences Greenhouses",
+    "number": "0010",
+    "latitude": 39.99671921,
+    "longitude": -83.01744542
+  },
+  {
+    "name": "Parking Garage - Twelfth Ave",
+    "number": "0387",
+    "latitude": 39.99650726,
+    "longitude": -83.01740631
+  },
+  {
+    "name": "Aronoff Laboratory",
+    "number": "0131",
+    "latitude": 39.99678149,
+    "longitude": -83.01676517
+  },
+  {
+    "name": "Campbell Hall",
+    "number": "0018",
+    "latitude": 39.99775633,
+    "longitude": -83.01581751
+  },
+  {
+    "name": "Riffe Building",
+    "number": "0266",
+    "latitude": 39.99674263,
+    "longitude": -83.02043704
+  },
+  {
+    "name": "Biological Sciences Building",
+    "number": "0276",
+    "latitude": 39.99649622,
+    "longitude": -83.02007965
+  },
+  {
+    "name": "Parks Hall",
+    "number": "0273",
+    "latitude": 39.99638371,
+    "longitude": -83.02093848
+  },
+  {
+    "name": "Parking Garage - Biological Science Building",
+    "number": "0283",
+    "latitude": 39.99635088,
+    "longitude": -83.02005397
+  },
+  {
+    "name": "Newton Hall",
+    "number": "0275",
+    "latitude": 39.99398816,
+    "longitude": -83.01486554
+  },
+  {
+    "name": "enCORE Solar House",
+    "number": "1220",
+    "latitude": 40.00869521,
+    "longitude": -83.0299466
+  },
+  {
+    "name": "Howlett Greenhouses",
+    "number": "0297",
+    "latitude": 40.00210284,
+    "longitude": -83.02832483
+  },
+  {
+    "name": "Sea Grant Boat Storage Shed 1",
+    "number": "1252",
+    "latitude": 39.99954421,
+    "longitude": -83.04204316
+  },
+  {
+    "name": "Sea Grant Boat Storage Shed 2",
+    "number": "1253",
+    "latitude": 39.99953,
+    "longitude": -83.04198024
+  },
+  {
+    "name": "OSU STEAM Factory",
+    "number": "2553",
+    "latitude": 39.95702323,
+    "longitude": -83.01052594
+  },
+  {
+    "name": "Student Academic Services",
+    "number": "0160",
+    "latitude": 40.00601254,
+    "longitude": -83.01612716
+  },
+  {
+    "name": "Waterman - Pump House",
+    "number": "1316",
+    "latitude": 40.0075133749843,
+    "longitude": -83.0375101863488
+  },
+  {
+    "name": "Bus Shelter 24 - St John Arena WB",
+    "number": "0343",
+    "latitude": 40.00429957,
+    "longitude": -83.02075247
+  },
+  {
+    "name": "Bus Shelter 25 - Ag Campus WB",
+    "number": "0341",
+    "latitude": 40.00457578,
+    "longitude": -83.02641389
+  },
+  {
+    "name": "Bus Shelter 20 - Ag Campus EB",
+    "number": "0342",
+    "latitude": 40.00424973,
+    "longitude": -83.02653617
+  },
+  {
+    "name": "Bus Shelter 41 - Mack Hall",
+    "number": "0332",
+    "latitude": 39.99592315,
+    "longitude": -83.0146144
+  },
+  {
+    "name": "Bus Shelter 44 - Ohio Union NB",
+    "number": "1230",
+    "latitude": 39.9978650140372,
+    "longitude": -83.0095650494792
+  },
+  {
+    "name": "Bus Shelter 43 - Ohio Union SB",
+    "number": "1231",
+    "latitude": 39.9978136661598,
+    "longitude": -83.0098297702932
+  },
+  {
+    "name": "Bus Shelter 55 - North Dorm",
+    "number": "0312",
+    "latitude": 40.00401006,
+    "longitude": -83.01267848
+  },
+  {
+    "name": "Bus Shelter 14 - Blankenship Hall",
+    "number": "1242",
+    "latitude": 40.0031728816729,
+    "longitude": -83.0333386554954
+  },
+  {
+    "name": "Bus Shelter 58 - CBEC",
+    "number": "1241",
+    "latitude": 40.0038264285489,
+    "longitude": -83.0128893860122
+  },
+  {
+    "name": "Bus Shelter 56 - Mason Hall",
+    "number": "1240",
+    "latitude": 40.0041226661981,
+    "longitude": -83.0155655950086
+  },
+  {
+    "name": "Bus Shelter 21 - St John Arena EB",
+    "number": "1236",
+    "latitude": 40.0040475238952,
+    "longitude": -83.0207460343973
+  },
+  {
+    "name": "Bus Shelter 57 - Knowlton Hall",
+    "number": "1235",
+    "latitude": 40.0039781717356,
+    "longitude": -83.0161411189449
+  },
+  {
+    "name": "Raney House",
+    "number": "1103",
+    "latitude": 40.00547485,
+    "longitude": -83.01002933
+  },
+  {
+    "name": "Bowen House",
+    "number": "1104",
+    "latitude": 40.00536354,
+    "longitude": -83.00942096
+  },
+  {
+    "name": "Busch House",
+    "number": "1105",
+    "latitude": 40.00475441,
+    "longitude": -83.00929663
+  },
+  {
+    "name": "Scott House",
+    "number": "1108",
+    "latitude": 40.00438504,
+    "longitude": -83.01338547
+  },
+  {
+    "name": "Fisher Commons",
+    "number": "2565",
+    "latitude": 40.00565084,
+    "longitude": -83.03379149
+  },
+  {
+    "name": "Range Shelter 4",
+    "number": "1318",
+    "latitude": 40.0803803390751,
+    "longitude": -83.0877144807958
+  },
+  {
+    "name": "Range Shelter 5",
+    "number": "1319",
+    "latitude": 40.0801582881695,
+    "longitude": -83.0877262478136
+  },
+  {
+    "name": "Houston House",
+    "number": "1102",
+    "latitude": 40.00580503,
+    "longitude": -83.01166471
+  },
+  {
+    "name": "Curl Hall",
+    "number": "1106",
+    "latitude": 40.00428073,
+    "longitude": -83.01095109
+  },
+  {
+    "name": "Blackburn House",
+    "number": "1107",
+    "latitude": 40.00411991,
+    "longitude": -83.01256046
+  },
+  {
+    "name": "Nosker House",
+    "number": "1110",
+    "latitude": 40.00484522,
+    "longitude": -83.01210824
+  },
+  {
+    "name": "Hoop Structure",
+    "number": "1317",
+    "latitude": 40.0809652913379,
+    "longitude": -83.087982509717
+  },
+  {
+    "name": "Field Hockey and Outdoor Tennis Office",
+    "number": "0230",
+    "latitude": 40.01437959,
+    "longitude": -83.02314944
+  },
+  {
+    "name": "Transmitter Storage - WOSU",
+    "number": "1390",
+    "latitude": 40.1589694886099,
+    "longitude": -82.9229304322395
+  },
+  {
+    "name": "Bus Shelter 75 - Buckeye Lot Loop",
+    "number": "1227",
+    "latitude": 40.0159664151308,
+    "longitude": -83.0306716935348
+  },
+  {
+    "name": "Bus Shelter 53 - 17th Ave and College Rd",
+    "number": "1222",
+    "latitude": 40.0012051452025,
+    "longitude": -83.0107066844065
+  },
+  {
+    "name": "Bus Shelter 51 - RPAC Plaza",
+    "number": "1221",
+    "latitude": 40.000521977713,
+    "longitude": -83.0181986258651
+  },
+  {
+    "name": "Bus Shelter 23 - Mid Towers",
+    "number": "1224",
+    "latitude": 39.9994281818202,
+    "longitude": -83.0222714584334
+  },
+  {
+    "name": "Bus Shelter 94 - Carmack Lot 5 W",
+    "number": "1229",
+    "latitude": 40.0027917026073,
+    "longitude": -83.0424467175499
+  },
+  {
+    "name": "Bus Shelter 95 - Carmack Lot 5 E",
+    "number": "1228",
+    "latitude": 40.002907106509,
+    "longitude": -83.0411092100073
+  },
+  {
+    "name": "Bus Shelter 32 - Med Center and 9th Ave",
+    "number": "1237",
+    "latitude": 39.9930498827488,
+    "longitude": -83.0172394977098
+  },
+  {
+    "name": "Bus Shelter 49 - Harding Hospital",
+    "number": "1223",
+    "latitude": 39.996322534329,
+    "longitude": -83.0174693766132
+  },
+  {
+    "name": "Mirror Lake Pump House",
+    "number": "1951",
+    "latitude": 39.9979634125005,
+    "longitude": -83.0133192836673
+  },
+  {
+    "name": "OSU Golf Club - Heated Hitting Building",
+    "number": "1209",
+    "latitude": 40.03092083,
+    "longitude": -83.05698881
+  },
+  {
+    "name": "Aquatic Ecology Laboratory Boathouse",
+    "number": "1254",
+    "latitude": 40.0006021212663,
+    "longitude": -83.0435253482115
+  },
+  {
+    "name": "Zoology Research Laboratory Shed",
+    "number": "1255",
+    "latitude": 40.0006175015826,
+    "longitude": -83.042796334958
+  },
+  {
+    "name": "W Lane Ave, 1285-1307",
+    "number": "2002",
+    "latitude": 40.00628283,
+    "longitude": -83.04451026
+  },
+  {
+    "name": "Child Care Center Garage",
+    "number": "1264",
+    "latitude": 40.0167811582968,
+    "longitude": -83.0288078003416
+  },
+  {
+    "name": "Bus Shelter 42 - Hale Hall",
+    "number": "0305",
+    "latitude": 39.99663608,
+    "longitude": -83.01165938
+  },
+  {
+    "name": "Graham Elementary & Middle School",
+    "number": "2593",
+    "latitude": 40.00145877,
+    "longitude": -83.00490167
+  },
+  {
+    "name": "Highland St, 1619",
+    "number": "1057",
+    "latitude": 39.99489287,
+    "longitude": -83.01113462
+  },
+  {
+    "name": "Residence on Tenth",
+    "number": "0850",
+    "latitude": 39.9945947,
+    "longitude": -83.01292946
+  },
+  {
+    "name": "Working Chute 2",
+    "number": "1120",
+    "latitude": 40.0797933606328,
+    "longitude": -83.0580172978036
+  },
+  {
+    "name": "Horse Barn North",
+    "number": "1323",
+    "latitude": 40.0809449743585,
+    "longitude": -83.0888904083362
+  },
+  {
+    "name": "Horse Barn South",
+    "number": "0323",
+    "latitude": 40.08079479,
+    "longitude": -83.08889972
+  },
+  {
+    "name": "Transmitter - WOSA-FM",
+    "number": "2999",
+    "latitude": 40.6880536,
+    "longitude": -83.25615449
+  },
+  {
+    "name": "Jones Tower",
+    "number": "0267",
+    "latitude": 40.00534754,
+    "longitude": -83.01205943
+  },
+  {
+    "name": "Gas House 22",
+    "number": "1922",
+    "latitude": 40.0054998833934,
+    "longitude": -83.0230376474932
+  },
+  {
+    "name": "Gas House 21",
+    "number": "1921",
+    "latitude": 39.9979914999545,
+    "longitude": -83.0324760718833
+  },
+  {
+    "name": "Science Village",
+    "number": "0974",
+    "latitude": 39.9979843,
+    "longitude": -83.04574968
+  },
+  {
+    "name": "Bus Shelter 34 - Meiling Hall",
+    "number": "1238",
+    "latitude": 39.9934273875381,
+    "longitude": -83.016737672622
+  },
+  {
+    "name": "Veterinary Medicine - Dublin",
+    "number": "2544",
+    "latitude": 40.08201576,
+    "longitude": -83.12565818
+  },
+  {
+    "name": "Schumaker Complex",
+    "number": "1011",
+    "latitude": 40.012599,
+    "longitude": -83.025498
+  },
+  {
+    "name": "Davis Tower",
+    "number": "1012",
+    "latitude": 40.004958,
+    "longitude": -83.012943
+  },
+  {
+    "name": "OSU Golf Club - Shelter 5",
+    "number": "1217",
+    "latitude": 40.038112,
+    "longitude": -83.061028
+  },
+  {
+    "name": "Varsity Outdoor Tennis Courts Control Room",
+    "number": "1013",
+    "latitude": 40.01433968,
+    "longitude": -83.02393266
+  },
+  {
+    "name": "Kunz-Brundige Extension Building",
+    "number": "1583",
+    "latitude": 40.010954,
+    "longitude": -83.037663
+  },
+  {
+    "name": "T-Hangar B",
+    "number": "1014",
+    "latitude": 40.07384341,
+    "longitude": -83.07005405
+  },
+  {
+    "name": "Brine Building",
+    "number": "1024",
+    "latitude": 40.01031578,
+    "longitude": -83.03376333
+  },
+  {
+    "name": "Highland St, 1596",
+    "number": "1021",
+    "latitude": 39.994478,
+    "longitude": -83.010739
+  },
+  {
+    "name": "Ornamental Plant Germplasm Storage",
+    "number": "1022",
+    "latitude": 40.002191,
+    "longitude": -83.027793
+  },
+  {
+    "name": "Bus Shelter - Carmack 3",
+    "number": "1244",
+    "latitude": 40.00088084,
+    "longitude": -83.04017538
+  },
+  {
+    "name": "Bus Shelter - Carmack 2",
+    "number": "1243",
+    "latitude": 40.00104391,
+    "longitude": -83.03718307
+  },
+  {
+    "name": "Neil Ave, 1618-1624",
+    "number": "0877",
+    "latitude": 39.99451536,
+    "longitude": -83.01416092
+  },
+  {
+    "name": "Covered Walkway - Med Center",
+    "number": "1036",
+    "latitude": 39.99658681,
+    "longitude": -83.01780528
+  },
+  {
+    "name": "Hughes Hall",
+    "number": "0042",
+    "latitude": 40.00087263,
+    "longitude": -83.01078816
+  },
+  {
+    "name": "Herrick Dr Transit Hub",
+    "number": "1023",
+    "latitude": 39.99765031,
+    "longitude": -83.01810148
+  },
+  {
+    "name": "Sandefur Wetland Pavilion",
+    "number": "0215",
+    "latitude": 40.02039893,
+    "longitude": -83.01978065
+  },
+  {
+    "name": "Gas House 2",
+    "number": "1902",
+    "latitude": 40.01274346,
+    "longitude": -83.03647101
+  },
+  {
+    "name": "Theatre, Film and Media Arts Building",
+    "number": "1025",
+    "latitude": 40.0017902410817,
+    "longitude": -83.0101716327005
+  },
+  {
+    "name": "Knowlton Executive Terminal",
+    "number": "1019",
+    "latitude": 40.07523157,
+    "longitude": -83.0750966
+  },
+  {
+    "name": "Nineteenth Ave, 420 E",
+    "number": "7034",
+    "latitude": 40.003864,
+    "longitude": -82.997041
+  },
+  {
+    "name": "Flood Warehouse",
+    "number": "2531",
+    "latitude": 39.96796944,
+    "longitude": -83.09773971
+  },
+  {
+    "name": "Pump House - Cannon Dr",
+    "number": "1010",
+    "latitude": 39.9918742331204,
+    "longitude": -83.0223978671074
+  },
+  {
+    "name": "Morrison Tower",
+    "number": "0190",
+    "latitude": 39.99583711,
+    "longitude": -83.01278661
+  },
+  {
+    "name": "Mershon Auditorium",
+    "number": "0055",
+    "latitude": 40.00054269,
+    "longitude": -83.00895461
+  },
+  {
+    "name": "Buckeye Field",
+    "number": "0108",
+    "latitude": 40.01172144,
+    "longitude": -83.0264057
+  },
+  {
+    "name": "Bus Shelter 36 - Cannon and 12th Ave NB",
+    "number": "1239",
+    "latitude": 39.9954515855798,
+    "longitude": -83.0211520165569
+  },
+  {
+    "name": "Optometry Clinic",
+    "number": "1041",
+    "latitude": 39.9953445927001,
+    "longitude": -83.0140852292595
+  },
+  {
+    "name": "Parking Garage - Wexner Medical Center",
+    "number": "1028",
+    "latitude": 39.9931513930257,
+    "longitude": -83.0213822512967
+  },
+  {
+    "name": "Westbelt Dr, 2250",
+    "number": "2536",
+    "latitude": 39.99969752,
+    "longitude": -83.12323706
+  },
+  {
+    "name": "Pony Run-In Shed 1",
+    "number": "1124",
+    "latitude": 40.0820499134762,
+    "longitude": -83.0884005402826
+  },
+  {
+    "name": "Pony Run-In Shed 2",
+    "number": "1127",
+    "latitude": 40.08188441,
+    "longitude": -83.08842125
+  },
+  {
+    "name": "Pony Run-In Shed 3",
+    "number": "1128",
+    "latitude": 40.08163179,
+    "longitude": -83.08842676
+  },
+  {
+    "name": "Pony Run-In Shed 4",
+    "number": "1129",
+    "latitude": 40.08136427,
+    "longitude": -83.08845829
+  },
+  {
+    "name": "Pony Run-In Shed 5",
+    "number": "1130",
+    "latitude": 40.08111609,
+    "longitude": -83.08845423
+  },
+  {
+    "name": "Pony Run-In Shed 6",
+    "number": "1131",
+    "latitude": 40.08113858,
+    "longitude": -83.08976457
+  },
+  {
+    "name": "Pony Run-In Shed 7",
+    "number": "1132",
+    "latitude": 40.08102201,
+    "longitude": -83.08977838
+  },
+  {
+    "name": "Swine Run-In Shed 7",
+    "number": "1138",
+    "latitude": 40.07872611,
+    "longitude": -83.08892179
+  },
+  {
+    "name": "Swine Run-In Shed 8",
+    "number": "1139",
+    "latitude": 40.07863213,
+    "longitude": -83.08893878
+  },
+  {
+    "name": "Swine Run-In Shed 10",
+    "number": "1141",
+    "latitude": 40.07821452,
+    "longitude": -83.08894525
+  },
+  {
+    "name": "Swine Run-In Shed 9",
+    "number": "1140",
+    "latitude": 40.07844139,
+    "longitude": -83.08894225
+  },
+  {
+    "name": "Swine Run-In Shed 4",
+    "number": "1135",
+    "latitude": 40.07889571,
+    "longitude": -83.0893638
+  },
+  {
+    "name": "Swine Run-In Shed 3",
+    "number": "1134",
+    "latitude": 40.0788694,
+    "longitude": -83.08943884
+  },
+  {
+    "name": "Aerospace Research Center Storage 3",
+    "number": "1049",
+    "latitude": 40.07379177,
+    "longitude": -83.07900839
+  },
+  {
+    "name": "Aerospace Research Center Storage 1",
+    "number": "1047",
+    "latitude": 40.07418485,
+    "longitude": -83.07863912
+  },
+  {
+    "name": "Aerospace Research Center Storage 2",
+    "number": "1048",
+    "latitude": 40.0739036,
+    "longitude": -83.07885193
+  },
+  {
+    "name": "Airport - Pump House",
+    "number": "1053",
+    "latitude": 40.0728954173489,
+    "longitude": -83.0685622516048
+  },
+  {
+    "name": "Stanton Veterinary Clinic",
+    "number": "1054",
+    "latitude": 40.0010400270957,
+    "longitude": -83.0261652422607
+  },
+  {
+    "name": "Cogeneration Plant",
+    "number": "1058",
+    "latitude": 40.0021659419582,
+    "longitude": -83.0290759896973
+  },
+  {
+    "name": "Waterman - Chemical Storage Building",
+    "number": "1062",
+    "latitude": 40.0146606244329,
+    "longitude": -83.039928668837
+  },
+  {
+    "name": "Bus Shelter - Kinnear Rd",
+    "number": "0344",
+    "latitude": 40.001743,
+    "longitude": -83.01039294
+  },
+  {
+    "name": "Heminger Hall",
+    "number": "1069",
+    "latitude": 39.9935607031221,
+    "longitude": -83.014780986786
+  },
+  {
+    "name": "Pizzuti House",
+    "number": "0950",
+    "latitude": 39.97128798,
+    "longitude": -82.93630659
+  },
+  {
+    "name": "Pizzuti House - Pool House",
+    "number": "1061",
+    "latitude": 39.9712235709805,
+    "longitude": -82.9361533984162
+  },
+  {
+    "name": "Pizzuti House - Garage",
+    "number": "1060",
+    "latitude": 39.9714421740962,
+    "longitude": -82.936095147615
+  },
+  {
+    "name": "Center of Science and Industry",
+    "number": "2567",
+    "latitude": 39.9598128661219,
+    "longitude": -83.0065994966783
+  },
+  {
+    "name": "Andelyn Biosciences",
+    "number": "1065",
+    "latitude": 40.0064028552907,
+    "longitude": -83.0415739632155
+  },
+  {
+    "name": "Corporate Airpark Hangar 101",
+    "number": "1042",
+    "latitude": 40.0748441691063,
+    "longitude": -83.0674024977244
+  },
+  {
+    "name": "Ty Tucker Tennis Center",
+    "number": "1037",
+    "latitude": 40.0139804482952,
+    "longitude": -83.0249655588177
+  },
+  {
+    "name": "Blankenship Hall",
+    "number": "0360",
+    "latitude": 40.00231797,
+    "longitude": -83.03370875
+  },
+  {
+    "name": "Eleventh Ave, 75 W",
+    "number": "1068",
+    "latitude": 39.9951718258586,
+    "longitude": -83.0094077707187
+  },
+  {
+    "name": "4-H Center - Hoop Greenhouse A",
+    "number": "1923",
+    "latitude": 40.00793623,
+    "longitude": -83.02970933
+  },
+  {
+    "name": "4-H Center - Hoop Greenhouse D",
+    "number": "1926",
+    "latitude": 40.00756071,
+    "longitude": -83.02971494
+  },
+  {
+    "name": "4-H Center - Hoop Greenhouse B",
+    "number": "1924",
+    "latitude": 40.00779973,
+    "longitude": -83.02969812
+  },
+  {
+    "name": "4-H Center - Hoop Greenhouse C",
+    "number": "1925",
+    "latitude": 40.0076959,
+    "longitude": -83.02970589
+  },
+  {
+    "name": "Herrick Meter Building",
+    "number": "1066",
+    "latitude": 39.99771405,
+    "longitude": -83.02452751
+  },
+  {
+    "name": "St. Stephen's Episcopal Church",
+    "number": "1072",
+    "latitude": 40.00405753582843,
+    "longitude": -83.00968753777182
+  },
+  {
+    "name": "Parking Garage - Old Cannon",
+    "number": "1059",
+    "latitude": 39.9917219234193,
+    "longitude": -83.0198295015969
+  },
+  {
+    "name": "Coffey Rd Recreation Complex",
+    "number": "1056",
+    "latitude": 40.0018199,
+    "longitude": -83.0259906
+  },
+  {
+    "name": "Waterman - CEARC",
+    "number": "1320",
+    "latitude": 40.0121487740192,
+    "longitude": -83.0395958213766
+  },
+  {
+    "name": "Jesse Owens Memorial Stadium",
+    "number": "0092",
+    "latitude": 40.01232112,
+    "longitude": -83.02802127
+  },
+  {
+    "name": "Equine Arena",
+    "number": "1033",
+    "latitude": 40.000731803150344,
+    "longitude": -83.02878455672725
+  },
+  {
+    "name": "University Square North",
+    "number": "1031",
+    "latitude": 40.000572495944,
+    "longitude": -83.0076911120617
+  },
+  {
+    "name": "University Square South",
+    "number": "1032",
+    "latitude": 39.9992401136102,
+    "longitude": -83.00742844231
+  },
+  {
+    "name": "WOSU",
+    "number": "1030",
+    "latitude": 39.9991877690328,
+    "longitude": -83.0068523177365
+  },
+  {
+    "name": "Ohio Stadium",
+    "number": "0082",
+    "latitude": 40.00167046,
+    "longitude": -83.01972909
+  },
+  {
+    "name": "Creative Living",
+    "number": "2001",
+    "latitude": 39.9947038,
+    "longitude": -83.0115209
+  },
+  {
+    "name": "Seventeenth Ave, 237 E - Shed",
+    "number": "1073",
+    "latitude": 40.00150076,
+    "longitude": -83.0019783
+  },
+  {
+    "name": "Maintenance Building",
+    "number": "0078",
+    "latitude": 40.0022105,
+    "longitude": -83.01753341
+  },
+  {
+    "name": "Enarson Classroom Building",
+    "number": "0072",
+    "latitude": 40.00216943,
+    "longitude": -83.01683347
+  },
+  {
+    "name": "Generator Building",
+    "number": "0377",
+    "latitude": 40.00172751,
+    "longitude": -83.01690044
+  },
+  {
+    "name": "Water Treatment",
+    "number": "0390",
+    "latitude": 40.00136975,
+    "longitude": -83.01714332
+  },
+  {
+    "name": "Dreese Laboratories",
+    "number": "0279",
+    "latitude": 40.00222129,
+    "longitude": -83.01599036
+  },
+  {
+    "name": "Baker Systems Engineering",
+    "number": "0280",
+    "latitude": 40.00159622,
+    "longitude": -83.01591664
+  },
+  {
+    "name": "Smith Electrical Substation",
+    "number": "0127",
+    "latitude": 40.0010852,
+    "longitude": -83.01763519
+  },
+  {
+    "name": "Fry Hall",
+    "number": "0059",
+    "latitude": 39.99465239,
+    "longitude": -83.01635848
+  },
+  {
+    "name": "Pelotonia Research Center",
+    "number": "1040",
+    "latitude": 40.0051732804349,
+    "longitude": -83.0353333249338
+  },
+  {
+    "name": "Energy Advancement and Innovation Center",
+    "number": "1044",
+    "latitude": 40.0058858654396,
+    "longitude": -83.0348617312896
+  },
+  {
+    "name": "Field Hockey Press Box",
+    "number": "1052",
+    "latitude": 40.01498458,
+    "longitude": -83.02416469
+  },
+  {
+    "name": "Waterman - Commodity Barn",
+    "number": "1322",
+    "latitude": 40.009093277357614,
+    "longitude": -83.04265445116087
+  },
+  {
+    "name": "Waterman - Multispecies Animal Learning Complex",
+    "number": "1321",
+    "latitude": 40.01004986938434,
+    "longitude": -83.04249884007871
+  },
+  {
+    "name": "Lane Meter Building",
+    "number": "1067",
+    "latitude": 40.0074134,
+    "longitude": -83.02244109
+  },
+  {
+    "name": "Lacrosse Stadium",
+    "number": "1050",
+    "latitude": 40.0140630611751,
+    "longitude": -83.0264243231944
+  },
+  {
+    "name": "Lacrosse Locker Room Building",
+    "number": "1063",
+    "latitude": 40.0146847422306,
+    "longitude": -83.025900532427
+  },
+  {
+    "name": "Covelli Center",
+    "number": "1006",
+    "latitude": 40.013862,
+    "longitude": -83.027722
+  },
+  {
+    "name": "Corporate Airpark Hangar 102",
+    "number": "1070",
+    "latitude": 40.07372566,
+    "longitude": -83.0672734
+  },
+  {
+    "name": "T-Hangar E",
+    "number": "1015",
+    "latitude": 40.07497506,
+    "longitude": -83.0704402
+  },
+  {
+    "name": "T-Hangar F",
+    "number": "1016",
+    "latitude": 40.07493818,
+    "longitude": -83.06997978
+  },
+  {
+    "name": "T-Hangar G",
+    "number": "1017",
+    "latitude": 40.07492539,
+    "longitude": -83.06949538
+  },
+  {
+    "name": "T-Hangar D",
+    "number": "0904",
+    "latitude": 40.07380628,
+    "longitude": -83.06913211
+  },
+  {
+    "name": "Waterman - Nutrient Handling Facility",
+    "number": "1325",
+    "latitude": 40.00915939419637,
+    "longitude": -83.04349335524077
+  },
+  {
+    "name": "Parking Garage - James Outpatient Care",
+    "number": "1051",
+    "latitude": 40.0011071458661,
+    "longitude": -83.0352887183931
+  },
+  {
+    "name": "Pomerene Hall",
+    "number": "0067",
+    "latitude": 39.99735998,
+    "longitude": -83.01446185
+  },
+  {
+    "name": "Waterman - Dairy",
+    "number": "1326",
+    "latitude": 40.00894684097965,
+    "longitude": -83.04175471751178
+  },
+  {
+    "name": "Underground Pump Station - Cannon Dr",
+    "number": "9998",
+    "latitude": 40.00022191604268,
+    "longitude": -83.02110999588608
+  },
+  {
+    "name": "Corporate Airpark Hangar 103",
+    "number": "2007",
+    "latitude": 40.073185260051545,
+    "longitude": -83.06714678561701
+  },
+  {
+    "name": "Chadwick Learning Gardens Gazebo",
+    "number": "9001",
+    "latitude": 40.003044,
+    "longitude": -83.027502
+  },
+  {
+    "name": "Eighteenth Avenue Library",
+    "number": "0005",
+    "latitude": 40.0016329,
+    "longitude": -83.01333843
+  },
+  {
+    "name": "OSU Golf Club - Cart Facility",
+    "number": "1218",
+    "latitude": 40.032242318248535,
+    "longitude": -83.05277926054481
+  },
+  {
+    "name": "Town St, 250 E",
+    "number": "2313",
+    "latitude": 39.95987770790231,
+    "longitude": -82.9930657960371
+  },
+  {
+    "name": "Hagerty Hall",
+    "number": "0037",
+    "latitude": 39.99860531,
+    "longitude": -83.01030783
+  },
+  {
+    "name": "Torres House",
+    "number": "1101",
+    "latitude": 40.0059512,
+    "longitude": -83.01365501
+  },
+  {
+    "name": "North Recreation Center",
+    "number": "1109",
+    "latitude": 40.00528535,
+    "longitude": -83.01277456
+  },
+  {
+    "name": "Knowlton Hall",
+    "number": "0017",
+    "latitude": 40.00359907,
+    "longitude": -83.01678866
+  },
+  {
+    "name": "MacQuigg Laboratory",
+    "number": "0265",
+    "latitude": 40.00353364,
+    "longitude": -83.01168483
+  },
+  {
+    "name": "Fontana Laboratories",
+    "number": "1018",
+    "latitude": 40.0033461930114,
+    "longitude": -83.0124051842146
+  },
+  {
+    "name": "CBEC",
+    "number": "0248",
+    "latitude": 40.00342244,
+    "longitude": -83.0134007
+  },
+  {
+    "name": "Physics Research Building",
+    "number": "0070",
+    "latitude": 40.00334823,
+    "longitude": -83.01424878
+  },
+  {
+    "name": "Smith Laboratory",
+    "number": "0065",
+    "latitude": 40.00243085,
+    "longitude": -83.01328279
+  },
+  {
+    "name": "McPherson Chemical Laboratory",
+    "number": "0053",
+    "latitude": 40.00252216,
+    "longitude": -83.01232949
+  },
+  {
+    "name": "Celeste Laboratory of Chemistry",
+    "number": "0371",
+    "latitude": 40.00269732,
+    "longitude": -83.01176721
+  },
+  {
+    "name": "Evans Laboratory",
+    "number": "0150",
+    "latitude": 40.00266349,
+    "longitude": -83.01109553
+  },
+  {
+    "name": "Newman and Wolfrom Laboratory of Chemistry",
+    "number": "0147",
+    "latitude": 40.0023758,
+    "longitude": -83.01136588
+  },
+  {
+    "name": "Eighteenth Ave, 209 W",
+    "number": "0004",
+    "latitude": 40.00154113,
+    "longitude": -83.01416752
+  },
+  {
+    "name": "Longaberger Alumni House - Club Car Garage",
+    "number": "1144",
+    "latitude": 40.008842191791686,
+    "longitude": -83.02072984965925
+  },
+  {
+    "name": "Mathematics Tower",
+    "number": "0007",
+    "latitude": 40.00150997,
+    "longitude": -83.01442906
+  },
+  {
+    "name": "Mathematics Building",
+    "number": "0187",
+    "latitude": 40.00147664,
+    "longitude": -83.01475734
+  },
+  {
+    "name": "Cockins Hall",
+    "number": "0063",
+    "latitude": 40.00124804,
+    "longitude": -83.01501866
+  },
+  {
+    "name": "Dulles Hall",
+    "number": "0337",
+    "latitude": 40.00110502,
+    "longitude": -83.01440883
+  },
+  {
+    "name": "Denney Hall",
+    "number": "0030",
+    "latitude": 40.00130993,
+    "longitude": -83.01252836
+  },
+  {
+    "name": "Stillman Hall",
+    "number": "0084",
+    "latitude": 40.00186513,
+    "longitude": -83.01099502
+  },
+  {
+    "name": "Scott Laboratory",
+    "number": "0148",
+    "latitude": 40.00231227,
+    "longitude": -83.01417566
+  },
+  {
+    "name": "Caldwell Laboratory",
+    "number": "0026",
+    "latitude": 40.00243311,
+    "longitude": -83.01503371
+  },
+  {
+    "name": "Journalism Building",
+    "number": "0046",
+    "latitude": 40.00199533,
+    "longitude": -83.01504486
+  },
+  {
+    "name": "Hitchcock Hall",
+    "number": "0274",
+    "latitude": 40.00357404,
+    "longitude": -83.01528456
+  },
+  {
+    "name": "Bolz Hall",
+    "number": "0146",
+    "latitude": 40.00310156,
+    "longitude": -83.01502321
+  },
+  {
+    "name": "Parking Garage - Northwest",
+    "number": "0083",
+    "latitude": 40.00295087,
+    "longitude": -83.01618113
+  },
+  {
+    "name": "Parking Garage - Tuttle Park Pl",
+    "number": "0088",
+    "latitude": 40.00285342,
+    "longitude": -83.0171453
+  },
+  {
+    "name": "Central Service Building",
+    "number": "0077",
+    "latitude": 40.00180119,
+    "longitude": -83.01661558
+  },
+  {
+    "name": "McCracken Power Plant",
+    "number": "0069",
+    "latitude": 40.00115169,
+    "longitude": -83.0166511
+  },
+  {
+    "name": "Commercial Vehicle Innovation Laboratory",
+    "number": "1145",
+    "latitude": 39.999240513875385,
+    "longitude": -83.03254295022334
+  },
+  {
+    "name": "Dodridge St, 95 E",
+    "number": "2314",
+    "latitude": 40.01689190746774,
+    "longitude": -83.00933672913771
+  },
+  {
+    "name": "Kinnear Rd, 1200",
+    "number": "1701",
+    "latitude": 39.9986886,
+    "longitude": -83.0402752
+  },
+  {
+    "name": "StateHouse Lane",
+    "number": "2315",
+    "latitude": 40.006548563136455,
+    "longitude": -83.01348839791953
+  },
+  {
+    "name": "StateHouse Norwich",
+    "number": "2316",
+    "latitude": 40.00756576862789,
+    "longitude": -83.01635812754925
+  },
+  {
+    "name": "Bus Shelter - Siebert Hall",
+    "number": "",
+    "latitude": 39.99554907660974,
+    "longitude": -83.01196252829396
+  },
+  {
+    "name": "Bus Shelter - 11th & Worthington",
+    "number": "",
+    "latitude": 39.9953864464716,
+    "longitude": -83.01230569191902
+  },
+  {
+    "name": "Bus Shelter - Arps Hall",
+    "number": "",
+    "latitude": 40.002707011426594,
+    "longitude": -83.01057111045783
+  },
+  {
+    "name": "Bus Shelter - Mid Towers SB",
+    "number": "",
+    "latitude": 39.99924113088738,
+    "longitude": -83.02256431030554
+  },
+  {
+    "name": "Bus Shelter - Fred Taylor and Irving\r\nSchottenstein Drive",
+    "number": "",
+    "latitude": 40.01304964501182,
+    "longitude": -83.02851919381472
+  },
+  {
+    "name": "Bus Shelter - 12th Ave and Cannon",
+    "number": "",
+    "latitude": 39.99581444931641,
+    "longitude": -83.02073988406579
+  },
+  {
+    "name": "Bus Shelter - 12th Ave and Cannon",
+    "number": "",
+    "latitude": 39.99582029275109,
+    "longitude": -83.02064413713123
+  },
+  {
+    "name": "Weigel Hall",
+    "number": "0355",
+    "latitude": 40.000686,
+    "longitude": -83.0098319
+  },
+  {
+    "name": "Timashev Family Music Building",
+    "number": "1064",
+    "latitude": 40.001015898286,
+    "longitude": -83.010059111684
+  },
+  {
+    "name": "Ramseyer Hall",
+    "number": "0090",
+    "latitude": 40.00330585,
+    "longitude": -83.00963518
+  },
+  {
+    "name": "Arps Hall",
+    "number": "0011",
+    "latitude": 40.00193109,
+    "longitude": -83.00946551
+  },
+  {
+    "name": "Blackwell Inn",
+    "number": "0254",
+    "latitude": 40.0048292,
+    "longitude": -83.01660658
+  },
+  {
+    "name": "Fisher Hall",
+    "number": "0249",
+    "latitude": 40.0049168,
+    "longitude": -83.01604067
+  },
+  {
+    "name": "Mason Hall",
+    "number": "0252",
+    "latitude": 40.00439826,
+    "longitude": -83.01546758
+  },
+  {
+    "name": "Schoenbaum Hall",
+    "number": "0251",
+    "latitude": 40.00432859,
+    "longitude": -83.01475293
+  }
+]
+}
