@@ -1,5 +1,5 @@
 # HackOHI-O
-Buckeye Routes
+gOSU: Smart Transit Assistant
 
 A smart transit app for The Ohio State University that finds the fastest bus route from A to B, powered by live API data.
 
