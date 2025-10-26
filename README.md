@@ -127,4 +127,4 @@ Authors:
 Nico Dunlap,
 Luke Butcher,
 Nicholas Hubbard,
-Lohith Katari,
+Lohith Katari
