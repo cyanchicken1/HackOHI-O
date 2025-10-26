@@ -75,7 +75,7 @@ Data Processing: Custom-built script to parse GeoJSON building polygons into sin
 
 Collaboration: VS Code Live Share, Git/GitHub
 
-🚀 Getting Started
+How to run on your device (pre-production):
 
 Prerequisites
 
@@ -83,13 +83,15 @@ Node.js & npm
 
 React Native CLI (npm install -g react-native-cli)
 
+Expo CLI (npm install -g expo-cli)
+
 Xcode (for iOS) or Android Studio (for Android)
 
 Installation & Running
 
 Clone the repo:
 
-git clone [https://github.com/](https://github.com/)[YourUsername]/BuckeyeRoutes.git
+git clone [https://github.com/](https://github.com/)[YourUsername]/HackOHI-O.git
 cd BuckeyeRoutes
 
 
@@ -98,37 +100,29 @@ Install dependencies:
 npm install
 
 
-Run on iOS:
-
-npx react-native run-ios
-
-
-Run on Android:
-
-npx react-native run-android
+Run:
+npm start
 
 
-A Note on Data
+Building Data Storage Note:
 
 The buildings.json file in /assets/data was generated from a raw GeoJSON file provided by OSU. A custom script (/scripts/processGeoJSON.js) was written to parse the complex building polygons and calculate their center points. This script does not need to be run unless the source data changes.
 
-🔮 Future Work
+Future Work:
 
-This app is a strong foundation. Our vision for scaling includes:
+This app is a strong foundation. Our vision for the future includes:
 
-10x People (Technical Scale): Move the routing algorithm to a serverless cloud function. This allows the server to poll the OSU API once, caching the data. Users' apps just send coordinates and get an answer, making the app lighter, faster, and more scalable.
+- Algorithm Updates: Update algorithm to check if riding multiple buses may be more efficient and add that to the route, allow user to set multiple stops.
 
-10x Big (Feature Scale): Integrate COTA, scooter, and bike-share APIs. Our algorithm is transport-agnostic and can easily compare bestBusTime vs. bestScooterTime.
+- Allow user to import their class schedule to see which routes they should take to class.
 
-10x Impact (Social Scale): Add safety and accessibility features like "Share My ETA," a "Well-Lit Routes" mode for walking at night, and a "Wheelchair Accessible" filter.
+- Social Features, Smart Notifications: Add safety and accessibility features like "Share My ETA" and notify user of any changes or delays to their route.
 
-👥 Authors
+- Scheduling: Use bus history to predict which routes should be taken for user-inputted times and destinations.
+
+Authors:
 
 Nico Dunlap
 Luke Butcher
 Nicholas Hubbard
 Lohith Katari
-
-📄 License
-
-This project is licensed under the MIT License.
