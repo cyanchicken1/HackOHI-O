@@ -3,11 +3,11 @@ Smart Transit Assistant
 
 A smart transit app for The Ohio State University that finds the fastest bus route from A to B, powered by live API data.
 
-The Problem
+The Problem:
 
 For students, faculty, and visitors, the existing campus bus system is hard to navigate. It requires too much time and thinking: you have to find your building, find the nearest stop, find the right bus, check the live map, and then guess if it's faster than just walking. The real user need isn't "Where is the bus?" — it's "What is the fastest way to get to my destination right now?"
 
-Our Solution
+Our Solution:
 
 gOSU is a personal transit assistant that does the thinking for you. Instead of just showing you dots on a map, our app:
 
@@ -19,7 +19,7 @@ Calculates the single fastest, end-to-end trip, including all walk, wait, and ri
 
 Compares this to the total walk time, so you always know the best option.
 
-Key Features
+Key Features:
 
 Live Bus Tracking: Fetches live bus locations from the OSU API every 15 seconds.
 
@@ -35,7 +35,7 @@ Bus-Ride Time
 
 Walk-from-Stop Time
 
-Instant Walk Time Comparison: Immediately see the total walking time for your trip.
+Walk Time Comparison: Immediately see the estimated walking time for your trip.
 
 Real-time Building Search: Search and filter all 200+ OSU campus buildings from a clean UI.
 
@@ -110,9 +110,11 @@ The buildings.json file in /assets/data was generated from a raw GeoJSON file pr
 
 Future Work:
 
-This app is a strong foundation. Our vision for the future includes:
+This app as it stands right now is just a foundation. Our vision for the future includes:
 
 - Algorithm Updates: Update algorithm to check if riding multiple buses may be more efficient and add that to the route, allow user to set multiple stops.
+
+- Use a maps API to get directions for each step
 
 - Allow user to import their class schedule to see which routes they should take to class.
 
