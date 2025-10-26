@@ -112,6 +112,12 @@ Future Work:
 
 This app as it stands right now is just a foundation. Our vision for the future includes:
 
+- FIXES: Handle when route cannot be found better than displaying the error message in the search drawer
+
+- Add support for some buildings outside campus (especially those along the East Residential line) and campus landmarks not in buildings.json (Lincoln Tower Park, The Oval, etc.)
+
+- Smarter search: Search through typos
+
 - Algorithm Updates: Update algorithm to check if riding multiple buses may be more efficient and add that to the route, allow user to set multiple stops.
 
 - Use a maps API to get directions for each step
