@@ -124,7 +124,7 @@ This app as it stands right now is just a foundation. Our vision for the future 
 
 Authors:
 
-Nico Dunlap
-Luke Butcher
-Nicholas Hubbard
-Lohith Katari
+Nico Dunlap,
+Luke Butcher,
+Nicholas Hubbard,
+Lohith Katari,
