@@ -9,7 +9,7 @@ For students, faculty, and visitors, the existing campus bus system is hard to n
 
 Our Solution
 
-Buckeye Routes is a personal transit assistant that does the thinking for you. Instead of just showing you dots on a map, our app:
+gOSU is a personal transit assistant that does the thinking for you. Instead of just showing you dots on a map, our app:
 
 Takes your start and end location.
 
