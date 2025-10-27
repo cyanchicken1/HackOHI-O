@@ -1,13 +1,13 @@
-# gOSU
-Smart Transit Assistant
+## gOSU
+# Smart Transit Assistant
 
 A smart transit app for The Ohio State University that finds the fastest bus route from A to B, powered by live API data.
 
-The Problem:
+# The Problem:
 
 For students, faculty, and visitors, the existing campus bus system is hard to navigate. It requires too much time and thinking: you have to find your building, find the nearest stop, find the right bus, check the live map, and then guess if it's faster than just walking. The real user need isn't "Where is the bus?" — it's "What is the fastest way to get to my destination right now?"
 
-Our Solution:
+# Our Solution:
 
 gOSU is a personal transit assistant that does the thinking for you. Instead of just showing you dots on a map, our app:
 
@@ -19,7 +19,7 @@ Calculates the single fastest, end-to-end trip, including all walk, wait, and ri
 
 Compares this to the total walk time, so you always know the best option.
 
-Key Features:
+# Key Features:
 
 Live Bus Tracking: Fetches live bus locations from the OSU API every 15 seconds.
 
@@ -27,23 +27,23 @@ End-to-End Route Planning: Find the fastest path from your "Current Location" or
 
 Smart Routing Algorithm: Calculates the total trip time by adding four parts:
 
-Walk-to-Stop Time
+- Walk-to-Stop Time
 
-Wait-for-Bus Time (from live ETA)
+- Wait-for-Bus Time (from live ETA)
 
-Bus-Ride Time
+- Bus-Ride Time
 
-Walk-from-Stop Time
+- Walk-from-Stop Time
 
 Walk Time Comparison: Immediately see the estimated walking time for your trip.
 
 Real-time Building Search: Search and filter all 200+ OSU campus buildings from a clean UI.
 
-How It Works: The Routing Algorithm
+# How It Works: The Routing Algorithm
 
 When a user presses "Find Fastest Route," our app's brain (busrouting.js) gets to work.
 
-Run Two Queries: The app immediately runs two calculations at the same time:
+Run Two Queries: The app runs two calculations at the same time:
 
 Query A (Walk): Calls calculateWalkTime(), which uses the Haversine formula to get the distance in meters, divides it by an average walking speed (1.34 m/s), and saves the totalWalkTime.
 
@@ -63,9 +63,9 @@ Calculate Total Time: It then calculates the busTravelTime (using live predictio
 
 Find the Winner: After checking all possible trips, the algorithm sorts the final list by totalTime and returns the single bestTrip object. This object is saved to state, which instantly updates the UI to show the user the winning route.
 
-Tech Stack
+# Tech Stack
 
-Core: React Native, JavaScript (ES6+)
+Built in React Native, JavaScript
 
 Live Data: Official OSU Bus API
 
@@ -75,7 +75,7 @@ Data Processing: Custom-built script to parse GeoJSON building polygons into sin
 
 Collaboration: VS Code Live Share, Git/GitHub
 
-How to run on your device (pre-production):
+# How to run on your device (pre-production):
 
 Prerequisites
 
@@ -104,19 +104,17 @@ Run:
 npm start
 
 
-Building Data Storage Note:
+# Building Data Storage:
 
 The buildings.json file in /assets/data was generated from a raw GeoJSON file provided by OSU. A custom script (/scripts/processGeoJSON.js) was written to parse the complex building polygons and calculate their center points. This script does not need to be run unless the source data changes.
 
-Future Work:
+# Future Work:
 
 This app as it stands right now is just a foundation. Our vision for the future includes:
 
-- Properly formatting this README!
+- FIXES: Handle when route cannot be found better than displaying the error message in the search drawer, fix WMC buses showing next stop as Unknown
 
-- FIXES: Handle when route cannot be found better than displaying the error message in the search drawer
-
-- Add support for some buildings outside campus (especially those along the East Residential line) and campus landmarks not in buildings.json (Lincoln Tower Park, The Oval, etc.)
+- Add support for some buildings outside campus (especially those along the East Residential line, WMC) and campus landmarks not in buildings.json (Lincoln Tower Park, The Oval, etc.)
 
 - Smarter search: Search through typos
 
@@ -126,7 +124,9 @@ This app as it stands right now is just a foundation. Our vision for the future 
 
 - Allow user to import their class schedule to see which routes they should take to class.
 
-- Social Features, Smart Notifications: Add safety and accessibility features like "Share My ETA" and notify user of any changes or delays to their route.
+- Notifications: Once route is selected, keep route live throughout. Notify user of any changes or delays to their route, when bus is about to arrive at each stop.
+
+- Social Features: Add safety and accessibility features like "Share My ETA".
 
 - Scheduling: Use bus history to predict which routes should be taken for user-inputted times and destinations.
 
@@ -134,5 +134,5 @@ Authors:
 
 Nicolas Dunlap,
 Luke Butcher,
-Nicholas Hubbard,
+Nick Hubbard,
 Lohith Katari
