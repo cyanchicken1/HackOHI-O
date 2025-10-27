@@ -92,7 +92,7 @@ Installation & Running
 Clone the repo:
 
 git clone [https://github.com/](https://github.com/)[YourUsername]/HackOHI-O.git
-cd BuckeyeRoutes
+cd gOSU
 
 
 Install dependencies:
@@ -130,7 +130,7 @@ This app as it stands right now is just a foundation. Our vision for the future 
 
 Authors:
 
-Nico Dunlap,
+Nicolas Dunlap,
 Luke Butcher,
 Nicholas Hubbard,
 Lohith Katari
