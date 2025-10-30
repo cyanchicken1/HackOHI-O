@@ -1,13 +1,15 @@
-## gOSU
-# Smart Transit Assistant
+# gOSU
+Hackathon Winner – 3rd place, Honda & 99P Labs Friction Finder Challenge, HACK OHI/O 2025
+
+## Smart Transit Assistant
 
 A smart transit app for The Ohio State University that finds the fastest bus route from A to B, powered by live API data.
 
-# The Problem:
+## The Problem:
 
 For students, faculty, and visitors, the existing campus bus system is hard to navigate. It requires too much time and thinking: you have to find your building, find the nearest stop, find the right bus, check the live map, and then guess if it's faster than just walking. The real user need isn't "Where is the bus?" — it's "What is the fastest way to get to my destination right now?"
 
-# Our Solution:
+## Our Solution:
 
 gOSU is a personal transit assistant that does the thinking for you. Instead of just showing you dots on a map, our app:
 
@@ -19,7 +21,7 @@ Calculates the single fastest, end-to-end trip, including all walk, wait, and ri
 
 Compares this to the total walk time, so you always know the best option.
 
-# Key Features:
+## Key Features:
 
 Live Bus Tracking: Fetches live bus locations from the OSU API every 15 seconds.
 
@@ -39,7 +41,7 @@ Walk Time Comparison: Immediately see the estimated walking time for your trip.
 
 Real-time Building Search: Search and filter all 200+ OSU campus buildings from a clean UI.
 
-# How It Works: The Routing Algorithm
+## How It Works: The Routing Algorithm
 
 When a user presses "Find Fastest Route," our app's brain (busrouting.js) gets to work.
 
@@ -63,7 +65,7 @@ Calculate Total Time: It then calculates the busTravelTime (using live predictio
 
 Find the Winner: After checking all possible trips, the algorithm sorts the final list by totalTime and returns the single bestTrip object. This object is saved to state, which instantly updates the UI to show the user the winning route.
 
-# Tech Stack
+## Tech Stack
 
 Built in React Native, JavaScript
 
@@ -75,7 +77,7 @@ Data Processing: Custom-built script to parse GeoJSON building polygons into sin
 
 Collaboration: VS Code Live Share, Git/GitHub
 
-# How to run on your device (pre-production):
+## How to run on your device (pre-production):
 
 Prerequisites
 
@@ -104,11 +106,11 @@ Run:
 npm start
 
 
-# Building Data Storage:
+## Building Data Storage:
 
 The buildings.json file in /assets/data was generated from a raw GeoJSON file provided by OSU. A custom script (/scripts/processGeoJSON.js) was written to parse the complex building polygons and calculate their center points. This script does not need to be run unless the source data changes.
 
-# Future Work:
+## Future Work:
 
 This app as it stands right now is just a foundation. Our vision for the future includes:
 
