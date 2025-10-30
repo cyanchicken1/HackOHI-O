@@ -1,7 +1,7 @@
 # gOSU
 Hackathon Winner – 3rd place, Honda & 99P Labs Friction Finder Challenge, HACK OHI/O 2025
 
-NOTE: Please navigate to the 'main' branch for code. This branch should be deleted soon.
+NOTE: Please navigate to the 'master' branch for code. This branch should be deleted soon.
 ## Smart Transit Assistant
 
 A smart transit app for The Ohio State University that finds the fastest bus route from A to B, powered by live API data.
