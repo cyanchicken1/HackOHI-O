@@ -39,12 +39,113 @@ const fmtMeters = (m) =>
 
 function nameSimilarityScore(nameLC, qLC) {
   if (!qLC) return 9999;
+  
+  // Exact match - best score
   if (nameLC === qLC) return -1000;
+  
+  // Starts with query - very good score
   if (nameLC.startsWith(qLC)) return -500;
+  
+  // Contains exact substring - good score based on position
   const idx = nameLC.indexOf(qLC);
   if (idx >= 0) return idx;
-  const diff = Math.abs(nameLC.length - qLC.length);
-  return 100 + diff;
+  
+  // Check if query matches word beginnings (e.g., "lib" matches "Library")
+  const words = nameLC.split(/\s+/);
+  for (let i = 0; i < words.length; i++) {
+    if (words[i].startsWith(qLC)) {
+      return 10 + i; // Prefer earlier words
+    }
+  }
+  
+  // Sliding window fuzzy match - find best match anywhere in the name
+  let bestEditDist = Infinity;
+  let bestPosition = -1;
+  
+  // Slide a window of query length across the name
+  for (let i = 0; i <= nameLC.length - qLC.length; i++) {
+    const substring = nameLC.substring(i, i + qLC.length);
+    const editDist = levenshteinDistance(substring, qLC);
+    if (editDist < bestEditDist) {
+      bestEditDist = editDist;
+      bestPosition = i;
+    }
+  }
+  
+  // Allow fuzzy matches with reasonable edit distance
+  const threshold = Math.max(2, Math.ceil(qLC.length * 0.35));
+  if (bestEditDist <= threshold) {
+    return 50 + (bestEditDist * 10) + (bestPosition * 0.5); // Slight preference for earlier matches
+  }
+  
+  // Check for prefix fuzzy match (query fuzzy-matches start of name)
+  if (nameLC.length >= qLC.length) {
+    const prefixDist = levenshteinDistance(nameLC.substring(0, qLC.length), qLC);
+    if (prefixDist <= threshold) {
+      return 40 + (prefixDist * 10);
+    }
+  }
+  
+  // Check if query matches word starts with typos
+  for (let i = 0; i < words.length; i++) {
+    if (words[i].length >= qLC.length) {
+      const wordPrefixDist = levenshteinDistance(words[i].substring(0, qLC.length), qLC);
+      if (wordPrefixDist <= threshold) {
+        return 60 + (wordPrefixDist * 10) + i;
+      }
+    }
+  }
+  
+  // Check for acronym/abbreviation match (e.g., "sh" matches "Student Hall")
+  if (qLC.length >= 2 && words.length >= 2) {
+    const acronym = words.map(w => w[0]).join('');
+    if (acronym.startsWith(qLC)) {
+      return 100;
+    }
+  }
+  
+  // Multi-word query handling
+  if (qLC.includes(' ')) {
+    const queryWords = qLC.split(' ');
+    const matchedWords = queryWords.filter(word => nameLC.includes(word));
+    if (matchedWords.length > 0) {
+      return 200 - (matchedWords.length * 30);
+    }
+  }
+  
+  // Poor match - high score
+  return 9999;
+}
+
+// Levenshtein distance algorithm (optimized)
+function levenshteinDistance(str1, str2) {
+  const len1 = str1.length;
+  const len2 = str2.length;
+  
+  // Quick exits
+  if (len1 === 0) return len2;
+  if (len2 === 0) return len1;
+  if (str1 === str2) return 0;
+  
+  // Use single array instead of matrix for better memory efficiency
+  let prevRow = Array(len2 + 1).fill(0).map((_, i) => i);
+  
+  for (let i = 1; i <= len1; i++) {
+    let currRow = [i];
+    
+    for (let j = 1; j <= len2; j++) {
+      const cost = str1[i - 1] === str2[j - 1] ? 0 : 1;
+      currRow[j] = Math.min(
+        prevRow[j] + 1,        // deletion
+        currRow[j - 1] + 1,    // insertion
+        prevRow[j - 1] + cost  // substitution
+      );
+    }
+    
+    prevRow = currRow;
+  }
+  
+  return prevRow[len2];
 }
 
 /* ---------------- TimeRow component ---------------- */
@@ -146,16 +247,24 @@ export default function SearchDrawer({
     null;
 
   const destResults = useMemo(() => {
-    const qLC = destQuery.trim().toLowerCase();
-    if (!qLC) return [];
-    const matched = prepped.filter((b) => b._nameLC.includes(qLC));
-    const withDist = matched.map((b) => ({
-      ...b,
-      _dist: distanceMeters(effectiveOrigin, { latitude: b.latitude, longitude: b.longitude }),
-    }));
-    withDist.sort((a, b) => a._dist - b._dist);
-    return withDist.slice(0, 3);
-  }, [destQuery, prepped, effectiveOrigin]);
+  const qLC = destQuery.trim().toLowerCase();
+  if (!qLC) return [];
+  
+  // Score ALL buildings, don't filter first
+  const scored = prepped.map((b) => ({
+    ...b,
+    _score: nameSimilarityScore(b._nameLC, qLC),
+    _dist: distanceMeters(effectiveOrigin, { latitude: b.latitude, longitude: b.longitude }),
+  }));
+  
+  // Sort by score first, then distance
+  scored.sort((a, b) => (a._score !== b._score ? a._score - b._score : a._dist - b._dist));
+  
+  // Only show results with reasonable scores (exclude very poor matches)
+  const filtered = scored.filter(item => item._score < 300);
+  
+  return filtered.slice(0, 3);
+}, [destQuery, prepped, effectiveOrigin]);
 
   const handleOriginSelect = (item) => {
     setOriginPicked(item);
