@@ -114,9 +114,7 @@ The buildings.json file in /assets/data was generated from a raw GeoJSON file pr
 
 This app as it stands right now is just a foundation. Our vision for the future includes:
 
-- FIXES: Handle when route cannot be found better than displaying the error message in the search drawer, fix WMC buses showing next stop as Unknown
-
-- Add support for some buildings outside campus (especially those along the East Residential line, WMC) and campus landmarks not in buildings.json (Lincoln Tower Park, The Oval, etc.)
+- Add support for some buildings outside campus (especially those along the East Residential line) and campus landmarks not in buildings.json (Lincoln Tower Park, The Oval, etc.)
 
 - Smarter search: Search through typos
 
