@@ -108,7 +108,7 @@ npm start
 
 ## Building Data Storage:
 
-The buildings.json file in /assets/data was generated from a raw GeoJSON file provided by OSU. A custom script (/scripts/processGeoJSON.js) was written to parse the complex building polygons and calculate their center points. This script does not need to be run unless the source data changes.
+The buildings.json file was generated from a raw GeoJSON file provided by OSU. A custom script was written to parse the complex building polygons and calculate their center points.
 
 ## Future Work:
 
