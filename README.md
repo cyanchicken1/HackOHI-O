@@ -108,15 +108,13 @@ npm start
 
 ## Building Data Storage:
 
-The buildings.json file in /assets/data was generated from a raw GeoJSON file provided by OSU. A custom script (/scripts/processGeoJSON.js) was written to parse the complex building polygons and calculate their center points. This script does not need to be run unless the source data changes.
+The buildings.json file was generated from a raw GeoJSON file provided by OSU. A custom script was written to parse the complex building polygons and calculate their center points.
 
 ## Future Work:
 
 This app as it stands right now is just a foundation. Our vision for the future includes:
 
-- FIXES: Handle when route cannot be found better than displaying the error message in the search drawer, fix WMC buses showing next stop as Unknown
-
-- Add support for some buildings outside campus (especially those along the East Residential line, WMC) and campus landmarks not in buildings.json (Lincoln Tower Park, The Oval, etc.)
+- Add support for some buildings outside campus (especially those along the East Residential line) and campus landmarks not in buildings.json (Lincoln Tower Park, The Oval, etc.)
 
 - Smarter search: Search through typos
 
