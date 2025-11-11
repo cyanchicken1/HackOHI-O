@@ -305,7 +305,7 @@ export default function SearchDrawer({
               </View>
             ) : routeResult ? (
               <View style={styles.routeContainer}>
-                <Text style={styles.routeTitle}>🚌 Best Route Found</Text>
+                <Text style={styles.routeTitle}>🚌 Best Route</Text>
                 
                 {routeResult.route && (
   <View style={styles.routeHeader}>
@@ -364,9 +364,9 @@ export default function SearchDrawer({
                   </>
                 ) : (
                   <View style={styles.fallbackContainer}>
-                    <Text style={styles.fallbackText}>Route calculated successfully!</Text>
+                    <Text style={styles.fallbackText}>No bus routes found!</Text>
                     <Text style={styles.fallbackSubtext}>
-                      Route details: {JSON.stringify(routeResult, null, 2)}
+                      Error calculating route: {routeResult.reason}
                     </Text>
                   </View>
                 )}

@@ -220,11 +220,6 @@ export default function App() {
         showsMyLocationButton={true}
         mapType={Platform.OS === 'ios' ? 'standard' : 'standard'}
       >
-        {/* Optional campus marker (keeps a visual anchor on OSU) */}
-        <Marker
-          coordinate={{ latitude: OSU_REGION.latitude, longitude: OSU_REGION.longitude }}
-          title="Ohio State University"
-        />
 
         {/* Start Location Marker (if custom start is set) */}
         {startLocation && (
@@ -240,7 +235,7 @@ export default function App() {
           <Marker
             key={String(destination.id)}
             coordinate={{ latitude: destination.latitude, longitude: destination.longitude }}
-            title={destination.name}
+            title={`End: ${destination.name}`}
             pinColor="#ba0c2f"
           />
         )}
