@@ -11,8 +11,8 @@ import {
   Keyboard,
   ActivityIndicator,
 } from 'react-native';
-import { Colors, Spacing, Typography, Layout } from './style/theme';
-import { formatTime } from './busRouting';
+import { Colors, Spacing, Typography, Layout } from '../style/theme';
+import { formatTime } from '../BackEnd/busRouting';
 
 const { height: SCREEN_HEIGHT } = Dimensions.get('window');
 const DRAWER_PEEK_HEIGHT = SCREEN_HEIGHT * 0.07;

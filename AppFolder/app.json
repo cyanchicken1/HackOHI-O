@@ -4,11 +4,11 @@
     "slug": "gOSU",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/logo.png",
+    "icon": "../assets/logo.png",
     "userInterfaceStyle": "light",
     "newArchEnabled": true,
     "splash": {
-      "image": "./assets/logo.png",
+      "image": "../assets/logo.png",
       "resizeMode": "contain",
       "backgroundColor": "#a7a8aa"
     },

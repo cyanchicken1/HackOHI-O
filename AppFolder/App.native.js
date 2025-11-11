@@ -1,19 +1,45 @@
+// import React, { useEffect, useRef, useState } from 'react';
+// import { StyleSheet, View, Text, ActivityIndicator, Platform, Linking, TouchableOpacity, TouchableWithoutFeedback, Keyboard } from 'react-native';
+// import MapView, { Polyline, Marker } from 'react-native-maps';
+// import polyline from 'polyline';
+// import * as Location from 'expo-location';
+// import { StatusBar } from 'expo-status-bar';
+
+// import { fetchAllRoutes } from './osuBusAPI';
+
+// import SearchDrawer from './SearchDrawer';
+// import buildingData from './osu_building_points.json';
+// import { Colors } from './style/theme';
+
+// import BusRouteLegend from './BusRouteLegend';
+
+// import { findBestRoute, describeRoute, formatTime } from './busRouting';
 import React, { useEffect, useRef, useState } from 'react';
-import { StyleSheet, View, Text, ActivityIndicator, Platform, Linking, TouchableOpacity, TouchableWithoutFeedback, Keyboard } from 'react-native';
+import {
+  StyleSheet,
+  View,
+  Text,
+  ActivityIndicator,
+  Platform,
+  Linking,
+  TouchableOpacity,
+  TouchableWithoutFeedback,
+  Keyboard,
+} from 'react-native';
 import MapView, { Polyline, Marker } from 'react-native-maps';
 import polyline from 'polyline';
 import * as Location from 'expo-location';
 import { StatusBar } from 'expo-status-bar';
 
-import { fetchAllRoutes } from './osuBusAPI';
+import { fetchAllRoutes } from '../BackEnd/osuBusAPI';
 
-import SearchDrawer from './SearchDrawer';
-import buildingData from './osu_building_points.json';
-import { Colors } from './style/theme';
+import SearchDrawer from '../UXUI/SearchDrawer';
+import buildingData from '../Data/osu_building_points.json';
+import { Colors } from '../style/theme';
 
-import BusRouteLegend from './BusRouteLegend';
+import BusRouteLegend from '../UXUI/BusRouteLegend';
 
-import { findBestRoute, describeRoute, formatTime } from './busRouting';
+import { findBestRoute, describeRoute, formatTime } from '../BackEnd/busRouting';
 
 const ALL_BUILDINGS = (buildingData?.buildings || []).map((b) => ({
   id: b.number,

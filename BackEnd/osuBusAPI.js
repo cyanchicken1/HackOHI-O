@@ -1,5 +1,5 @@
 export async function fetchAllRoutes() {
-  const routeIds = ['BE', 'CC', 'CLS', 'ER', 'MC', 'MWC', 'WMC'];
+  const routeIds = ['BE', 'CC', 'CLS', 'ER', 'MC', 'MWC'];
 
   const promises = routeIds.map(async (id) => {
     try {
@@ -36,7 +36,7 @@ export async function fetchAllRoutes() {
         if (vehiclesResponse.ok) {
           const vehiclesJson = await vehiclesResponse.json();
           
-          // ✅ The vehicles are in data.vehicles, not just data
+          //The vehicles are in data.vehicles
           const vehicleArray = vehiclesJson.data?.vehicles || [];
           
           vehicles = vehicleArray.map((vehicle) => ({

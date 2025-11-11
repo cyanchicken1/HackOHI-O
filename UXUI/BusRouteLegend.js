@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
-import { Colors, Spacing, Typography } from './style/theme';
+import { Colors, Spacing, Typography } from '../style/theme';
 
 export default function BusRouteLegend({ routes }) {
   if (!routes || Object.keys(routes).length === 0) {

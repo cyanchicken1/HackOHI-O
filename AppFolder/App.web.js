@@ -1,13 +1,24 @@
+// import React, { useEffect, useState } from 'react';
+// import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
+// import L from 'leaflet';
+// import 'leaflet/dist/leaflet.css';
+// import './webLeaflet.css';
+
+// // Fix default icon paths so markers show up after bundling
+// import iconUrl from 'leaflet/dist/images/marker-icon.png';
+// import iconRetinaUrl from 'leaflet/dist/images/marker-icon-2x.png';
+// import shadowUrl from 'leaflet/dist/images/marker-shadow.png';
 import React, { useEffect, useState } from 'react';
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
-import './webLeaflet.css';
+import '../style/webLeaflet.css';
 
 // Fix default icon paths so markers show up after bundling
 import iconUrl from 'leaflet/dist/images/marker-icon.png';
 import iconRetinaUrl from 'leaflet/dist/images/marker-icon-2x.png';
 import shadowUrl from 'leaflet/dist/images/marker-shadow.png';
+
 
 L.Icon.Default.mergeOptions({
   iconRetinaUrl,
