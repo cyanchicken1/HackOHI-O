@@ -14,7 +14,7 @@
 // import BusRouteLegend from './BusRouteLegend';
 
 // import { findBestRoute, describeRoute, formatTime } from './busRouting';
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef, useState, Component } from 'react';
 import {
   StyleSheet,
   View,
@@ -41,12 +41,19 @@ import BusRouteLegend from '../UXUI/BusRouteLegend';
 
 import { findBestRoute, describeRoute, formatTime } from '../BackEnd/busRouting';
 
-const ALL_BUILDINGS = (buildingData?.buildings || []).map((b) => ({
-  id: b.number,
-  name: b.name,
-  latitude: b.latitude,
-  longitude: b.longitude,
-}));
+// Safely parse building data with error handling
+let ALL_BUILDINGS = [];
+try {
+  ALL_BUILDINGS = (buildingData?.buildings || []).map((b) => ({
+    id: b.number,
+    name: b.name,
+    latitude: b.latitude,
+    longitude: b.longitude,
+  }));
+} catch (error) {
+  console.error('Error parsing building data:', error);
+  ALL_BUILDINGS = [];
+}
 
 // Hard-set OSU camera start
 const OSU_REGION = {
@@ -56,7 +63,45 @@ const OSU_REGION = {
   longitudeDelta: 0.04,
 };
 
-export default function App() {
+// Error Boundary to catch crashes
+class ErrorBoundary extends Component {
+  constructor(props) {
+    super(props);
+    this.state = { hasError: false, error: null };
+  }
+
+  static getDerivedStateFromError(error) {
+    return { hasError: true, error };
+  }
+
+  componentDidCatch(error, errorInfo) {
+    console.error('App crashed:', error, errorInfo);
+  }
+
+  render() {
+    if (this.state.hasError) {
+      return (
+        <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', padding: 20 }}>
+          <Text style={{ fontSize: 18, fontWeight: 'bold', marginBottom: 10 }}>
+            App Error
+          </Text>
+          <Text style={{ fontSize: 14, textAlign: 'center', marginBottom: 20 }}>
+            {this.state.error?.message || 'An unexpected error occurred'}
+          </Text>
+          <TouchableOpacity
+            onPress={() => this.setState({ hasError: false, error: null })}
+            style={{ backgroundColor: '#BB0000', padding: 10, borderRadius: 5 }}
+          >
+            <Text style={{ color: 'white' }}>Try Again</Text>
+          </TouchableOpacity>
+        </View>
+      );
+    }
+    return this.props.children;
+  }
+}
+
+function App() {
   const mapRef = useRef(null);
 
   const [userRegion, setUserRegion] = useState(null);   // real GPS (for blue dot + distances)
@@ -468,3 +513,12 @@ const styles = StyleSheet.create({
     fontSize: 16,
   },
 });
+
+// Export with Error Boundary
+export default function AppWithErrorBoundary() {
+  return (
+    <ErrorBoundary>
+      <App />
+    </ErrorBoundary>
+  );
+}
