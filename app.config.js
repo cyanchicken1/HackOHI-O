@@ -28,7 +28,7 @@ module.exports = {
         }
       },
       adaptiveIcon: {
-        foregroundImage: "./assets/adaptive-icon.png",
+        foregroundImage: "./assets/logo.png",
         backgroundColor: "#a7a8aa"
       }
     },
