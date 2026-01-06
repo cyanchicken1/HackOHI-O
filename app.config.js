@@ -40,7 +40,7 @@ module.exports = {
         projectId: "ab7bd5a5-f80a-4ec7-b075-01d3b1d13932"
       }
     },
-    owner: "lbutch18"
+    owner: "gosu-team"
   }
 };
 
