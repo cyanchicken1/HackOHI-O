@@ -477,10 +477,11 @@ export default function SearchDrawer({
 
                     <View style={styles.totalTime}>
                       <Text style={styles.totalLabel}>Total Trip Time</Text>
-                      <Text style={styles.totalValue}>{formatTime(routeResult.trip?.totalTime || 0)}</Text>
-                    </View>
+                      <Text style={styles.totalValue}>{formatTime(routeResult.trip?.totalTime)}</Text>
 
-                    
+                      <Text style={styles.totalLabel}>ETA</Text>
+                      <Text style={styles.totalValue}>{routeResult.trip?.ETA}</Text>
+                    </View>
                   </>
                 ) : (
                   <View style={styles.fallbackContainer}>

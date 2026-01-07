@@ -363,6 +363,7 @@ export async function findBestRoute(userLocation, destinationLocation, routes) {
         busTravelTime: busTravelTime,
         walkFromStopTime: walkFromStop,
         totalTime: totalTime,
+        ETA: calculateETA(totalTime),
         stopsBetween: directionCheck.stopsBetween,
       });
     }
@@ -415,23 +416,20 @@ export function formatTime(minutes) {
 }
 
 /**
- * Generate a human-readable description of the route
+ * Calculate the ETA for a trip
+ * @param {number} totalTime - Total time in minutes
+ * @returns {string} ETA in the format of "HH:MM"
  */
-export function describeRoute(result) {
-  if (result.recommendation === 'error') {
-    return `Unable to find a bus route: ${result.reason}`;
-  }
+function calculateETA(totalTime) {
+  const nowInSeconds =  Date.now() / 1000;
+  const etaInSeconds = nowInSeconds + totalTime * 60;
   
-  if (result.recommendation === 'bus') {
-    const trip = result.trip;
-    return `Take Bus #${trip.busId} (${trip.routeId}) from ${trip.startStop.name} to ${trip.endStop.name}.\n` +
-           `• Walk to stop: ${formatTime(trip.walkToStopTime)}\n` +
-           `• Wait for bus: ${formatTime(trip.busWaitTime)}${trip.isDelayed ? ' - DELAYED' : ''}\n` +
-           `• Ride: ${formatTime(trip.busTravelTime)} (${trip.stopsBetween} stops)\n` +
-           `• Walk to destination: ${formatTime(trip.walkFromStopTime)}\n` +
-           `Total trip time: ${formatTime(trip.totalTime)}\n` + 
-           `Walking directly to the destination would take about ${formatTime(result.directWalkTime)}!`;
+  const etaDate = new Date(etaInSeconds * 1000);
+  let hours = etaDate.getHours();
+  if (hours > 12) {
+    hours -= 12;
   }
-  
-  return 'Unable to calculate route';
+  const minutes = etaDate.getMinutes();
+
+  return `${hours}:${minutes}`;
 }
