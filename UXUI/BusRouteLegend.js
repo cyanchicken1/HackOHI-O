@@ -12,7 +12,11 @@ export default function BusRouteLegend({ routes }) {
       <Text style={styles.title}>Bus Routes</Text>
       {Object.values(routes).map((route) => {
         if (!route) return null;
-        const baseColor = Colors.busRouteColors?.[route.id] || Colors.busRouteDefault;
+        // Use API color first, then fallback to theme colors, then default
+        const baseColor =
+          route.color || // API-provided color
+          Colors.busRouteColors?.[route.id] || // Theme color by route ID
+          Colors.busRouteDefault; // Fallback to default
         
         return (
           <View key={String(route.id)} style={styles.row}>

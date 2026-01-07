@@ -17,9 +17,10 @@ export default function BusRouteMapLayer({ routes, loadingRoutes }) {
       {Object.values(routes).map((route) => {
         if (!route) return null;
 
-        // Use API color if provided; otherwise fallback to busRouteDefault
+        // Use API color first, then fallback to theme colors, then default
         const baseColor =
-          Colors.busRouteColors[route.id] || // Use route ID to get color
+          route.color || // API-provided color
+          Colors.busRouteColors[route.id] || // Theme color by route ID
           Colors.busRouteDefault; // Fallback to default
 
         const z = 10;
