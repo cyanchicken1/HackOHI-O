@@ -34,8 +34,29 @@ function distanceMeters(a, b) {
   return 2 * R * Math.asin(Math.sqrt(h));
 }
 
-const fmtMeters = (m) =>
-  !isFinite(m) ? '' : m >= 1000 ? `${(m / 1000).toFixed(2)} km` : `${Math.round(m)} m`;
+const formatDistance = (meters) => {
+  if (!isFinite(meters)) return '';
+  
+  const METERS_IN_MILE = 1609.34; // 1 mile = 1609.34 meters
+  const METERS_IN_FOOT = 0.3048; // 1 foot = 0.3048 meters
+  const MILES_IN_METER = 0.000621371; // 1 meter = 0.000621371 miles
+  const FEET_THRESHOLD_MILES = 0.25; // Use feet for distances < 0.25 miles
+  const FEET_THRESHOLD_METERS = FEET_THRESHOLD_MILES * METERS_IN_MILE; // ~402 meters
+  
+  if (meters < FEET_THRESHOLD_METERS) {
+    // Show feet for distances < 0.25 miles, rounded to nearest 10
+    const feet = meters / METERS_IN_FOOT;
+    const roundedFeet = Math.round(feet / 10) * 10;
+    return `${roundedFeet} ft`;
+  } else {
+    // Show miles for distances >= 0.25 miles, 1 decimal place, remove trailing zero
+    const miles = meters * MILES_IN_METER;
+    const roundedMiles = Math.round(miles * 10) / 10;
+    // Format with 1 decimal place, then remove trailing zero
+    const formatted = roundedMiles.toFixed(1);
+    return `${formatted.replace(/\.0$/, '')} mi`;
+  }
+};
 
 function nameSimilarityScore(nameLC, qLC) {
   if (!qLC) return 9999;
@@ -355,7 +376,7 @@ export default function SearchDrawer({
                 >
                   <Text style={styles.dropdownName}>{item.name}</Text>
                   <Text style={styles.dropdownSub}>
-                    {isFinite(item._dist) ? fmtMeters(item._dist) : ''}
+                    {isFinite(item._dist) ? formatDistance(item._dist) : ''}
                   </Text>
                 </TouchableOpacity>
               ))}
@@ -399,7 +420,7 @@ export default function SearchDrawer({
                 >
                   <Text style={styles.dropdownName}>{item.name}</Text>
                   <Text style={styles.dropdownSub}>
-                    {isFinite(item._dist) ? fmtMeters(item._dist) : ''}
+                    {isFinite(item._dist) ? formatDistance(item._dist) : ''}
                   </Text>
                 </TouchableOpacity>
               ))}
