@@ -7,10 +7,7 @@ export const Colors = {
   primary: '#BB0000',      // OSU Scarlet
   secondary: '#666666',    // OSU Gray
   
-  // Single default bus route color (fallback if route ID not found)
-  busRouteDefault: '#4CAF50',
-  
-  // Bus Route Colors mapped by route ID
+  // (Fallback) Bus Route Colors mapped by route ID
   busRouteColors: {
     'BE': '#BB0000',   // Scarlet
     'CC': '#0072CE',   // Blue

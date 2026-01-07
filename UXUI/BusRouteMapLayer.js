@@ -17,11 +17,10 @@ export default function BusRouteMapLayer({ routes, loadingRoutes }) {
       {Object.values(routes).map((route) => {
         if (!route) return null;
 
-        // Use API color first, then fallback to theme colors, then default
+        // Use API color first, then fallback to default
         const baseColor =
           route.color || // API-provided color
-          Colors.busRouteColors[route.id] || // Theme color by route ID
-          Colors.busRouteDefault; // Fallback to default
+          Colors.busRouteColors[route.id] // Theme color by route ID
 
         const z = 10;
 
@@ -97,11 +96,9 @@ export default function BusRouteMapLayer({ routes, loadingRoutes }) {
                     description={`Next: ${vehicle?.nextStop}`}
                     pinColor={baseColor}
                     zIndex={z + 2}
-                    // Optional: rotate the marker based on heading
-                    rotation={vehicle?.heading ?? 0}
                     flat={true}
                   >
-                    {/* Optional: Custom bus icon instead of pin */}
+                    {/* Bus icon */}
                     <View
                       style={{
                         backgroundColor: baseColor,
@@ -109,6 +106,7 @@ export default function BusRouteMapLayer({ routes, loadingRoutes }) {
                         borderRadius: 4,
                         borderWidth: 2,
                         borderColor: 'white',
+                        transform: [{ rotate: `${(vehicle?.heading) + 90 ?? 90}deg` }] // Rotate the icon based on heading
                       }}
                     >
                       <Text style={{ color: 'white', fontWeight: 'bold', fontSize: 12 }}>🚌</Text>
