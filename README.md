@@ -87,7 +87,8 @@ React Native CLI (npm install -g react-native-cli)
 
 Expo CLI (npm install -g expo-cli)
 
-Xcode (for iOS) or Android Studio (for Android)
+Expo Go on your mobile device
+
 
 Installation & Running
 
