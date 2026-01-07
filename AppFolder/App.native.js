@@ -290,11 +290,10 @@ function App() {
           Object.values(routes).map((route, index) => {
             if (!route) return null;
 
-            // Use API color if provided; otherwise rotate through theme's busRoute palette; final fallback to busRouteDefault
+            // Use API color if provided; otherwise fallback to busRouteDefault
             const baseColor =
             Colors.busRouteColors[route.id] ||           // Use route ID to get color
-            Colors.busRoute[index % Colors.busRoute.length] || // Fallback to index
-            Colors.busRouteDefault;                      // Final fallback
+            Colors.busRouteDefault;                      // Fallback to default
 
             const z = 10;
 

@@ -20,17 +20,6 @@ export const Colors = {
     'MWC': '#FF6600',  // Orange
     'WMC': '#00CED1',  // Turquoise
   },
-    
-  // Legacy array (keep for backwards compatibility if needed)
-  busRoute: [
-    '#BB0000', // Scarlet (BE)
-    '#0072CE', // Blue (CC)
-    '#FFB81C', // Gold (CLS)
-    '#008000', // Green (ER)
-    '#800080', // Purple (MC)
-    '#FF6600', // Orange (MWC)
-    '#00CED1', // Turquoise (WMC)
-  ],
 
   // Neutral Colors
   background: '#F2F2F7',   // A very light gray for the app's main background

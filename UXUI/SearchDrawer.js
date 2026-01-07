@@ -189,14 +189,19 @@ export default function SearchDrawer({
   }, [routeResult, calculatingRoute]);
   
   const toggleDrawer = () => {
-    const next = !isOpen;
     Animated.spring(translateY, {
-      toValue: next ? 0 : CLOSED_OFFSET,
+      toValue: !isOpen ? 0 : CLOSED_OFFSET,
       tension: 60,
       friction: 15,
       useNativeDriver: true,
     }).start();
-    setIsOpen(next);
+    // Close keyboard when drawer is closed
+    if (isOpen) {
+      originInputRef.current?.blur();
+      destInputRef.current?.blur();
+      Keyboard.dismiss();
+    }
+    setIsOpen(!isOpen);
   };
 
   const prepped = useMemo(
@@ -212,6 +217,7 @@ export default function SearchDrawer({
 
   const [destQuery, setDestQuery] = useState('');
   const [showDestResults, setShowDestResults] = useState(false);
+  const destInputRef = useRef(null);
 
   useEffect(() => {
     if (resetOrigin) {
@@ -272,6 +278,8 @@ export default function SearchDrawer({
     onSetStart(item);
     onFlyTo?.({ latitude: item.latitude, longitude: item.longitude }, 0.006);
     setShowOriginResults(false);
+    originInputRef.current?.blur();
+    destInputRef.current?.blur();
     Keyboard.dismiss();
   };
 
@@ -280,6 +288,8 @@ export default function SearchDrawer({
     onFlyTo?.({ latitude: item.latitude, longitude: item.longitude }, 0.004);
     setDestQuery(item.name);
     setShowDestResults(false);
+    originInputRef.current?.blur();
+    destInputRef.current?.blur();
     Keyboard.dismiss();
     if (!isOpen) {
       toggleDrawer();
@@ -358,6 +368,7 @@ export default function SearchDrawer({
           <View style={styles.inputRow}>
             <Text style={styles.inputIcon}>🔎</Text>
             <TextInput
+              ref={destInputRef}
               style={styles.input}
               placeholder="Search destination (building)…"
               placeholderTextColor={Colors.textSecondary}
