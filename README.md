@@ -87,14 +87,14 @@ React Native CLI (npm install -g react-native-cli)
 
 Expo CLI (npm install -g expo-cli)
 
-Xcode (for iOS) or Android Studio (for Android)
+Expo Go on your mobile device
+
 
 Installation & Running
 
 Clone the repo:
 
-git clone [https://github.com/](https://github.com/)[YourUsername]/HackOHI-O.git
-cd gOSU
+git clone [https://github.com/](https://github.com/cyanchicken1/HackOHI-O.git)
 
 
 Install dependencies:
@@ -103,6 +103,7 @@ npm install
 
 
 Run:
+
 npm start
 
 
