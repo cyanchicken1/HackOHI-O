@@ -93,8 +93,7 @@ Installation & Running
 
 Clone the repo:
 
-git clone [https://github.com/](https://github.com/)[YourUsername]/HackOHI-O.git
-cd gOSU
+git clone [https://github.com/](https://github.com/cyanchicken1/HackOHI-O.git)
 
 
 Install dependencies:
@@ -103,6 +102,7 @@ npm install
 
 
 Run:
+
 npm start
 
 
