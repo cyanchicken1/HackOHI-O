@@ -3,90 +3,163 @@ import findBestRoute from './busRouting.js';
 import getWalkingDirections from './walkingDirectionsAPI.js';
 
 /*
- * Returns: { bestBusRoute, walkingDirections }
- * (shoutout to Claude Code for this documentation)
+ * Returns a clean route object with segments array (shoutout to Claude Code)
  *
- * If bestBusRoute.recommendation === 'error', walkingDirections will be null.
- *
- * bestBusRoute - Best route recommendation (from findBestRoute)
  * {
- *   recommendation: 'bus' | 'error',
- *   route: {
+ *   recommendation: 'bus' | 'walk' | 'error',
+ *   error?: string,                     // only if recommendation === 'error'
+ *
+ *   route: {                            // bus route info (null if walk-only)
  *     id: string,                       // e.g., "BE"
  *     name: string,                     // e.g., "Buckeye Express"
- *     routeColor: string,
- *     routeShortName: string,
- *     routeLongName: string
+ *     color: string                     // e.g., "#BB0000"
  *   },
- *   trip: {
- *     routeId: string,
- *     routeName: string,
- *     routeColor: string,
- *     startStop: { id, name, latitude, longitude },
- *     endStop: { id, name, latitude, longitude },
- *     fromStop: string,                 // startStop.name
- *     toStop: string,                   // endStop.name
- *     busId: string,
- *     busETA: number,                   // minutes
- *     busCountdown: string,             // e.g., "5 mins"
- *     isDelayed: boolean,
- *     arrivalTime: string,
- *     walkToStopTime: number,           // minutes
- *     waitTime: number,                 // minutes (same as busWaitTime)
- *     busWaitTime: number,              // minutes
- *     busTime: number,                  // minutes (same as busTravelTime)
- *     busTravelTime: number,            // minutes
- *     walkFromStopTime: number,         // minutes
- *     totalTime: number,                // minutes
- *     ETA: string,                      // e.g., "3:45"
- *     stopsBetween: number
- *   },
- *   directWalkTime: number,             // minutes
- *   alternativeTrips: [{ ...same as trip... }, ...]
- * }
  *
- * walkingDirections - Walking directions for both segments (from getWalkingDirections)
- * [
- *   {                                   // Walk TO bus stop
- *     polyline: [{ latitude, longitude }, ...],
- *     distance: number,                 // meters
- *     duration: number,                 // seconds
- *     steps: [{
+ *   segments: [                         // walk → wait → ride → walk
+ *     {
+ *       type: 'walk',
+ *       from: { latitude, longitude },
+ *       to: { latitude, longitude, name },
+ *       duration: number,               // minutes
  *       distance: number,               // meters
- *       duration: number,               // seconds
- *       instruction: string,            // e.g., "Turn left onto Neil Ave"
- *       type: number,                   // instruction type code
- *       name: string,                   // street name
- *       wayPoints: [number, number]     // indices into polyline
- *     }, ...]
- *   },
- *   {                                   // Walk FROM bus stop
- *     polyline: [{ latitude, longitude }, ...],
- *     distance: number,
- *     duration: number,
- *     steps: [{ ... }]
- *   }
- * ]
+ *       polyline: [{ latitude, longitude }, ...],
+ *       steps: [{ instruction, distance, duration, type, name, wayPoints }, ...]
+ *     },
+ *     {
+ *       type: 'wait',
+ *       stop: { id, name, latitude, longitude },
+ *       duration: number,               // minutes
+ *       bus: { id, countdown, isDelayed }
+ *     },
+ *     {
+ *       type: 'ride',
+ *       fromStop: { id, name, latitude, longitude },
+ *       toStop: { id, name, latitude, longitude },
+ *       duration: number,               // minutes
+ *       stopsBetween: number
+ *     },
+ *     {
+ *       type: 'walk',
+ *       from: { latitude, longitude, name },
+ *       to: { latitude, longitude },
+ *       duration: number,               // minutes
+ *       distance: number,               // meters
+ *       polyline: [{ latitude, longitude }, ...],
+ *       steps: [{ ... }]
+ *     }
+ *   ],
+ *
+ *   totalTime: number,                  // minutes
+ *   eta: string,                        // e.g., "3:45"
+ *   directWalkTime: number,             // minutes (for comparison)
+ *   alternativeTrips: [...]             // other route options (raw format)
+ * }
  */
 
 export default async function aggregateRouteInfo(startCoords, endCoords) {
     const busRoutes = await fetchAllRoutes();
-    const bestBusRoute = await findBestRoute(startCoords, endCoords, busRoutes);
+    const rawRoute = await findBestRoute(startCoords, endCoords, busRoutes);
 
-    if (bestBusRoute.recommendation === 'error') {
-        const walkingOnlyDirections = await getWalkingDirections(startCoords, endCoords);
-        return { bestBusRoute, walkingDirections: walkingOnlyDirections };
+    // Handle error case - return walk-only directions
+    if (rawRoute.recommendation === 'error') {
+        const walkingDirections = await getWalkingDirections(
+            [startCoords.longitude, startCoords.latitude],
+            [endCoords.longitude, endCoords.latitude]
+        );
+        const walkDuration = walkingDirections[0].duration / 60;
+
+        return {
+            recommendation: 'walk',
+            error: rawRoute.reason,
+            route: null,
+            segments: [{
+                type: 'walk',
+                from: { latitude: startCoords.latitude, longitude: startCoords.longitude },
+                to: { latitude: endCoords.latitude, longitude: endCoords.longitude },
+                duration: walkDuration,
+                distance: walkingDirections[0].distance,
+                polyline: walkingDirections[0].polyline,
+                steps: walkingDirections[0].steps
+            }],
+            totalTime: walkDuration,
+            eta: formatETA(walkDuration),
+            directWalkTime: rawRoute.directWalkTime,
+            alternativeTrips: []
+        };
     }
 
-    const firstStopCoords = [bestBusRoute.trip.startStop.longitude, bestBusRoute.trip.startStop.latitude];
-    const lastStopCoords = [bestBusRoute.trip.endStop.longitude, bestBusRoute.trip.endStop.latitude];
+    // Fetch actual walking directions
+    const firstStopCoords = [rawRoute.trip.startStop.longitude, rawRoute.trip.startStop.latitude];
+    const lastStopCoords = [rawRoute.trip.endStop.longitude, rawRoute.trip.endStop.latitude];
     const walkingDirections = await getWalkingDirections(
         [startCoords.longitude, startCoords.latitude],
         firstStopCoords,
-        
         lastStopCoords,
         [endCoords.longitude, endCoords.latitude]
     );
 
-    return { bestBusRoute, walkingDirections };
+    // Calculate actual walk times
+    const walkToStopDuration = walkingDirections[0].duration / 60;
+    const walkFromStopDuration = walkingDirections[1].duration / 60;
+    const totalTime = walkToStopDuration + rawRoute.trip.busWaitTime + rawRoute.trip.busTravelTime + walkFromStopDuration;
+
+    return {
+        recommendation: 'bus',
+        route: {
+            id: rawRoute.route.id,
+            name: rawRoute.route.name,
+            color: rawRoute.route.routeColor
+        },
+        segments: [
+            {
+                type: 'walk',
+                from: { latitude: startCoords.latitude, longitude: startCoords.longitude },
+                to: rawRoute.trip.startStop,
+                duration: walkToStopDuration,
+                distance: walkingDirections[0].distance,
+                polyline: walkingDirections[0].polyline,
+                steps: walkingDirections[0].steps
+            },
+            {
+                type: 'wait',
+                stop: rawRoute.trip.startStop,
+                duration: rawRoute.trip.busWaitTime,
+                bus: {
+                    id: rawRoute.trip.busId,
+                    countdown: rawRoute.trip.busCountdown,
+                    isDelayed: rawRoute.trip.isDelayed
+                }
+            },
+            {
+                type: 'ride',
+                fromStop: rawRoute.trip.startStop,
+                toStop: rawRoute.trip.endStop,
+                duration: rawRoute.trip.busTravelTime,
+                stopsBetween: rawRoute.trip.stopsBetween
+            },
+            {
+                type: 'walk',
+                from: rawRoute.trip.endStop,
+                to: { latitude: endCoords.latitude, longitude: endCoords.longitude },
+                duration: walkFromStopDuration,
+                distance: walkingDirections[1].distance,
+                polyline: walkingDirections[1].polyline,
+                steps: walkingDirections[1].steps
+            }
+        ],
+        totalTime,
+        eta: formatETA(totalTime),
+        directWalkTime: rawRoute.directWalkTime,
+        alternativeTrips: rawRoute.alternativeTrips
+    };
+}
+
+function formatETA(totalMinutes) {
+    const now = new Date();
+    now.setMinutes(now.getMinutes() + totalMinutes);
+    let hours = now.getHours();
+    if (hours > 12) hours -= 12;
+    if (hours === 0) hours = 12;
+    const minutes = now.getMinutes().toString().padStart(2, '0');
+    return `${hours}:${minutes}`;
 }

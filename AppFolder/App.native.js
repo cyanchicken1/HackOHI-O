@@ -62,7 +62,6 @@ function App() {
   const [destination, setDestination] = useState(null);
   const [startLocation, setStartLocation] = useState(null); // Custom start location for routing
   const [routeResult, setRouteResult] = useState(null);
-  const [walkingDirections, setWalkingDirections] = useState(null); // Walking directions from OpenRouteService
   const [calculatingRoute, setCalculatingRoute] = useState(false);
   const [resetOriginTrigger, setResetOriginTrigger] = useState(false);
 
@@ -117,7 +116,6 @@ function App() {
     setDestination(b);
     // Clear previous route result when destination changes
     setRouteResult(null);
-    setWalkingDirections(null);
     // Camera movement now handled by onFlyTo callback
   };
 
@@ -153,22 +151,18 @@ function App() {
     setCalculatingRoute(true);
 
     try {
-      const { bestBusRoute, walkingDirections } = await aggregateRouteInfo(fromLocation, destination);
-      setRouteResult(bestBusRoute);
-      setWalkingDirections(walkingDirections);
+      const result = await aggregateRouteInfo(fromLocation, destination);
+      setRouteResult(result);
 
-      console.log('Route calculated successfully:', bestBusRoute);
-      if (walkingDirections) {
-        console.log('Walking directions:', walkingDirections);
-      }
+      console.log('Route calculated successfully:', result);
 
     } catch (error) {
       console.error('Error calculating route:', error);
       setRouteResult({
+        recommendation: 'error',
         error: 'Error calculating route. Please try again.',
         errorDetails: error.message
       });
-      setWalkingDirections(null);
     } finally {
       setCalculatingRoute(false);
     }
@@ -178,7 +172,6 @@ function App() {
   useEffect(() => {
     if (routeResult && !routeResult.error) {
       setRouteResult(null);
-      setWalkingDirections(null);
     }
   }, [startLocation]);
 
@@ -288,7 +281,6 @@ function App() {
           if (building) {
             // Clear previous route results when start location changes
             setRouteResult(null);
-            setWalkingDirections(null);
           }
         }}
         routes={routes}
