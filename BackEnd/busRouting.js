@@ -94,6 +94,7 @@ function findNearbyStops(location, routes, maxWalkMeters = 400) {
 /**
  * Check if a trip from startStop to endStop is valid (correct direction)
  * Uses the route's stop list to verify the end stop comes after the start stop
+ * Supports circular routes where end index may be lower than start index
  * @returns {Object} {valid: boolean, stopsBetween: number}
  */
 function isValidDirection(route, startStopId, endStopId) {
@@ -101,33 +102,48 @@ function isValidDirection(route, startStopId, endStopId) {
     console.log(`isValidDirection: No route or stops for ${startStopId} -> ${endStopId}`);
     return { valid: false, stopsBetween: 0 };
   }
-  
+
   // Create a map of stop IDs to their positions
   const stopPositions = {};
   route.stops.forEach((stop, index) => {
     stopPositions[stop.id] = index;
   });
-  
+
   const startIndex = stopPositions[startStopId];
   const endIndex = stopPositions[endStopId];
-  
-  //console.log(`Route ${route.id}: Checking ${startStopId} (index ${startIndex}) -> ${endStopId} (index ${endIndex})`);
-  
+  const totalStops = route.stops.length;
+
   if (startIndex === undefined || endIndex === undefined) {
-    //console.log(`Missing stop indices: start=${startIndex}, end=${endIndex}`);
     return { valid: false, stopsBetween: 0 };
   }
-  
-  // Valid if end stop comes after start stop
+
+  // Same stop - not a valid trip
+  if (startIndex === endIndex) {
+    return { valid: false, stopsBetween: 0 };
+  }
+
+  // Check if route is circular (first and last stops are the same or very close)
+  const isCircular = route.isCircular ||
+    (route.stops.length > 2 && route.stops[0].id === route.stops[totalStops - 1].id);
+
+  // Standard case: end stop comes after start stop
   if (endIndex > startIndex) {
-    //console.log(`✓ Valid direction! ${endIndex - startIndex} stops between`);
-    return { 
-      valid: true, 
-      stopsBetween: endIndex - startIndex 
+    return {
+      valid: true,
+      stopsBetween: endIndex - startIndex
     };
   }
-  
-  //console.log(`✗ Invalid direction: end stop comes before start stop`);
+
+  // For circular routes: can go "around" the loop
+  if (isCircular && endIndex < startIndex) {
+    // Stops = (remaining stops to end of route) + (stops from start of route to end stop)
+    const stopsBetween = (totalStops - startIndex) + endIndex;
+    return {
+      valid: true,
+      stopsBetween: stopsBetween
+    };
+  }
+
   return { valid: false, stopsBetween: 0 };
 }
 
@@ -135,62 +151,50 @@ function isValidDirection(route, startStopId, endStopId) {
  * Find the next bus arriving at a specific stop using live prediction data
  * @param {Object} route - Route object with vehicles
  * @param {string} stopId - Stop ID to check
+ * @param {number} minArrivalTime - Minimum arrival time in minutes (user's walk time to stop)
  * @returns {Object|null} Vehicle info with ETA and full prediction, or null if no buses found
  */
-function findNextBus(route, stopId) {
+function findNextBus(route, stopId, minArrivalTime = 0) {
   if (!route || !route.vehicles || route.vehicles.length === 0) {
-    //console.log(`    findNextBus: No vehicles on route ${route?.id}`);
     return null;
   }
-  
-  //console.log(`    findNextBus: Checking ${route.vehicles.length} vehicles for stop ${stopId}`);
-  
+
   let closestBus = null;
   let shortestWait = Infinity;
-  
+
   // Check each vehicle's predictions for this stop
-  route.vehicles.forEach((vehicle, vIndex) => {
+  route.vehicles.forEach((vehicle) => {
     if (!vehicle.predictions || vehicle.predictions.length === 0) {
-      console.log(`      Vehicle ${vehicle.id}: No predictions`);
       return;
     }
-    
-    //console.log(`      Vehicle ${vehicle.id}: ${vehicle.predictions.length} predictions`);
-    
+
     // Find prediction for this specific stop
     const prediction = vehicle.predictions.find(
       (pred) => pred.stopId === stopId
     );
-    
+
     if (prediction && prediction.timeToArrivalInSeconds !== undefined) {
-      const waitTimeMinutes = prediction.timeToArrivalInSeconds / 60;
-      
-      //console.log(`        Found prediction for stop ${stopId}: ${waitTimeMinutes.toFixed(1)} min`);
-      
-      // Only consider buses that haven't left yet (non-negative wait times)
-      if (waitTimeMinutes >= 0 && waitTimeMinutes < shortestWait) {
-        shortestWait = waitTimeMinutes;
+      const busArrivalMinutes = prediction.timeToArrivalInSeconds / 60;
+
+      // Only consider buses that arrive AFTER the user can get there
+      // Bus must arrive at least when user arrives (busArrival >= minArrivalTime)
+      if (busArrivalMinutes >= minArrivalTime && busArrivalMinutes < shortestWait) {
+        shortestWait = busArrivalMinutes;
         closestBus = {
           vehicleId: vehicle.id,
-          eta: waitTimeMinutes,
+          eta: busArrivalMinutes,
+          // Actual wait time = bus arrival - user arrival
+          waitTime: busArrivalMinutes - minArrivalTime,
           predictionTime: prediction.predictionTime,
           countdown: prediction.predictionCountdown,
           isDelayed: prediction.isDelayed,
-          prediction: prediction, // Store full prediction for detailed use
-          vehicle: vehicle, // Store vehicle reference
+          prediction: prediction,
+          vehicle: vehicle,
         };
       }
-    } else {
-      //console.log(`        No prediction for stop ${stopId} on vehicle ${vehicle.id}`);
     }
   });
-  
-  if (closestBus) {
-    //console.log(`    ✓ Found closest bus: ${closestBus.vehicleId}, ETA: ${closestBus.eta.toFixed(1)} min`);
-  } else {
-    //console.log(`    ✗ No buses have predictions for stop ${stopId}`);
-  }
-  
+
   return closestBus;
 }
 
@@ -307,36 +311,33 @@ export async function findBestRoute(userLocation, destinationLocation, routes) {
       const directionCheck = isValidDirection(route, startStop.stopId, endStop.stopId);
       if (!directionCheck.valid) continue;
       
-      // Get the next bus arriving at start stop with live ETA
-      const nextBus = findNextBus(route, startStop.stopId);
+      // Get the next bus that arrives AFTER user can walk to the stop
+      const nextBus = findNextBus(route, startStop.stopId, startStop.walkTimeMinutes);
       if (!nextBus) {
-        //console.log(`  ✗ No bus found for this stop`);
         continue;
       }
-      
-      //console.log(`  ✓ Found bus ${nextBus.vehicleId}, ETA: ${nextBus.eta.toFixed(1)} min`);
-      
+
       // Calculate bus travel time using live prediction data
       const busTravelTime = estimateBusTravelTime(
         route,
         startStop.stopId,
         endStop.stopId,
-        nextBus // Pass the full busInfo object with vehicle and prediction
+        nextBus
       );
-      
+
       // Calculate walk time from end stop to destination
       const walkFromStop = calculateWalkTime(
         { latitude: endStop.latitude, longitude: endStop.longitude },
         destinationLocation
       );
-      
-      // Total time for this trip
+
+      // Total time = walk to stop + wait for bus + ride + walk from stop
       const totalTime =
-        startStop.walkTimeMinutes + // Walk to start stop
-        nextBus.eta +                // Wait for bus
-        busTravelTime +               // Ride the bus
-        walkFromStop;                 // Walk from end stop to destination
-      
+        startStop.walkTimeMinutes +  // Walk to start stop
+        nextBus.waitTime +           // Wait at stop (bus arrival - user arrival)
+        busTravelTime +              // Ride the bus
+        walkFromStop;                // Walk from end stop to destination
+
       possibleTrips.push({
         routeId: route.id,
         routeName: route.name,
@@ -359,7 +360,7 @@ export async function findBestRoute(userLocation, destinationLocation, routes) {
         isDelayed: nextBus.isDelayed,
         arrivalTime: nextBus.predictionTime,
         walkToStopTime: startStop.walkTimeMinutes,
-        busWaitTime: nextBus.eta,
+        busWaitTime: nextBus.waitTime,  // Actual wait time at stop
         busTravelTime: busTravelTime,
         walkFromStopTime: walkFromStop,
         totalTime: totalTime,
