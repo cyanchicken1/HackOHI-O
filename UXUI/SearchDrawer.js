@@ -444,79 +444,95 @@ export default function SearchDrawer({
                   <Text style={styles.errorText}>Details: {routeResult.errorDetails}</Text>
                 )}
               </View>
-            ) : routeResult ? (
+            ) : routeResult?.recommendation === 'bus' ? (
               <View style={styles.routeContainer}>
                 <Text style={styles.routeTitle}>🚌 Best Route</Text>
-                
+
                 {routeResult.route && (
-  <View style={styles.routeHeader}>
-    <Text style={styles.busNumber}>
-      Bus #{routeResult.trip?.busId || 'Unknown'}
-    </Text>
-    <Text 
-      style={[
-        styles.routeBadge, 
-        { backgroundColor: routeResult.route.routeColor || Colors.primary }
-      ]}
-    >
-      Route {routeResult.route.routeShortName || routeResult.route.id || 'Unknown'}
-    </Text>
-  </View>
-)}
-
-                {routeResult.trip ? (
-                  <>
-                    <View style={styles.routeStops}>
-                      <Text style={styles.stopText}>🚏 Board at: {routeResult.trip?.fromStop || 'Unknown stop'}</Text>
-                      <Text style={styles.arrowText}>↓</Text>
-                      <Text style={styles.stopText}>🛑 Get off at: {routeResult.trip?.toStop || 'Unknown stop'}</Text>
-                    </View>
-
-                    <View style={styles.timeBreakdown}>
-                      <TimeRow 
-                        icon="🚶" 
-                        label="Walk to bus stop" 
-                        time={formatTime(routeResult.trip?.walkToStopTime || 0)} 
-                      />
-                      <TimeRow 
-                        icon="⏱️" 
-                        label="Wait for bus" 
-                        time={formatTime(routeResult.trip?.waitTime || 0)} 
-                        delayed={routeResult.trip?.waitTime > 15}
-                      />
-                      <TimeRow 
-                        icon="🚌" 
-                        label="Bus ride" 
-                        time={formatTime(routeResult.trip?.busTime || 0)} 
-                      />
-                      <TimeRow 
-                        icon="🚶" 
-                        label="Walk to destination" 
-                        time={formatTime(routeResult.trip?.walkFromStopTime || 0)} 
-                      />
-                    </View>
-
-                    <View style={styles.totalTime}>
-                      <Text style={styles.totalLabel}>Total Trip Time</Text>
-                      <Text style={styles.totalValue}>{formatTime(routeResult.trip?.totalTime)}</Text>
-
-                      <Text style={styles.totalLabel}>ETA</Text>
-                      <Text style={styles.totalValue}>{routeResult.trip?.ETA}</Text>
-                    </View>
-                  </>
-                ) : (
-                  <View style={styles.fallbackContainer}>
-                    <Text style={styles.fallbackText}>No bus routes found!</Text>
-                    <Text style={styles.fallbackSubtext}>
-                      Error calculating route: {routeResult.reason}
+                  <View style={styles.routeHeader}>
+                    <Text style={styles.busNumber}>
+                      Bus #{routeResult.segments[1]?.bus?.id || 'Unknown'}
+                    </Text>
+                    <Text
+                      style={[
+                        styles.routeBadge,
+                        { backgroundColor: routeResult.route.color || Colors.primary }
+                      ]}
+                    >
+                      Route {routeResult.route.id || 'Unknown'}
                     </Text>
                   </View>
                 )}
+
+                <View style={styles.routeStops}>
+                  <Text style={styles.stopText}>🚏 Board at: {routeResult.segments[0]?.to?.name || 'Unknown stop'}</Text>
+                  <Text style={styles.arrowText}>↓</Text>
+                  <Text style={styles.stopText}>🛑 Get off at: {routeResult.segments[2]?.toStop?.name || 'Unknown stop'}</Text>
+                </View>
+
+                <View style={styles.timeBreakdown}>
+                  <TimeRow
+                    icon="🚶"
+                    label="Walk to bus stop"
+                    time={formatTime(routeResult.segments[0]?.duration || 0)}
+                  />
+                  <TimeRow
+                    icon="⏱️"
+                    label="Wait for bus"
+                    time={formatTime(routeResult.segments[1]?.duration || 0)}
+                    delayed={routeResult.segments[1]?.duration > 15}
+                  />
+                  <TimeRow
+                    icon="🚌"
+                    label="Bus ride"
+                    time={formatTime(routeResult.segments[2]?.duration || 0)}
+                  />
+                  <TimeRow
+                    icon="🚶"
+                    label="Walk to destination"
+                    time={formatTime(routeResult.segments[3]?.duration || 0)}
+                  />
+                </View>
+
+                <View style={styles.totalTime}>
+                  <Text style={styles.totalLabel}>Total Trip Time</Text>
+                  <Text style={styles.totalValue}>{formatTime(routeResult.totalTime)}</Text>
+
+                  <Text style={styles.totalLabel}>ETA</Text>
+                  <Text style={styles.totalValue}>{routeResult.eta}</Text>
+                </View>
+
                 {routeResult.directWalkTime && (
-                      <Text style={styles.walkComparison}>
-                        💡 Walking directly: {formatTime(routeResult.directWalkTime)}
-                      </Text>
-                    )}
+                  <Text style={styles.walkComparison}>
+                    💡 Walking directly: {formatTime(routeResult.directWalkTime)}
+                  </Text>
+                )}
+              </View>
+            ) : routeResult?.recommendation === 'walk' ? (
+              <View style={styles.routeContainer}>
+                <Text style={styles.routeTitle}>🚶 Walking Route</Text>
+
+                {routeResult.error && (
+                  <Text style={styles.walkReasonText}>
+                    {routeResult.error}
+                  </Text>
+                )}
+
+                <View style={styles.timeBreakdown}>
+                  <TimeRow
+                    icon="🚶"
+                    label="Walk to destination"
+                    time={formatTime(routeResult.segments[0]?.duration || 0)}
+                  />
+                </View>
+
+                <View style={styles.totalTime}>
+                  <Text style={styles.totalLabel}>Total Trip Time</Text>
+                  <Text style={styles.totalValue}>{formatTime(routeResult.totalTime)}</Text>
+
+                  <Text style={styles.totalLabel}>ETA</Text>
+                  <Text style={styles.totalValue}>{routeResult.eta}</Text>
+                </View>
               </View>
             ) : null}
           </View>
@@ -768,6 +784,13 @@ const styles = StyleSheet.create({
     color: Colors.textSecondary,
     textAlign: 'center',
     marginTop: Spacing.md,
+    fontStyle: 'italic',
+  },
+  walkReasonText: {
+    fontFamily: Typography.fontFamily,
+    fontSize: 14,
+    color: Colors.textSecondary,
+    marginBottom: Spacing.md,
     fontStyle: 'italic',
   },
   fallbackContainer: {
