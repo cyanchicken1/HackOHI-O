@@ -14,7 +14,12 @@ module.exports = {
       backgroundColor: "#BB0000"
     },
     ios: {
-      supportsTablet: true
+      supportsTablet: true,
+      config: {
+        openRouteService: {
+          apiKey: process.env.OPENROUTESERVICE_API_KEY
+        }
+      }
     },
     android: {
       package: "com.lbutch18.gosu",
@@ -24,7 +29,10 @@ module.exports = {
       ],
       config: {
         googleMaps: {
-          apiKey: process.env.GOOGLE_MAPS_API_KEY || ""
+          apiKey: process.env.GOOGLE_MAPS_API_KEY
+        },
+        openRouteService: {
+          apiKey: process.env.OPENROUTESERVICE_API_KEY
         }
       },
       adaptiveIcon: {
@@ -38,7 +46,8 @@ module.exports = {
     extra: {
       eas: {
         projectId: "ab7bd5a5-f80a-4ec7-b075-01d3b1d13932"
-      }
+      },
+      openRouteServiceApiKey: process.env.OPENROUTESERVICE_API_KEY,
     },
     owner: "gosu-team"
   }

@@ -1,4 +1,7 @@
 import polyline from 'polyline';
+import Constants from 'expo-constants';
+
+const ORS_API_KEY = Constants.expoConfig?.extra?.openRouteServiceApiKey || "";
 
 // Coordinates should be in [longitude, latitude] format
 // For direct walk: pass only first two params → returns [directions]
@@ -22,7 +25,7 @@ async function fetchDirections(startCoords, endCoords) {
             headers: {
                 "Content-Type": "application/json; charset=utf-8",
                 "Accept": "application/json, application/geo+json, application/gpx+xml, img/png; charset=utf-8",
-                "Authorization": process.env.OPENROUTESERVICE_API_KEY || ""
+                "Authorization": ORS_API_KEY
             },
             body: JSON.stringify({coordinates: [startCoords, endCoords]})
         });

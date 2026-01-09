@@ -1,6 +1,6 @@
-import fetchAllRoutes from './osuBusAPI.js';
-import findBestRoute from './busRouting.js';
-import getWalkingDirections from './walkingDirectionsAPI.js';
+import { fetchAllRoutes } from './osuBusAPI.js';
+import { findBestRoute } from './busRouting.js';
+import { getWalkingDirections } from './walkingDirectionsAPI.js';
 
 /*
  * Returns a clean route object with segments array (shoutout to Claude Code)
