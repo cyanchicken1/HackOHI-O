@@ -1,8 +1,15 @@
 import polyline from 'polyline';
 
 // Coordinates should be in [longitude, latitude] format
+// For direct walk: pass only first two params → returns [directions]
+// For bus trip: pass all four params → returns [toStopDirections, fromStopDirections]
 export async function getWalkingDirections(startCoordsFirst, endCoordsFirst, startCoordsSecond, endCoordsSecond) {
     const firstDirections = fetchDirections(startCoordsFirst, endCoordsFirst);
+
+    if (!startCoordsSecond || !endCoordsSecond) {
+        return [await firstDirections];
+    }
+
     const secondDirections = fetchDirections(startCoordsSecond, endCoordsSecond);
     return Promise.all([firstDirections, secondDirections]);
 }

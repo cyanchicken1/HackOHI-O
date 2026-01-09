@@ -20,8 +20,8 @@ import BusRouteLegend from '../UXUI/BusRouteLegend';
 import BusRouteMapLayer from '../UXUI/BusRouteMapLayer';
 import ErrorBoundary from '../UXUI/ErrorBoundary';
 
-import { findBestRoute } from '../BackEnd/busRouting';
 import { fetchAllRoutes } from '../BackEnd/osuBusAPI';
+import aggregateRouteInfo from '../BackEnd/aggregateRouteInfo';
 
 // Safely parse POI data with error handling
 let ALL_POIS = [];
@@ -62,6 +62,7 @@ function App() {
   const [destination, setDestination] = useState(null);
   const [startLocation, setStartLocation] = useState(null); // Custom start location for routing
   const [routeResult, setRouteResult] = useState(null);
+  const [walkingDirections, setWalkingDirections] = useState(null); // Walking directions from OpenRouteService
   const [calculatingRoute, setCalculatingRoute] = useState(false);
   const [resetOriginTrigger, setResetOriginTrigger] = useState(false);
 
@@ -116,6 +117,7 @@ function App() {
     setDestination(b);
     // Clear previous route result when destination changes
     setRouteResult(null);
+    setWalkingDirections(null);
     // Camera movement now handled by onFlyTo callback
   };
 
@@ -137,38 +139,36 @@ function App() {
   const handleGetDirections = async () => {
     // Use startLocation if set, otherwise use userRegion (current GPS)
     const fromLocation = startLocation || userRegion;
-    
+
     if (!fromLocation) {
       alert('Starting location not available. Please enable location services or select a starting building.');
       return;
     }
-    
+
     if (!destination) {
       alert('Please select a destination first by searching for a building.');
       return;
     }
-    
-    if (!routes || loadingRoutes) {
-      alert('Bus routes are still loading. Please wait a moment.');
-      return;
-    }
-    
+
     setCalculatingRoute(true);
-    
+
     try {
-      const result = await findBestRoute(fromLocation, destination, routes);
-      setRouteResult(result);
-      
-      // No more alert - results will be displayed in the SearchDrawer
-      console.log('Route calculated successfully:', result);
-      
+      const { bestBusRoute, walkingDirections } = await aggregateRouteInfo(fromLocation, destination);
+      setRouteResult(bestBusRoute);
+      setWalkingDirections(walkingDirections);
+
+      console.log('Route calculated successfully:', bestBusRoute);
+      if (walkingDirections) {
+        console.log('Walking directions:', walkingDirections);
+      }
+
     } catch (error) {
       console.error('Error calculating route:', error);
-      // Set error result to display in SearchDrawer
       setRouteResult({
         error: 'Error calculating route. Please try again.',
         errorDetails: error.message
       });
+      setWalkingDirections(null);
     } finally {
       setCalculatingRoute(false);
     }
@@ -178,6 +178,7 @@ function App() {
   useEffect(() => {
     if (routeResult && !routeResult.error) {
       setRouteResult(null);
+      setWalkingDirections(null);
     }
   }, [startLocation]);
 
@@ -287,6 +288,7 @@ function App() {
           if (building) {
             // Clear previous route results when start location changes
             setRouteResult(null);
+            setWalkingDirections(null);
           }
         }}
         routes={routes}
