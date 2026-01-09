@@ -322,7 +322,7 @@ export default function SearchDrawer({
     if (routeResult || calculatingRoute) {
       return isOpen ? 'Route Results' : 'View Route Results';
     }
-    return isOpen ? 'Hide search' : 'Find a Building';
+    return isOpen ? 'Hide search' : 'Find a Place';
   };
 
   return (
@@ -391,7 +391,7 @@ export default function SearchDrawer({
             <TextInput
               ref={destInputRef}
               style={styles.input}
-              placeholder="Search destination (building)…"
+              placeholder="Search destination…"
               placeholderTextColor={Colors.textSecondary}
               value={destQuery}
               onFocus={() => {

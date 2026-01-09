@@ -15,7 +15,7 @@ import { StatusBar } from 'expo-status-bar';
 import * as Location from 'expo-location';
 
 import SearchDrawer from '../UXUI/SearchDrawer';
-import buildingData from '../Data/osu_building_points.json';
+import poiData from '../Data/osu_all_pois.json';
 import BusRouteLegend from '../UXUI/BusRouteLegend';
 import BusRouteMapLayer from '../UXUI/BusRouteMapLayer';
 import ErrorBoundary from '../UXUI/ErrorBoundary';
@@ -23,18 +23,20 @@ import ErrorBoundary from '../UXUI/ErrorBoundary';
 import { findBestRoute } from '../BackEnd/busRouting';
 import { fetchAllRoutes } from '../BackEnd/osuBusAPI';
 
-// Safely parse building data with error handling
-let ALL_BUILDINGS = [];
+// Safely parse POI data with error handling
+let ALL_POIS = [];
 try {
-  ALL_BUILDINGS = (buildingData?.buildings || []).map((b) => ({
-    id: b.number,
-    name: b.name,
-    latitude: b.latitude,
-    longitude: b.longitude,
+  ALL_POIS = (poiData?.pois || []).map((p, index) => ({
+    id: p.number || `poi-${index}`,
+    name: p.name,
+    latitude: p.latitude,
+    longitude: p.longitude,
+    type: p.type,
+    category: p.category,
   }));
 } catch (error) {
-  console.error('Error parsing building data:', error);
-  ALL_BUILDINGS = [];
+  console.error('Error parsing POI data:', error);
+  ALL_POIS = [];
 }
 
 // Hard-set OSU camera start
@@ -277,7 +279,7 @@ function App() {
         userLocation={
           userRegion ? { latitude: userRegion.latitude, longitude: userRegion.longitude } : null
         }
-        buildings={ALL_BUILDINGS}
+        buildings={ALL_POIS}
         onSelect={handleSelectBuilding}
         onFlyTo={handleFlyTo}
         onSetStart={(building) => {
