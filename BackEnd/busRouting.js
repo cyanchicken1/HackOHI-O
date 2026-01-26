@@ -54,10 +54,10 @@ function calculateWalkTime(point1, point2) {
  * Find all stops within walking distance of a location
  * @param {Object} location - {latitude, longitude}
  * @param {Object} routes - All bus routes
- * @param {number} maxWalkMeters - Maximum walking distance (default 400m ~ 5 min walk)
+ * @param {number} maxWalkMeters - Maximum walking distance (default 750m)
  * @returns {Array} Array of nearby stops with route info
  */
-function findNearbyStops(location, routes, maxWalkMeters = 400) {
+function findNearbyStops(location, routes, maxWalkMeters = 750) {
   const nearbyStops = [];
   
   Object.values(routes).forEach((route) => {
@@ -269,13 +269,13 @@ export async function findBestRoute(userLocation, destinationLocation, routes) {
   const directWalkTime = calculateWalkTime(userLocation, destinationLocation);
   
   // Find all possible bus trips
-  const startStops = findNearbyStops(userLocation, routes, 400);
-  const endStops = findNearbyStops(destinationLocation, routes, 400);
+  const startStops = findNearbyStops(userLocation, routes, 750);
+  const endStops = findNearbyStops(destinationLocation, routes, 750);
   
   if (startStops.length === 0) {
     return {
       recommendation: 'error',
-      reason: 'No bus stops nearby (within 400m)',
+      reason: 'No bus stops nearby (within 750m)',
       directWalkTime: directWalkTime,
       nearbyStartStops: startStops,
     };

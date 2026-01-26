@@ -436,14 +436,6 @@ export default function SearchDrawer({
                 <ActivityIndicator size="large" color={Colors.primary} />
                 <Text style={styles.loadingText}>Calculating best route...</Text>
               </View>
-            ) : routeResult?.error ? (
-              <View style={styles.errorContainer}>
-                <Text style={styles.errorTitle}>Route Error</Text>
-                <Text style={styles.errorText}>{routeResult.error}</Text>
-                {routeResult.errorDetails && (
-                  <Text style={styles.errorText}>Details: {routeResult.errorDetails}</Text>
-                )}
-              </View>
             ) : routeResult?.recommendation === 'bus' ? (
               <View style={styles.routeContainer}>
                 <Text style={styles.routeTitle}>🚌 Best Route</Text>
@@ -510,7 +502,7 @@ export default function SearchDrawer({
               </View>
             ) : routeResult?.recommendation === 'walk' ? (
               <View style={styles.routeContainer}>
-                <Text style={styles.routeTitle}>🚶 Walking Route</Text>
+                <Text style={styles.routeTitle}>🚶 Walking Recommended</Text>
 
                 {routeResult.error && (
                   <Text style={styles.walkReasonText}>
@@ -522,17 +514,32 @@ export default function SearchDrawer({
                   <TimeRow
                     icon="🚶"
                     label="Walk to destination"
-                    time={formatTime(routeResult.segments[0]?.duration || 0)}
+                    time={formatTime(routeResult.totalTime || routeResult.segments?.[0]?.duration || routeResult.directWalkTime)}
                   />
+                  {routeResult.segments?.[0]?.distance && (
+                    <TimeRow
+                      icon="📏"
+                      label="Distance"
+                      time={formatDistance(routeResult.segments[0].distance)}
+                    />
+                  )}
                 </View>
 
                 <View style={styles.totalTime}>
                   <Text style={styles.totalLabel}>Total Trip Time</Text>
-                  <Text style={styles.totalValue}>{formatTime(routeResult.totalTime)}</Text>
+                  <Text style={styles.totalValue}>{formatTime(routeResult.totalTime || routeResult.directWalkTime || 0)}</Text>
 
                   <Text style={styles.totalLabel}>ETA</Text>
-                  <Text style={styles.totalValue}>{routeResult.eta}</Text>
+                  <Text style={styles.totalValue}>{routeResult.eta || '--:--'}</Text>
                 </View>
+              </View>
+            ) : routeResult?.error ? (
+              <View style={styles.errorContainer}>
+                <Text style={styles.errorTitle}>Route Error</Text>
+                <Text style={styles.errorText}>{routeResult.error}</Text>
+                {routeResult.errorDetails && (
+                  <Text style={styles.errorText}>Details: {routeResult.errorDetails}</Text>
+                )}
               </View>
             ) : null}
           </View>

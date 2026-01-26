@@ -83,7 +83,7 @@ export default async function aggregateRouteInfo(startCoords, endCoords) {
             }],
             totalTime: walkDuration,
             eta: formatETA(walkDuration),
-            directWalkTime: rawRoute.directWalkTime,
+            directWalkTime: walkDuration,
             alternativeTrips: []
         };
     }
