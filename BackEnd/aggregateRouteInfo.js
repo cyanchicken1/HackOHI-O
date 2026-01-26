@@ -62,30 +62,50 @@ export default async function aggregateRouteInfo(startCoords, endCoords) {
 
     // Handle error case - return walk-only directions
     if (rawRoute.recommendation === 'error') {
-        const walkingDirections = await getWalkingDirections(
-            [startCoords.longitude, startCoords.latitude],
-            [endCoords.longitude, endCoords.latitude]
-        );
-        const walkDuration = walkingDirections[0].duration / 60;
+        // Try to get accurate walking directions from ORS API
+        try {
+            const walkingDirections = await getWalkingDirections(
+                [startCoords.longitude, startCoords.latitude],
+                [endCoords.longitude, endCoords.latitude]
+            );
+            const walkDuration = walkingDirections[0].duration / 60;
 
-        return {
-            recommendation: 'walk',
-            error: rawRoute.reason,
-            route: null,
-            segments: [{
-                type: 'walk',
-                from: { latitude: startCoords.latitude, longitude: startCoords.longitude },
-                to: { latitude: endCoords.latitude, longitude: endCoords.longitude },
-                duration: walkDuration,
-                distance: walkingDirections[0].distance,
-                polyline: walkingDirections[0].polyline,
-                steps: walkingDirections[0].steps
-            }],
-            totalTime: walkDuration,
-            eta: formatETA(walkDuration),
-            directWalkTime: walkDuration,
-            alternativeTrips: []
-        };
+            return {
+                recommendation: 'walk',
+                error: rawRoute.reason,
+                route: null,
+                segments: [{
+                    type: 'walk',
+                    from: { latitude: startCoords.latitude, longitude: startCoords.longitude },
+                    to: { latitude: endCoords.latitude, longitude: endCoords.longitude },
+                    duration: walkDuration,
+                    distance: walkingDirections[0].distance,
+                    polyline: walkingDirections[0].polyline,
+                    steps: walkingDirections[0].steps
+                }],
+                totalTime: walkDuration,
+                eta: formatETA(walkDuration),
+                directWalkTime: walkDuration,
+                isEstimate: false,
+                alternativeTrips: []
+            };
+        } catch (orsError) {
+            // Fallback to haversine-based estimate if ORS fails
+            console.warn('ORS API failed, using estimated walk time:', orsError.message);
+            const estimatedWalkTime = rawRoute.directWalkTime;
+
+            return {
+                recommendation: 'walk',
+                error: rawRoute.reason,
+                route: null,
+                segments: [],
+                totalTime: estimatedWalkTime,
+                eta: formatETA(estimatedWalkTime),
+                directWalkTime: estimatedWalkTime,
+                isEstimate: true,
+                alternativeTrips: []
+            };
+        }
     }
 
     // Fetch actual walking directions

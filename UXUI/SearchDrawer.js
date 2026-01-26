@@ -532,6 +532,12 @@ export default function SearchDrawer({
                   <Text style={styles.totalLabel}>ETA</Text>
                   <Text style={styles.totalValue}>{routeResult.eta || '--:--'}</Text>
                 </View>
+
+                {routeResult.isEstimate && (
+                  <Text style={styles.estimateWarning}>
+                    ⚠️ Walking time is estimated (routing service unavailable)
+                  </Text>
+                )}
               </View>
             ) : routeResult?.error ? (
               <View style={styles.errorContainer}>
@@ -798,6 +804,14 @@ const styles = StyleSheet.create({
     fontSize: 14,
     color: Colors.textSecondary,
     marginBottom: Spacing.md,
+    fontStyle: 'italic',
+  },
+  estimateWarning: {
+    fontFamily: Typography.fontFamily,
+    fontSize: 12,
+    color: '#B8860B',
+    textAlign: 'center',
+    marginTop: Spacing.md,
     fontStyle: 'italic',
   },
   fallbackContainer: {
