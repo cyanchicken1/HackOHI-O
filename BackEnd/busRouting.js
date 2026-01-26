@@ -380,8 +380,18 @@ export async function findBestRoute(userLocation, destinationLocation, routes) {
     };
   }
   
-  // Sort by total time and get the best trip
-  possibleTrips.sort((a, b) => a.totalTime - b.totalTime);
+  // Sort by total time, with closest start stop as tiebreaker when times are similar
+  const TIME_SIMILARITY_THRESHOLD = 1; // minutes - consider times "about the same" if within this range
+  possibleTrips.sort((a, b) => {
+    const timeDiff = a.totalTime - b.totalTime;
+
+    // If arrival times are within threshold, prioritize closer start stop
+    if (Math.abs(timeDiff) <= TIME_SIMILARITY_THRESHOLD) {
+      return a.walkToStopTime - b.walkToStopTime;
+    }
+
+    return timeDiff;
+  });
   const bestTrip = possibleTrips[0];
   
   return {
