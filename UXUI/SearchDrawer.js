@@ -5,19 +5,16 @@ import {
   TextInput,
   StyleSheet,
   Animated,
-  Dimensions,
   TouchableOpacity,
   ScrollView,
   Keyboard,
   ActivityIndicator,
+  useWindowDimensions,
 } from 'react-native';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { Colors, Spacing, Typography, Layout } from '../style/theme';
 import { formatTime } from '../BackEnd/busRouting';
-
-const { height: SCREEN_HEIGHT } = Dimensions.get('window');
-const DRAWER_PEEK_HEIGHT = SCREEN_HEIGHT * 0.07;
-const DRAWER_FULL_HEIGHT = Math.min(SCREEN_HEIGHT, SCREEN_HEIGHT * 0.8);
-const CLOSED_OFFSET = DRAWER_FULL_HEIGHT - DRAWER_PEEK_HEIGHT;
+import Icon, { IconSizes } from './Icons';
 
 /* ---------------- helpers ---------------- */
 
@@ -169,17 +166,25 @@ function levenshteinDistance(str1, str2) {
   return prevRow[len2];
 }
 
+/* ---------------- constants ---------------- */
+
+const DRAWER_PEEK_HEIGHT = 56;
+
 /* ---------------- TimeRow component ---------------- */
 
-function TimeRow({ icon, label, time, delayed }) {
+function TimeRow({ iconName, label, time, delayed }) {
   return (
     <View style={styles.timeRow}>
-      <Text style={styles.timeIcon}>{icon}</Text>
+      <View style={styles.timeIconContainer}>
+        <Icon name={iconName} size={IconSizes.sm} color={Colors.textSecondary} />
+      </View>
       <Text style={styles.timeLabel}>{label}</Text>
-      <Text style={[styles.timeValue, delayed && styles.delayedText]}>
-        {time}
-        {delayed && ' ⚠️'}
-      </Text>
+      <View style={styles.timeValueContainer}>
+        <Text style={[styles.timeValue, delayed && styles.delayedText]}>
+          {time}
+        </Text>
+        {delayed && <Icon name="alert" size={IconSizes.xs} color={Colors.error} style={{ marginLeft: 4 }} />}
+      </View>
     </View>
   );
 }
@@ -198,8 +203,16 @@ export default function SearchDrawer({
   startLocation = null,
   destination = null,
   calculatingRoute = false,
+  onStartTrip = () => {},
 }) {
-  const translateY = useRef(new Animated.Value(CLOSED_OFFSET)).current;
+  const insets = useSafeAreaInsets();
+  const { height: windowHeight } = useWindowDimensions();
+
+  // Calculate responsive drawer height (72.5% of screen)
+  const drawerFullHeight = windowHeight * 0.725;
+  const closedOffset = drawerFullHeight - DRAWER_PEEK_HEIGHT;
+
+  const translateY = useRef(new Animated.Value(closedOffset)).current;
   const [isOpen, setIsOpen] = useState(false);
   
   // Auto-open drawer when route results are available
@@ -211,7 +224,7 @@ export default function SearchDrawer({
   
   const toggleDrawer = () => {
     Animated.spring(translateY, {
-      toValue: !isOpen ? 0 : CLOSED_OFFSET,
+      toValue: !isOpen ? 0 : closedOffset,
       tension: 60,
       friction: 15,
       useNativeDriver: true,
@@ -327,17 +340,24 @@ export default function SearchDrawer({
 
   return (
     <Animated.View
-      style={[styles.drawer, { height: DRAWER_FULL_HEIGHT, transform: [{ translateY }] }]}
+      style={[styles.drawer, { height: drawerFullHeight, transform: [{ translateY }], paddingBottom: insets.bottom }]}
     >
       <TouchableOpacity activeOpacity={0.85} onPress={toggleDrawer} style={styles.header}>
-        <Text style={styles.headerTitle}>{getHeaderTitle()}</Text>
+        <View style={styles.headerRow}>
+          <Text style={styles.headerTitle}>{getHeaderTitle()}</Text>
+          <Icon
+            name={isOpen ? 'arrow-down' : 'arrow-up'}
+            size={IconSizes.md}
+            color={Colors.surface}
+          />
+        </View>
       </TouchableOpacity>
 
       <ScrollView style={styles.content} keyboardShouldPersistTaps="handled">
         {/* ORIGIN SECTION */}
         <View style={styles.section}>
           <View style={styles.originRow}>
-            <Text style={styles.originIcon}>📍</Text>
+            <Icon name="location-pin" size={IconSizes.md} color={Colors.surface} style={styles.originIcon} />
             <TextInput
               ref={originInputRef}
               style={styles.originInput}
@@ -387,7 +407,7 @@ export default function SearchDrawer({
         {/* DESTINATION SECTION */}
         <View style={styles.section}>
           <View style={styles.inputRow}>
-            <Text style={styles.inputIcon}>🔎</Text>
+            <Icon name="search" size={IconSizes.md} color={Colors.primary} style={styles.inputIcon} />
             <TextInput
               ref={destInputRef}
               style={styles.input}
@@ -438,7 +458,10 @@ export default function SearchDrawer({
               </View>
             ) : routeResult?.recommendation === 'bus' ? (
               <View style={styles.routeContainer}>
-                <Text style={styles.routeTitle}>🚌 Best Route</Text>
+                <View style={styles.routeTitleRow}>
+                  <Icon name="bus" size={IconSizes.md} color={Colors.primary} />
+                  <Text style={styles.routeTitle}>Best Route</Text>
+                </View>
 
                 {routeResult.route && (
                   <View style={styles.routeHeader}>
@@ -457,30 +480,36 @@ export default function SearchDrawer({
                 )}
 
                 <View style={styles.routeStops}>
-                  <Text style={styles.stopText}>🚏 Board at: {routeResult.segments[0]?.to?.name || 'Unknown stop'}</Text>
-                  <Text style={styles.arrowText}>↓</Text>
-                  <Text style={styles.stopText}>🛑 Get off at: {routeResult.segments[2]?.toStop?.name || 'Unknown stop'}</Text>
+                  <View style={styles.stopRow}>
+                    <Icon name="stop" size={IconSizes.sm} color={Colors.textPrimary} />
+                    <Text style={styles.stopText}>Board at: {routeResult.segments[0]?.to?.name || 'Unknown stop'}</Text>
+                  </View>
+                  <Icon name="arrow-down" size={IconSizes.md} color={Colors.textSecondary} style={styles.arrowIcon} />
+                  <View style={styles.stopRow}>
+                    <Icon name="checkmark" size={IconSizes.sm} color={Colors.primary} />
+                    <Text style={styles.stopText}>Get off at: {routeResult.segments[2]?.toStop?.name || 'Unknown stop'}</Text>
+                  </View>
                 </View>
 
                 <View style={styles.timeBreakdown}>
                   <TimeRow
-                    icon="🚶"
+                    iconName="walk"
                     label="Walk to bus stop"
                     time={formatTime(routeResult.segments[0]?.duration || 0)}
                   />
                   <TimeRow
-                    icon="⏱️"
+                    iconName="time"
                     label="Wait for bus"
                     time={formatTime(routeResult.segments[1]?.duration || 0)}
                     delayed={routeResult.segments[1]?.duration > 15}
                   />
                   <TimeRow
-                    icon="🚌"
+                    iconName="bus"
                     label="Bus ride"
                     time={formatTime(routeResult.segments[2]?.duration || 0)}
                   />
                   <TimeRow
-                    icon="🚶"
+                    iconName="walk"
                     label="Walk to destination"
                     time={formatTime(routeResult.segments[3]?.duration || 0)}
                   />
@@ -495,14 +524,25 @@ export default function SearchDrawer({
                 </View>
 
                 {routeResult.directWalkTime && (
-                  <Text style={styles.walkComparison}>
-                    💡 Walking directly: {formatTime(routeResult.directWalkTime)}
-                  </Text>
+                  <View style={styles.walkComparisonRow}>
+                    <Icon name="walk" size={IconSizes.sm} color={Colors.textSecondary} />
+                    <Text style={styles.walkComparison}>
+                      Walking directly: {formatTime(routeResult.directWalkTime)}
+                    </Text>
+                  </View>
                 )}
+
+                <TouchableOpacity style={styles.startTripButton} onPress={onStartTrip}>
+                  <Icon name="navigate" size={IconSizes.md} color={Colors.surface} />
+                  <Text style={styles.startTripButtonText}>Start Trip</Text>
+                </TouchableOpacity>
               </View>
             ) : routeResult?.recommendation === 'walk' ? (
               <View style={styles.routeContainer}>
-                <Text style={styles.routeTitle}>🚶 Walking Recommended</Text>
+                <View style={styles.routeTitleRow}>
+                  <Icon name="walk" size={IconSizes.md} color={Colors.primary} />
+                  <Text style={styles.routeTitle}>Walking Recommended</Text>
+                </View>
 
                 {routeResult.error && (
                   <Text style={styles.walkReasonText}>
@@ -512,13 +552,13 @@ export default function SearchDrawer({
 
                 <View style={styles.timeBreakdown}>
                   <TimeRow
-                    icon="🚶"
+                    iconName="walk"
                     label="Walk to destination"
                     time={formatTime(routeResult.totalTime || routeResult.segments?.[0]?.duration || routeResult.directWalkTime)}
                   />
                   {routeResult.segments?.[0]?.distance && (
                     <TimeRow
-                      icon="📏"
+                      iconName="navigate"
                       label="Distance"
                       time={formatDistance(routeResult.segments[0].distance)}
                     />
@@ -534,14 +574,25 @@ export default function SearchDrawer({
                 </View>
 
                 {routeResult.isEstimate && (
-                  <Text style={styles.estimateWarning}>
-                    ⚠️ Walking time is estimated (routing service unavailable)
-                  </Text>
+                  <View style={styles.estimateWarningRow}>
+                    <Icon name="alert" size={IconSizes.sm} color="#B8860B" />
+                    <Text style={styles.estimateWarning}>
+                      Walking time is estimated (routing service unavailable)
+                    </Text>
+                  </View>
                 )}
+
+                <TouchableOpacity style={styles.startTripButton} onPress={onStartTrip}>
+                  <Icon name="navigate" size={IconSizes.md} color={Colors.surface} />
+                  <Text style={styles.startTripButtonText}>Start Trip</Text>
+                </TouchableOpacity>
               </View>
             ) : routeResult?.error ? (
               <View style={styles.errorContainer}>
-                <Text style={styles.errorTitle}>Route Error</Text>
+                <View style={styles.errorTitleRow}>
+                  <Icon name="alert" size={IconSizes.md} color={Colors.error} />
+                  <Text style={styles.errorTitle}>Route Error</Text>
+                </View>
                 <Text style={styles.errorText}>{routeResult.error}</Text>
                 {routeResult.errorDetails && (
                   <Text style={styles.errorText}>Details: {routeResult.errorDetails}</Text>
@@ -572,11 +623,16 @@ const styles = StyleSheet.create({
     paddingVertical: Spacing.md,
     paddingHorizontal: Spacing.md,
   },
+  headerRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    gap: Spacing.sm,
+  },
   headerTitle: {
     fontFamily: Typography.fontFamily,
     ...Typography.h2,
     color: Colors.surface,
-    textAlign: 'center',
   },
   content: {
     flex: 1,
@@ -596,7 +652,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: Spacing.md,
     minHeight: 48,
   },
-  originIcon: { fontSize: 18, marginRight: Spacing.sm, color: Colors.surface },
+  originIcon: { marginRight: Spacing.sm },
   originInput: {
     fontFamily: Typography.fontFamily,
     ...Typography.body,
@@ -615,7 +671,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: Spacing.md,
     minHeight: 48,
   },
-  inputIcon: { fontSize: 18, marginRight: Spacing.sm, color: Colors.primary },
+  inputIcon: { marginRight: Spacing.sm },
   input: {
     fontFamily: Typography.fontFamily,
     ...Typography.body,
@@ -674,12 +730,17 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: '#FFCCCC',
   },
+  errorTitleRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: Spacing.sm,
+    marginBottom: Spacing.xs,
+  },
   errorTitle: {
     fontFamily: Typography.fontFamily,
     fontSize: 18,
     fontWeight: '600',
     color: Colors.error,
-    marginBottom: Spacing.xs,
   },
   errorText: {
     fontFamily: Typography.fontFamily,
@@ -694,12 +755,17 @@ const styles = StyleSheet.create({
     padding: Spacing.md,
     ...Layout.shadow,
   },
+  routeTitleRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginBottom: Spacing.md,
+    gap: Spacing.sm,
+  },
   routeTitle: {
     fontFamily: Typography.fontFamily,
     fontSize: 20,
     fontWeight: '700',
     color: Colors.primary,
-    marginBottom: Spacing.md,
   },
   routeHeader: {
     flexDirection: 'row',
@@ -728,16 +794,19 @@ const styles = StyleSheet.create({
     borderRadius: Layout.borderRadius,
     marginBottom: Spacing.md,
   },
+  stopRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: Spacing.sm,
+  },
   stopText: {
     fontFamily: Typography.fontFamily,
     fontSize: 15,
     color: Colors.textPrimary,
-    marginVertical: Spacing.xs,
+    flex: 1,
   },
-  arrowText: {
-    fontSize: 20,
-    color: Colors.textSecondary,
-    textAlign: 'center',
+  arrowIcon: {
+    alignSelf: 'center',
     marginVertical: Spacing.xs,
   },
   timeBreakdown: {
@@ -750,10 +819,14 @@ const styles = StyleSheet.create({
     borderBottomWidth: 1,
     borderBottomColor: Colors.border,
   },
-  timeIcon: {
-    fontSize: 18,
+  timeIconContainer: {
+    width: 28,
+    alignItems: 'center',
     marginRight: Spacing.sm,
-    width: 24,
+  },
+  timeValueContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
   },
   timeLabel: {
     flex: 1,
@@ -791,12 +864,17 @@ const styles = StyleSheet.create({
     fontWeight: '700',
     color: Colors.surface,
   },
+  walkComparisonRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginTop: Spacing.md,
+    gap: Spacing.xs,
+  },
   walkComparison: {
     fontFamily: Typography.fontFamily,
     fontSize: 13,
     color: Colors.textSecondary,
-    textAlign: 'center',
-    marginTop: Spacing.md,
     fontStyle: 'italic',
   },
   walkReasonText: {
@@ -806,12 +884,17 @@ const styles = StyleSheet.create({
     marginBottom: Spacing.md,
     fontStyle: 'italic',
   },
+  estimateWarningRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginTop: Spacing.md,
+    gap: Spacing.xs,
+  },
   estimateWarning: {
     fontFamily: Typography.fontFamily,
     fontSize: 12,
     color: '#B8860B',
-    textAlign: 'center',
-    marginTop: Spacing.md,
     fontStyle: 'italic',
   },
   fallbackContainer: {
@@ -833,5 +916,21 @@ const styles = StyleSheet.create({
     fontSize: 12,
     color: Colors.textSecondary,
     maxHeight: 100,
+  },
+  startTripButton: {
+    backgroundColor: '#444444',
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    paddingVertical: Spacing.lg,
+    borderRadius: Layout.borderRadius,
+    marginTop: Spacing.lg,
+    gap: Spacing.sm,
+  },
+  startTripButtonText: {
+    fontFamily: Typography.fontFamily,
+    fontSize: 18,
+    fontWeight: '700',
+    color: Colors.surface,
   },
 });
