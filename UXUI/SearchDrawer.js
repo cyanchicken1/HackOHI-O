@@ -259,7 +259,7 @@ export default function SearchDrawer({
       setOriginPicked(null);
       onSetStart(null);
     }
-  }, [resetOrigin]);
+  }, [resetOrigin, onSetStart]);
 
   // Update destination query when destination changes
   useEffect(() => {
@@ -340,7 +340,7 @@ export default function SearchDrawer({
 
   return (
     <Animated.View
-      style={[styles.drawer, { height: drawerFullHeight, transform: [{ translateY }], paddingBottom: insets.bottom }]}
+      style={[styles.drawer, { height: drawerFullHeight, transform: [{ translateY }] }]}
     >
       <TouchableOpacity activeOpacity={0.85} onPress={toggleDrawer} style={styles.header}>
         <View style={styles.headerRow}>
@@ -353,7 +353,12 @@ export default function SearchDrawer({
         </View>
       </TouchableOpacity>
 
-      <ScrollView style={styles.content} keyboardShouldPersistTaps="handled">
+      <ScrollView
+        style={styles.content}
+        contentContainerStyle={{ paddingBottom: insets.bottom + 120 }}
+        keyboardShouldPersistTaps="handled"
+        scrollEnabled={isOpen}
+      >
         {/* ORIGIN SECTION */}
         <View style={styles.section}>
           <View style={styles.originRow}>
@@ -711,7 +716,6 @@ const styles = StyleSheet.create({
     marginHorizontal: Spacing.md,
     marginTop: Spacing.lg,
     marginBottom: Spacing.xl,
-    paddingBottom: 100,
   },
   loadingContainer: {
     alignItems: 'center',

@@ -6,14 +6,19 @@ import {
   TouchableOpacity,
   Animated,
   useWindowDimensions,
-  ScrollView,
+  ScrollView as RNScrollView,
   Modal,
   Pressable,
 } from 'react-native';
+import { ScrollView } from 'react-native-gesture-handler';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { Colors, Spacing, Typography, Layout } from '../style/theme';
 import Icon, { IconSizes } from './Icons';
 import { formatTime } from '../BackEnd/busRouting';
+
+/* ---------------- constants ---------------- */
+
+const DRAWER_PEEK_HEIGHT = 120; // Height when collapsed (header + current instruction)
 
 /**
  * StepsBottomSheet - Modal bottom sheet showing all walking steps
@@ -68,7 +73,8 @@ function StepsBottomSheet({ visible, onClose, steps, insets }) {
           {/* Steps list */}
           <ScrollView
             style={sheetStyles.stepsList}
-            showsVerticalScrollIndicator={false}
+            contentContainerStyle={{ paddingBottom: Spacing.lg }}
+            showsVerticalScrollIndicator={true}
           >
             {steps.map((step, idx) => (
               <View key={idx} style={sheetStyles.stepRow}>
@@ -196,7 +202,7 @@ function getSegmentIcon(type, routeColor) {
 /**
  * Get label for segment type
  */
-function getSegmentLabel(segment, index, totalSegments) {
+function getSegmentLabel(segment, index) {
   switch (segment.type) {
     case 'walk':
       if (index === 0) {
@@ -242,7 +248,7 @@ function SegmentRow({ segment, index, currentIndex, routeColor, isLast }) {
   const isPending = index > currentIndex;
 
   const { icon, color } = getSegmentIcon(segment.type, routeColor);
-  const label = getSegmentLabel(segment, index, 4);
+  const label = getSegmentLabel(segment, index);
   const duration = segment.duration ? formatTime(segment.duration) : '--';
 
   // Pulsing animation for current step
@@ -339,35 +345,88 @@ export default function TripProgressView({
 }) {
   const { height: windowHeight } = useWindowDimensions();
   const insets = useSafeAreaInsets();
+
+  // Calculate drawer heights
+  const drawerFullHeight = (windowHeight * 0.55) + insets.bottom;
+  const collapsedOffset = drawerFullHeight - DRAWER_PEEK_HEIGHT - insets.bottom;
+
+  // Drawer expansion state
+  const translateY = useRef(new Animated.Value(0)).current;
+  const [isExpanded, setIsExpanded] = useState(true);
+
+  // Modal state - must be before early return to maintain hooks order
   const [showAllSteps, setShowAllSteps] = useState(false);
 
+  // Get current segment index safely
+  const currentSegmentIndex = activeTrip?.currentSegmentIndex ?? 0;
+
+  // Reset modal state when segment changes
+  useEffect(() => {
+    setShowAllSteps(false);
+  }, [currentSegmentIndex]);
+
+  const toggleDrawer = () => {
+    Animated.spring(translateY, {
+      toValue: isExpanded ? collapsedOffset : 0,
+      tension: 60,
+      friction: 15,
+      useNativeDriver: true,
+    }).start();
+    setIsExpanded(!isExpanded);
+  };
+
+  // Early return after all hooks
   if (!activeTrip || !routeResult) return null;
 
-  const currentSegment = routeResult.segments[activeTrip.currentSegmentIndex];
+  const currentSegment = routeResult.segments[currentSegmentIndex];
   const routeColor = routeResult.route?.color || Colors.primary;
 
   // Calculate remaining time
   const remainingSegments = routeResult.segments.slice(activeTrip.currentSegmentIndex);
   const remainingTime = remainingSegments.reduce((acc, seg) => acc + (seg.duration || 0), 0);
 
-  // Calculate view height - use 55% of screen, no cap, plus safe area
-  const viewHeight = (windowHeight * 0.55) + insets.bottom;
+  // Get short instruction for collapsed view
+  const getShortInstruction = () => {
+    if (!currentSegment) return 'Continue...';
+    const { icon } = getSegmentIcon(currentSegment.type, routeColor);
+    return getCurrentInstruction(currentSegment, routeResult);
+  };
 
   return (
-    <View style={[styles.container, { height: viewHeight, paddingBottom: insets.bottom }]}>
-      {/* Header */}
+    <Animated.View
+      style={[
+        styles.container,
+        {
+          height: drawerFullHeight,
+          paddingBottom: insets.bottom,
+          transform: [{ translateY }],
+        },
+      ]}
+    >
+      {/* Header - split into tappable toggle area and separate close button */}
       <View style={styles.header}>
-        <View style={styles.headerLeft}>
-          <Icon name="navigate" size={IconSizes.lg} color={Colors.surface} />
-          <View style={styles.headerText}>
-            <Text style={styles.headerTitle} numberOfLines={1}>
-              Trip to {destination?.name || 'Destination'}
-            </Text>
-            <Text style={styles.headerSubtitle}>
-              {formatTime(remainingTime)} remaining
-            </Text>
+        <TouchableOpacity
+          activeOpacity={0.85}
+          onPress={toggleDrawer}
+          style={styles.headerTouchable}
+        >
+          <View style={styles.headerLeft}>
+            <Icon name="navigate" size={IconSizes.lg} color={Colors.surface} />
+            <View style={styles.headerText}>
+              <Text style={styles.headerTitle} numberOfLines={1}>
+                {isExpanded ? `Trip to ${destination?.name || 'Destination'}` : getShortInstruction()}
+              </Text>
+              <Text style={styles.headerSubtitle}>
+                {formatTime(remainingTime)} remaining
+              </Text>
+            </View>
           </View>
-        </View>
+          <Icon
+            name={isExpanded ? 'chevron-down' : 'chevron-up'}
+            size={IconSizes.md}
+            color={Colors.surface}
+          />
+        </TouchableOpacity>
         <TouchableOpacity onPress={onEndTrip} style={styles.endTripButton}>
           <Icon name="close" size={IconSizes.md} color={Colors.surface} />
         </TouchableOpacity>
@@ -375,9 +434,11 @@ export default function TripProgressView({
 
       <ScrollView
         style={styles.content}
-        contentContainerStyle={{ flexGrow: 1, paddingBottom: Spacing.xl }}
-        showsVerticalScrollIndicator={false}
+        contentContainerStyle={{ paddingBottom: Spacing.xl }}
+        showsVerticalScrollIndicator={true}
         nestedScrollEnabled={true}
+        scrollEnabled={!showAllSteps && isExpanded}
+        scrollEventThrottle={16}
       >
         {/* Step list */}
         <View style={styles.stepList}>
@@ -470,7 +531,7 @@ export default function TripProgressView({
         steps={currentSegment?.steps || []}
         insets={insets}
       />
-    </View>
+    </Animated.View>
   );
 }
 
@@ -486,16 +547,25 @@ const styles = StyleSheet.create({
     ...Layout.shadow,
     zIndex: 200,
     elevation: 20,
+    overflow: 'hidden',
   },
   header: {
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
     backgroundColor: Colors.primary,
-    paddingVertical: Spacing.md,
-    paddingHorizontal: Spacing.md,
+    paddingRight: Spacing.md,
     borderTopLeftRadius: Layout.borderRadius,
     borderTopRightRadius: Layout.borderRadius,
+  },
+  headerTouchable: {
+    flex: 1,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    paddingVertical: Spacing.md,
+    paddingLeft: Spacing.md,
+    paddingRight: Spacing.sm,
   },
   headerLeft: {
     flexDirection: 'row',
