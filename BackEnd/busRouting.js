@@ -392,18 +392,14 @@ export function formatTime(minutes) {
 /**
  * Calculate the ETA for a trip
  * @param {number} totalTime - Total time in minutes
- * @returns {string} ETA in the format of "HH:MM"
+ * @returns {string} ETA in the format of "H:MM"
  */
 function calculateETA(totalTime) {
-  const nowInSeconds =  Date.now() / 1000;
-  const etaInSeconds = nowInSeconds + totalTime * 60;
-  
-  const etaDate = new Date(etaInSeconds * 1000);
-  let hours = etaDate.getHours();
-  if (hours > 12) {
-    hours -= 12;
-  }
-  const minutes = etaDate.getMinutes();
-
+  const now = new Date();
+  now.setMinutes(now.getMinutes() + totalTime);
+  let hours = now.getHours();
+  hours = hours % 12;
+  if (hours === 0) hours = 12;
+  const minutes = now.getMinutes().toString().padStart(2, '0');
   return `${hours}:${minutes}`;
 }

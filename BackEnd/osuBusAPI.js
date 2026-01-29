@@ -1,17 +1,23 @@
 export async function fetchAllRoutes() {
   const routeIds = ['BE', 'CC', 'CLS', 'ER', 'NWC', 'MC']; // MM, ACK, WMC missing info in API
 
+  // Fetch color data ONCE outside the loop
+  let routeColors = {};
+  try {
+    const routesResponse = await fetch('https://content.osu.edu/v2/bus/routes');
+    if (routesResponse.ok) {
+      const routesJson = await routesResponse.json();
+      routesJson.data.routes.forEach(route => {
+        routeColors[route.code] = route.color;
+      });
+    }
+  } catch (err) {
+    console.warn('Failed to fetch route colors:', err);
+  }
+
   const promises = routeIds.map(async (id) => {
     try {
-      // Fetch color data
-      const routesResponse = await fetch(`https://content.osu.edu/v2/bus/routes`);
-      if (!routesResponse.ok) {
-        console.warn(`Color data fetch failed: HTTP ${routesResponse.status}`);
-        return null;
-      }
-
-      const routesJson = await routesResponse.json();
-      const routeColor = routesJson.data.routes.find((route) => route.code === id)?.color;
+      const routeColor = routeColors[id];
 
       // Fetch route data
       const response = await fetch(`https://content.osu.edu/v2/bus/routes/${id}`);

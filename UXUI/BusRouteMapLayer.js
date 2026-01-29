@@ -106,7 +106,7 @@ export default function BusRouteMapLayer({ routes, loadingRoutes }) {
                         borderRadius: 4,
                         borderWidth: 2,
                         borderColor: 'white',
-                        transform: [{ rotate: `${(vehicle?.heading) + 90 ?? 90}deg` }] // Rotate the icon based on heading
+                        transform: [{ rotate: `${(vehicle?.heading ?? 0) + 90}deg` }] // Rotate the icon based on heading
                       }}
                     >
                       <Text style={{ color: 'white', fontWeight: 'bold', fontSize: 12 }}>🚌</Text>
