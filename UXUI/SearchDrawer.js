@@ -6,6 +6,7 @@ import {
   StyleSheet,
   Animated,
   TouchableOpacity,
+  TouchableWithoutFeedback,
   ScrollView,
   Keyboard,
   ActivityIndicator,
@@ -330,6 +331,14 @@ export default function SearchDrawer({
     }
   };
 
+  const dismissSearchResults = () => {
+    setShowOriginResults(false);
+    setShowDestResults(false);
+    originInputRef.current?.blur();
+    destInputRef.current?.blur();
+    Keyboard.dismiss();
+  };
+
   // Determine header title based on current state
   const getHeaderTitle = () => {
     if (routeResult || calculatingRoute) {
@@ -358,6 +367,7 @@ export default function SearchDrawer({
         contentContainerStyle={{ paddingBottom: insets.bottom + 120 }}
         keyboardShouldPersistTaps="handled"
         scrollEnabled={isOpen}
+        onScrollBeginDrag={dismissSearchResults}
       >
         {/* ORIGIN SECTION */}
         <View style={styles.section}>
@@ -452,6 +462,13 @@ export default function SearchDrawer({
             </View>
           )}
         </View>
+
+        {/* Tap to dismiss search results */}
+        {(showOriginResults || showDestResults) && (
+          <TouchableWithoutFeedback onPress={dismissSearchResults}>
+            <View style={styles.tapDismissArea} />
+          </TouchableWithoutFeedback>
+        )}
 
         {/* ROUTE RESULTS SECTION */}
         {(routeResult || calculatingRoute) && (
@@ -711,6 +728,10 @@ const styles = StyleSheet.create({
     ...Typography.caption,
     color: Colors.textSecondary,
     marginTop: 2,
+  },
+  tapDismissArea: {
+    height: 200,
+    marginHorizontal: Spacing.md,
   },
   resultsSection: {
     marginHorizontal: Spacing.md,

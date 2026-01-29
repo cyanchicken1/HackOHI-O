@@ -216,6 +216,13 @@ function App() {
     }
   }, [activeTrip, routeResult]);
 
+  const handleSetStart = useCallback((building) => {
+    setStartLocation(building);
+    if (building) {
+      setRouteResult(null);
+    }
+  }, []);
+
   const handleSelectBuilding = (b) => {
     setDestination(b);
     setRouteResult(null);
@@ -406,12 +413,7 @@ function App() {
             buildings={ALL_POIS}
             onSelect={handleSelectBuilding}
             onFlyTo={handleFlyTo}
-            onSetStart={(building) => {
-              setStartLocation(building);
-              if (building) {
-                setRouteResult(null);
-              }
-            }}
+            onSetStart={handleSetStart}
             routes={routes}
             resetOrigin={resetOriginTrigger}
             routeResult={routeResult}
