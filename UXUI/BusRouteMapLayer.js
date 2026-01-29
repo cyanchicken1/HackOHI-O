@@ -194,18 +194,25 @@ export default function BusRouteMapLayer({
                   description={`Next: ${vehicle?.nextStop}`}
                   pinColor={baseColor}
                   zIndex={z + 2}
-                  flat={true}
+                  anchor={{ x: 0.5, y: 0.5 }}
                 >
-                  <View
-                    style={[
-                      styles.busMarker,
-                      {
-                        backgroundColor: baseColor,
-                        transform: [{ rotate: `${(vehicle?.heading ?? 0) + 90}deg` }]
-                      }
-                    ]}
-                  >
-                    <Icon name="bus" size={IconSizes.sm} color="white" />
+                  <View style={styles.busMarkerContainer}>
+                    <View
+                      style={[
+                        styles.busMarker,
+                        { backgroundColor: baseColor }
+                      ]}
+                    >
+                      <Icon name="bus" size={IconSizes.sm} color="white" />
+                    </View>
+                    <View
+                      style={[
+                        styles.directionIndicator,
+                        { transform: [{ rotate: `${(vehicle?.heading ?? 0) - 90}deg` }] }
+                      ]}
+                    >
+                      <Icon name="chevron-forward" size={IconSizes.xs} color={baseColor} />
+                    </View>
                   </View>
                 </Marker>
               );
@@ -239,6 +246,10 @@ const styles = StyleSheet.create({
     height: 10,
     borderRadius: 5,
   },
+  busMarkerContainer: {
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
   busMarker: {
     padding: 6,
     borderRadius: 4,
@@ -246,5 +257,12 @@ const styles = StyleSheet.create({
     borderColor: 'white',
     alignItems: 'center',
     justifyContent: 'center',
+  },
+  directionIndicator: {
+    position: 'absolute',
+    right: -8,
+    backgroundColor: 'white',
+    borderRadius: 8,
+    padding: 2,
   },
 });

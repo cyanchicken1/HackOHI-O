@@ -691,7 +691,7 @@ const styles = StyleSheet.create({
     borderColor: Colors.border,
     borderRadius: Layout.borderRadius,
     marginTop: Spacing.xs,
-    maxHeight: 200,
+    maxHeight: 280,
     ...Layout.shadow,
   },
   dropdownItem: {
