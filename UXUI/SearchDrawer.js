@@ -367,7 +367,7 @@ export default function SearchDrawer({
         contentContainerStyle={{ paddingBottom: insets.bottom + 120 }}
         keyboardShouldPersistTaps="handled"
         scrollEnabled={isOpen}
-        onScrollBeginDrag={dismissSearchResults}
+
       >
         {/* ORIGIN SECTION */}
         <View style={styles.section}>
@@ -402,7 +402,7 @@ export default function SearchDrawer({
 
           {/* Origin Results Dropdown */}
           {showOriginResults && originOptions.length > 0 && (
-            <View style={styles.dropdown}>
+            <View style={styles.dropdown}>  
               {originOptions.map((item) => (
                 <TouchableOpacity
                   key={String(item.id)}
@@ -446,7 +446,7 @@ export default function SearchDrawer({
 
           {/* Destination Results Dropdown */}
           {showDestResults && destResults.length > 0 && (
-            <View style={styles.dropdown}>
+            <View style={styles.dropdown}>  
               {destResults.map((item) => (
                 <TouchableOpacity
                   key={String(item.id)}
