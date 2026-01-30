@@ -6,11 +6,11 @@ import {
   TouchableOpacity,
   Animated,
   useWindowDimensions,
-  ScrollView as RNScrollView,
+  ScrollView,
   Modal,
   Pressable,
 } from 'react-native';
-import { ScrollView } from 'react-native-gesture-handler';
+import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { Colors, Spacing, Typography, Layout } from '../style/theme';
 import Icon, { IconSizes } from './Icons';
@@ -48,6 +48,7 @@ function StepsBottomSheet({ visible, onClose, steps, insets }) {
       animationType="fade"
       onRequestClose={onClose}
     >
+      <GestureHandlerRootView style={{ flex: 1 }}>
       <View style={sheetStyles.overlay}>
         <Pressable style={sheetStyles.backdrop} onPress={onClose} />
         <Animated.View
@@ -96,6 +97,7 @@ function StepsBottomSheet({ visible, onClose, steps, insets }) {
           </ScrollView>
         </Animated.View>
       </View>
+      </GestureHandlerRootView>
     </Modal>
   );
 }
@@ -394,6 +396,7 @@ export default function TripProgressView({
 
   return (
     <Animated.View
+      collapsable={false}
       style={[
         styles.container,
         {
@@ -403,6 +406,7 @@ export default function TripProgressView({
         },
       ]}
     >
+      <View style={styles.containerInner}>
       {/* Header - split into tappable toggle area and separate close button */}
       <View style={styles.header}>
         <TouchableOpacity
@@ -432,12 +436,12 @@ export default function TripProgressView({
         </TouchableOpacity>
       </View>
 
+      <View pointerEvents={isExpanded ? 'auto' : 'none'} style={{ flex: 1 }}>
       <ScrollView
         style={styles.content}
         contentContainerStyle={{ paddingBottom: Spacing.xl }}
         showsVerticalScrollIndicator={true}
         nestedScrollEnabled={true}
-        scrollEnabled={!showAllSteps && isExpanded}
         scrollEventThrottle={16}
       >
         {/* Step list */}
@@ -523,6 +527,8 @@ export default function TripProgressView({
           </TouchableOpacity>
         </View>
       </ScrollView>
+      </View>
+      </View>
 
       {/* Walking steps bottom sheet */}
       <StepsBottomSheet
@@ -547,6 +553,11 @@ const styles = StyleSheet.create({
     ...Layout.shadow,
     zIndex: 200,
     elevation: 20,
+  },
+  containerInner: {
+    flex: 1,
+    borderTopLeftRadius: Layout.borderRadius,
+    borderTopRightRadius: Layout.borderRadius,
     overflow: 'hidden',
   },
   header: {

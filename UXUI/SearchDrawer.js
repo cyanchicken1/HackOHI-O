@@ -349,8 +349,10 @@ export default function SearchDrawer({
 
   return (
     <Animated.View
+      collapsable={false}
       style={[styles.drawer, { height: drawerFullHeight, transform: [{ translateY }] }]}
     >
+      <View style={styles.drawerInner}>
       <TouchableOpacity activeOpacity={0.85} onPress={toggleDrawer} style={styles.header}>
         <View style={styles.headerRow}>
           <Text style={styles.headerTitle}>{getHeaderTitle()}</Text>
@@ -362,12 +364,12 @@ export default function SearchDrawer({
         </View>
       </TouchableOpacity>
 
+      <View pointerEvents={isOpen ? 'auto' : 'none'} style={{ flex: 1 }}>
       <ScrollView
         style={styles.content}
         contentContainerStyle={{ paddingBottom: insets.bottom + 120 }}
         keyboardShouldPersistTaps="handled"
-        scrollEnabled={isOpen}
-
+        keyboardDismissMode="on-drag"
       >
         {/* ORIGIN SECTION */}
         <View style={styles.section}>
@@ -624,6 +626,8 @@ export default function SearchDrawer({
           </View>
         )}
       </ScrollView>
+      </View>
+      </View>
     </Animated.View>
   );
 }
@@ -638,6 +642,11 @@ const styles = StyleSheet.create({
     ...Layout.shadow,
     zIndex: 200,
     elevation: 20,
+  },
+  drawerInner: {
+    flex: 1,
+    borderTopLeftRadius: Layout.borderRadius,
+    borderTopRightRadius: Layout.borderRadius,
     overflow: 'hidden',
   },
   header: {
@@ -921,26 +930,6 @@ const styles = StyleSheet.create({
     fontSize: 12,
     color: '#B8860B',
     fontStyle: 'italic',
-  },
-  fallbackContainer: {
-    backgroundColor: Colors.background,
-    padding: Spacing.md,
-    borderRadius: Layout.borderRadius,
-    marginTop: Spacing.md,
-  },
-  fallbackText: {
-    fontFamily: Typography.fontFamily,
-    fontSize: 16,
-    fontWeight: '600',
-    color: Colors.textPrimary,
-    textAlign: 'center',
-    marginBottom: Spacing.sm,
-  },
-  fallbackSubtext: {
-    fontFamily: Typography.fontFamily,
-    fontSize: 12,
-    color: Colors.textSecondary,
-    maxHeight: 100,
   },
   startTripButton: {
     backgroundColor: '#444444',

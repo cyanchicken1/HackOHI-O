@@ -5,7 +5,6 @@ import {
   Text,
   Platform,
   Linking,
-  TouchableWithoutFeedback,
   Keyboard,
   TouchableOpacity,
   ActivityIndicator,
@@ -318,7 +317,6 @@ function App() {
   }
 
   return (
-    <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
       <View style={styles.container}>
         <MapView
           ref={mapRef}
@@ -334,6 +332,7 @@ function App() {
           showsUserLocation={true}
           showsMyLocationButton={true}
           mapType={Platform.OS === 'ios' ? 'standard' : 'standard'}
+          onPress={() => Keyboard.dismiss()}
         >
           {/* Start Location Marker */}
           {startLocation && tripPhase === 'planning' && (
@@ -434,7 +433,6 @@ function App() {
 
         <StatusBar style="auto" />
       </View>
-    </TouchableWithoutFeedback>
   );
 }
 
