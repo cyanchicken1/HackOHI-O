@@ -14,6 +14,7 @@ module.exports = {
       backgroundColor: "#BB0000"
     },
     ios: {
+      bundleIdentifier: "com.lbutch18.gosu",
       supportsTablet: true,
       config: {
         openRouteService: {
